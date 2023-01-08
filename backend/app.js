@@ -1,16 +1,6 @@
 import express from 'express';
 import bp from 'body-parser';
-// import { db } from './firebase.js';
-import { initializeApp ,cert } from "firebase-admin/app";
-import { getFirestore } from 'firebase-admin/firestore';
-
-import serviceAccount from "./creds.json" assert { type: "json" };
-
-initializeApp({
-    credential: cert(serviceAccount)
-})
-
-const db = getFirestore();
+import { db } from './firebase.js';
 
 const app = express();
 
