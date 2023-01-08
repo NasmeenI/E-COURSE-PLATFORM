@@ -10,7 +10,7 @@ const router = createBrowserRouter([
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            Passakorn with 3,500,000,000 people.
           </p>
           <a
             className="App-link text-3xl"
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            We love Passakorn.
           </a>
         </header>
       </div>
