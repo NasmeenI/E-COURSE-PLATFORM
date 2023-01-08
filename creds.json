@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "hacktoschool-e823b",
+  "private_key_id": "4775c8ed51c08ab0187a145a8d83f2f8641e3ff4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCYFdBDzia6Ewc9\nk9KUa/dwyKM92BYAvribksoopWvxVxhAUzYlvYilFI1hhD4971Vz0hg6YHeCZ/fs\njhlRj7yRqMgRQXxa78ZItr0Ws+2t6SVVWMNNYsEC1aQTaaGGEvd3eMvtaR5BIljV\nSMcbrPi538X/+FWI7iawmOWXFMC8gYfHnowK75vxuyzLDxhFrNob2O48JQeohcvv\nrgTcBFBHYKVga9mM01uLq21WGTo/dKyA4uw/CTmaTvnhF9VxVQ5jHVgpDSxoRkdF\nCfME81a+jMyZH2IcGalWa+IckJqHb5zVXkhm8K0ie4hQeqfkPaUEntJbecxLjJ0V\ns2aE+XoLAgMBAAECggEABXGZG/w35abYYQC2uRT+QpK5SSBAIAmznkShqNUhqSis\nF7gCyFS28esWPnHXL9dZGzAKKaNvU63OBtvKleFLvM5U+aJ68DRZ8sYGZwF3a1IH\nlzz591NRblJgW54x0mnruA03sMlM9G7leB5Gm5EpnARMWDkMMr5iMyWzPiECNHJu\nXPdirml9kc3X/owhJkxWMKlMe6jo5fbbCa+81doY+t+W8DBMFepqK9zA2DqMz30d\ny/tX1Waitu8xlrHDyDhGZhIf8Zv1ciaba+t+cm2KXuVJw5Hu30ocAN51alYxLojB\nn+1Rd2jbDH+ZqZvYJ6a6RtblPPkRQ24JNtnhnfkKpQKBgQDKS9Zm/lgV1tMZaQt7\nfOsMu1ph5oB94y9fsGf5MQLnQ4Q+kGbQpTW3ve43rM2EB/P9gExHL7kvVCMc69Ww\nKV5404Q1rO3M32+LnhxHGXMUOR2UBq5nlUGG3JabSdJvb2pSa9gcPfmZwYmbla7N\n0ikXQAHv0OwfPhdbsAKk9CIitwKBgQDAdZtnVMfVe6QqHKYRGytsQHKjJax66BX7\nRnI0TxuCszmHKEeljipxqivKOaGXsVFKSHiwzQ5eK0NAL/MjaM4VjOwEYDt8enIy\n0ZbRofxAzOD9SzHMgRlKHEuBfAu4nDzt8PEq5fqb19NVKYHxOYshilrs/uN/taFr\nR2orvyY/TQKBgDp45zUH6XAOkx/yI/aCqfIZKUvI83TvuN7Av5zglMVB17S5ym4e\ngsNka7m+Af1ayySH9ARTgAR1Hl0asb5khsEH6lwVavrfzn8dqXDHo2LCC5GgyMJ5\n+uG/WuzxzpiVLLc8ItAu/bl6norRHiCx0Vy+DJFD4yw4p0nCO1Fwm3lLAoGBAJ7s\nPpA8FOu3Nl9D2unDOr8gFMmdoWi4XvZoPIPvUvNBVd7Cpy8RTwEfGRvbLRGa7Vpe\nr7KnERc3uEe3kJmLwKlQ/c+7O0PVxJksMtMWZLuJsrvWLOAHNr/Yz4yzxuYBtdpx\nnGPlFmU7+hmXteJgtv/SRLTw4SEi9ZElnolTRZz9AoGAKPJM8fyiv8YPQT06rDDz\n0PCz0kqPUs5xsDI0gCTV09Dj5RZNf5GEh/lF75ivlTggwk0mt2jmH6RcTeqop4iT\n/sJT0ar0l08QodlF+D9Z1sTSI82LENYiGF98M1LNXchT81pYvBU5HSoNAT/3cm9E\ncMTrSD7eI94S6/hsSpcvKP4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-2d5j7@hacktoschool-e823b.iam.gserviceaccount.com",
+  "client_id": "111264500267180227810",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-2d5j7%40hacktoschool-e823b.iam.gserviceaccount.com"
+}
