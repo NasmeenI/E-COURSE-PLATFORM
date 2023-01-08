@@ -18,7 +18,7 @@ const router = createBrowserRouter([
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Learn Reactzzz
           </a>
         </header>
       </div>
