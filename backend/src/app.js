@@ -24,8 +24,14 @@ app.delete('/field' ,deleteField);
 app.delete('/doc' ,deleteDoc);
 
 // ability of instructors
-import{ createCourse } from './abilityOfInstructor/createCourse.js';
+import { createCourse } from './abilityOfInstructor/createCourse.js';
 app.post('/createCourse' ,createCourse);
+
+// ability of student
+import { readCourses } from './abilityOfStudent/readCourses.js';
+import { enrollCourse } from './abilityOfStudent/enrollCourse.js';
+app.get('/readCourses' ,readCourses);
+app.patch('/enrollCourse' ,enrollCourse);
 
 app.listen(3000, function() {
     console.log("Server started on port 3000");

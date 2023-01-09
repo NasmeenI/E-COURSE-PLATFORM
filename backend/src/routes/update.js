@@ -9,7 +9,12 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const update = async (req ,res) => { 
     try{
-        const res = await db.collection('people').doc('associates2').delete();
+        const { name ,status } = req.body;
+        const peopleRef = db.collection('courses').doc('associates2');
+        const res2 = await peopleRef.set({
+            [name] : status
+        })
+        res.status(200).send(name + status);
     }
     catch(error) {
         res.send(error);
