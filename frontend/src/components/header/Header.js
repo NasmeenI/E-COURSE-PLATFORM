@@ -15,7 +15,7 @@ export default function Header() {
       <div className="flex flex-row items-center h-full ">
         <span className="text-xl font-primary" onClick={navigateToHome}>E-Learning</span>
         <div className="w-[3px] h-[30%] bg-[#E0E0E0] ml-[30px]"></div>
-        <span className="text-xl font-secondary ml-[30px]" onClick={navigateToCourses}>Feature 1</span>
+        <span className="text-xl font-secondary ml-[30px]" onClick={navigateToCourses}>Courses</span>
         <span className="text-xl font-secondary ml-[30px]">Feature 2</span>
         <span className="text-xl font-secondary ml-[30px]">Features</span>
       </div>

@@ -27,7 +27,7 @@ export default function Home() {
         <img src={pic1} alt="pic1" className="w-[55%] items-center"></img>
       </div>
 
-      <div className=" w-full flex flex-row bg-white justify-between pl-[100px] pt-[100px] pb-[100px]">
+      <div className=" w-full flex flex-row bg-white justify-between p-[100px]">
         <img src={pic2} alt="pic2" className="w-[55%] items-center"></img>
         <div className="flex flex-col">
           <span className="text-[56px] font-primary text-black">
@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=" w-full flex flex-row bg-[#F6F5F4] justify-between pl-[100px] pt-[100px]">
+      <div className=" w-full flex flex-row bg-[#F6F5F4] justify-between pt-[100px] px-[100px]">
         <div className="flex flex-col">
           <span className="text-[56px] font-primary text-black">
             Increase your vocabulary
@@ -51,7 +51,7 @@ export default function Home() {
         <img src={pic3} alt="pic3" className="w-[55%] items-center"></img>
       </div>
 
-      <div className=" w-full flex flex-row bg-white justify-between pl-[100px] pt-[100px] pb-[100px]">
+      <div className=" w-full flex flex-row bg-white justify-between p-[100px]">
         <img src={pic4} alt="pic4" className="w-[55%] items-center"></img>
         <div className="flex flex-col">
           <span className="text-[56px] font-primary text-black">
