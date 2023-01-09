@@ -16,6 +16,7 @@ export const readAllCourses = async (req ,res) => {
     }  
     const output = []
     for(let i=5*(Number(page)-1);i<=Math.min((Number(page)*5)-1 ,snapshot.docs.length-1);i++){
+        if(snapshot.docs[i].data().class != classOfCourse) continue;
         output.push(snapshot.docs[i].data())
     }
     res.send(output);
