@@ -17,7 +17,7 @@ export const createCourse = async (req ,res) => {
             "description" : description,
             "instructorName" : instructorName,
             "class" : class1,
-            "student" : []
+            "students" : []
         })
         console.log("create course completed")
 
