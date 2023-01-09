@@ -28,14 +28,16 @@ import { createCourse } from './abilityOfInstructor/createCourse.js';
 app.post('/createCourse' ,createCourse);
 
 // ability of student
-import { readAllCourses } from './abilityOfBoth/readAllCourses.js';
 import { enrollCourse } from './abilityOfStudent/enrollCourse.js';
-app.get('/readAllCourses' ,readAllCourses);
 app.patch('/enrollCourse' ,enrollCourse);
 
 // ability of both
 import { readCourses } from './abilityOfBoth/readCourses.js';
+import { readAllCourses } from './abilityOfBoth/readAllCourses.js';
+import { readEachCourses } from './abilityOfBoth/readEachCourses.js';
 app.get('/readCourses' ,readCourses);
+app.get('/readAllCourses' ,readAllCourses);
+app.get('/readEachCourses' ,readEachCourses);
 
 app.listen(3000, function() {
     console.log("Server started on port 3000");
