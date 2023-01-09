@@ -1,6 +1,7 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Course from "./Course";
+import PageButton from "./PageButton";
 
 export default function Courses() {
   return (
@@ -31,6 +32,21 @@ export default function Courses() {
             tag="Science"
             description="bra bra bra *10"
           />
+        </div>
+
+        {/* Page Selector */}
+        <div className="mt-[30px] mb-[60px] flex flex-row justify-evenly items-center">
+          <PageButton page="<"/>
+          <PageButton page="1"/>
+          <PageButton page="2" current={true} />
+          <PageButton page="3"/>
+          
+          {/* page split with ... */}
+          <span className="text-[#2B788B] font-secondary font-bold text-[20px] rounded-full flex items-center justify-evenly mx-[10px]">...</span>
+
+          <PageButton page="7"/>
+          <PageButton page="8"/>
+          <PageButton page=">"/>
         </div>
       </div>
       <Footer />
