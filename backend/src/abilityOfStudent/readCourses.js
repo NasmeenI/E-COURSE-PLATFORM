@@ -9,7 +9,8 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readCourses = async (req ,res) => { 
     try{
-        const studentRef = db.collection('student').doc('PmzuI3FMlZ7yxjZdOoYt');
+        const { name } = req.body;
+        const studentRef = db.collection('student').doc(name);
         const doc = await studentRef.get()
         if(!doc.exists){
             return res.sendStatus(400);

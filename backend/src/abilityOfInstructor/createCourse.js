@@ -20,7 +20,6 @@ export const createCourse = async (req ,res) => {
             "student" : []
         })
         console.log("create course completed")
-        res.status(200).send("create course completed");
 
         // add in instructor
         const instructorRef = db.collection('instructor').doc(instructorName);

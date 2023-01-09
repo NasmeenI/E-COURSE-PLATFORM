@@ -17,9 +17,9 @@ import { read } from './routes/read.js';
 import { update } from './routes/update.js';
 import { deleteDoc } from './routes/deleteDoc.js';
 import { deleteField } from './routes/deleteField.js';
-app.get('/friends' ,read)
-app.post('/addfriends' ,create)
-app.patch('/change' ,update)
+app.get('/friends' ,read);
+app.post('/addfriends' ,create);
+app.patch('/change' ,update);
 app.delete('/field' ,deleteField);
 app.delete('/doc' ,deleteDoc);
 
