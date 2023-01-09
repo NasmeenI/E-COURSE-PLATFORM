@@ -25,17 +25,17 @@ app.delete('/doc' ,deleteDoc);
 
 // ability of instructors
 import { createCourse } from './abilityOfInstructor/createCourse.js';
-import { readCoursesInstructor } from './abilityOfInstructor/readCourses.js';
 app.post('/createCourse' ,createCourse);
-app.get('/readCoursesInstructor' ,readCoursesInstructor);
 
 // ability of student
-import { readCourses } from './abilityOfStudent/readCourses.js';
-import { readAllCourses } from './abilityOfStudent/readAllCourses.js';
+import { readAllCourses } from './abilityOfBoth/readAllCourses.js';
 import { enrollCourse } from './abilityOfStudent/enrollCourse.js';
-app.get('/readCourses' ,readCourses);
 app.get('/readAllCourses' ,readAllCourses);
 app.patch('/enrollCourse' ,enrollCourse);
+
+// ability of both
+import { readCourses } from './abilityOfBoth/readCourses.js';
+app.get('/readCourses' ,readCourses);
 
 app.listen(3000, function() {
     console.log("Server started on port 3000");
