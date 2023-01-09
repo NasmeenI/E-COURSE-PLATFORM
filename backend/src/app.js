@@ -25,7 +25,9 @@ app.delete('/doc' ,deleteDoc);
 
 // ability of instructors
 import { createCourse } from './abilityOfInstructor/createCourse.js';
+import { readCoursesInstructor } from './abilityOfInstructor/readCourses.js';
 app.post('/createCourse' ,createCourse);
+app.get('/readCoursesInstructor' ,readCoursesInstructor);
 
 // ability of student
 import { readCourses } from './abilityOfStudent/readCourses.js';
