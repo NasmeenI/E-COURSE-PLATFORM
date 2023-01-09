@@ -10,7 +10,9 @@ export default function Courses() {
       <div className="bg-[#F6F5F4] mt-[60px] w-full flex flex-col justify-evenly items-center">
         {/* Courses box */}
         <div className="bg-white m-[30px] w-[70%] py-[15px] rounded-lg">
-          <span className="text-right font-primary text-[26px] ml-[15px]">Courses</span>
+          <span className="text-right font-primary text-[26px] ml-[15px]">
+            Courses
+          </span>
         </div>
 
         {/* Tag */}
@@ -23,7 +25,12 @@ export default function Courses() {
 
         {/* Course */}
         <div className="flex flex-col justify-evenly items-center">
-          <Course />
+          <Course
+            courseName="Course which has a very very very long nam"
+            instructorName="Google"
+            tag="Science"
+            description="bra bra bra *10"
+          />
         </div>
       </div>
       <Footer />
