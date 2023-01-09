@@ -29,8 +29,10 @@ app.post('/createCourse' ,createCourse);
 
 // ability of student
 import { readCourses } from './abilityOfStudent/readCourses.js';
+import { readAllCourses } from './abilityOfStudent/readAllCourses.js';
 import { enrollCourse } from './abilityOfStudent/enrollCourse.js';
 app.get('/readCourses' ,readCourses);
+app.get('/readAllCourses' ,readAllCourses);
 app.patch('/enrollCourse' ,enrollCourse);
 
 app.listen(3000, function() {
