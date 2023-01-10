@@ -14,6 +14,25 @@ async function checkCollection(document){
     if(!snapshotCourses.empty) return 'courses';
 }
 
+async function getDocument(document){
+    const cityRef = db.collection(await checkCollection(document)).doc(document);
+    const doc = await cityRef.get();
+    if (!doc.exists) {
+        console.log('No such document!');
+    } else {
+        return doc.data();
+    }
+}
+
+async function getDocumentWithCondition(collection ,variable ,value){
+    const snapshot = await db.collection(collection).where(variable, '==', value).get();
+    if (snapshot.empty) {
+        console.log('No matching documents.');
+        return;
+    }  
+    return snapshot.docs;
+}
+
 async function getField(document ,field){
     const collectionRef = db.collection(await checkCollection(document)).doc(document);
     const doc = await collectionRef.get()
@@ -35,4 +54,10 @@ async function addValueInFieldArray(document ,field ,value){
     })
 }
 
-export { checkCollection ,getField ,addValueInFieldArray }
+export { 
+    checkCollection ,
+    getDocument, 
+    getDocumentWithCondition ,
+    getField ,
+    addValueInFieldArray 
+}
