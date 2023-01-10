@@ -1,34 +1,26 @@
 import { db } from './firebase.js';
 
-export async function checkUserID(userID){
+export async function checkCollection(document){
     const studentRef = db.collection('student');
-    const snapshotStudent = await studentRef.where('_id' ,'==' ,userID).get()
+    const snapshotStudent = await studentRef.where('_id' ,'==' ,document).get()
     if(!snapshotStudent.empty) return 'student';
 
     const instructorRef = db.collection('instructor');
-    const snapshotInstructor = await instructorRef.where('_id' ,'==' ,userID).get()
+    const snapshotInstructor = await instructorRef.where('_id' ,'==' ,document).get()
     if(!snapshotInstructor.empty) return 'instructor';
         
     return 'error';
 }
 
-// collection student and instructor
-export async function getMyCourses(collection ,ID){
-    const collectionRef = db.collection(collection).doc(ID);
+export async function getField(collection ,document ,field){
+    const collectionRef = db.collection(collection).doc(document);
     const doc = await collectionRef.get()
     if(!doc.exists){
-        return [];
+        return null;
     }
-    const courses = doc.data().courses;
-    return courses;
-}
+    let value = '';
+    if(field == 'courses') value = doc.data().courses;
+    else if(field == 'students') value = doc.data().students;
 
-export async function getMyStudents(ID){
-    const collectionRef = db.collection('courses').doc(ID);
-    const doc = await collectionRef.get()
-    if(!doc.exists){
-        return [];
-    }
-    const students = doc.data().students;
-    return students;
+    return value;
 }
