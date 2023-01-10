@@ -28,7 +28,7 @@ export default function Header() {
 
         <button onClick={navigateToCourses}>
           <span
-            className={`text-xl font-secondary ml-[30px] ${
+            className={`text-[18px] font-secondary ml-[30px] ${
               location.pathname.startsWith("/courses") ? "font-bold" : ""
             }`}
           >
@@ -36,12 +36,12 @@ export default function Header() {
           </span>
         </button>
         
-        <span className="text-xl font-secondary ml-[30px]">Feature2</span>
-        <span className="text-xl font-secondary ml-[30px]">Features</span>
+        <span className="text-[18px] font-secondary ml-[30px]">Feature2</span>
+        <span className="text-[18px] font-secondary ml-[30px]">Features</span>
       </div>
       <div className="flex flex-row items-center h-full">
         <span className="text-xl font-secondary">Passa</span>
-        <span className="text-xl font-secondary ml-[30px] font-extrabold ">
+        <span className="text-xl font-secondary ml-[30px] font-extrabold border-[#2B788B] border-2 py-[3px] px-[15px] rounded-full">
           Sign Out
         </span>
       </div>
