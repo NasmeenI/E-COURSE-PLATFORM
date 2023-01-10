@@ -41,7 +41,7 @@ app.get("/readAllCourses", readAllCourses);
 app.get("/readEachCourses", readEachCourses);
 app.delete("/removeCourse", removeCourse);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
   console.log("Server started on port 3000");
 });
