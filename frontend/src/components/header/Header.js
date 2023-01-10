@@ -17,7 +17,9 @@ export default function Header() {
     <header className="fixed top-0 flex flex-row justify-evenly items-center w-full h-[60px] border-b-[1px] border-[#E0E0E0] bg-white">
       <div className="flex flex-row items-center h-full">
         <button onClick={navigateToHome}>
-          <span className="text-xl font-primary font-extrabold">E-Learning</span>
+          <span className="text-xl font-primary font-extrabold">
+            E-Learning
+          </span>
         </button>
 
         {/* divider */}
@@ -26,7 +28,7 @@ export default function Header() {
         <button onClick={navigateToCourses}>
           <span
             className={`text-xl font-secondary ml-[30px] ${
-              location.pathname === "/courses" ? "font-bold" : ""
+              location.pathname.startsWith("/courses") ? "font-bold" : ""
             }`}
           >
             Courses
