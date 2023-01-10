@@ -1,6 +1,6 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import Course from "./Course";
+import CourseCard from "./CourseCard";
 import PageButton from "./PageButton";
 import Dropdown from "react-dropdown";
 
@@ -32,7 +32,7 @@ export default function Courses() {
 
         {/* Course */}
         <div className="flex flex-col justify-evenly items-center">
-          <Course
+          <CourseCard
             courseName="Course which has a very very very long nam"
             instructorName="Google"
             tag="Science"
