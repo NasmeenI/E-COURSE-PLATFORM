@@ -7,7 +7,7 @@ const app = express();
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
-export const readCourses = async (req ,res) => { 
+export const readMyCourses = async (req ,res) => { 
     const { userID ,page } = req.body;
     const Allcourses = await getField(userID ,'courses');
 
