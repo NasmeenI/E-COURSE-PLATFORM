@@ -3,7 +3,6 @@ import Header from "../../components/header/Header";
 import pic5 from "../courses/assets/pic5.png"
 
 export default function Details() {
-    const longName = "Name".repeat(20);
     return <div>
         <Header />
         <div className="mt-[60px] flex flex-col items-center bg-[#F6F5F4] w-full justify-evenly">
