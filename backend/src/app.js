@@ -4,8 +4,12 @@ const app = express();
 
 // body-parser
 import bp from "body-parser";
+
+import cors from "cors";
+
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get("/", function (req, res) {
   res.send("Hello");
