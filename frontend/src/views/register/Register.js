@@ -6,28 +6,31 @@ import UserAPI from "../../api/UserAPI";
 import { toast } from "react-hot-toast";
 
 export default function Register() {
-  const [inputs, setInputs] = useState({});
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const {
     data: { user },
     action: { setUser },
   } = useContext(UserContext);
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
+  function handleEmailChange(event) {
+    setEmail(event.target.value);
+  }
 
-  const handleSubmit = async (event) => {
+  function handlePasswordChange(event) {
+    setPassword(event.target.value);
+  }
+
+  async function handleSubmit(event) {
     event.preventDefault();
-    const result = await UserAPI.register(inputs.email, inputs.password);
+    const result = await UserAPI.register(email, password);
     if (result.error) {
       toast("Error " + result.error);
     } else {
       console.log(result.user.uid);
     }
-  };
+  }
 
   return (
     <div>
@@ -54,8 +57,8 @@ export default function Register() {
             <input
               type="text"
               name="email"
-              value={inputs.email || ""}
-              onChange={handleChange}
+              value={email}
+              onChange={handleEmailChange}
               className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[10px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
             />
             <span className="font-secondary text-[16px]">Password :</span>
@@ -63,8 +66,8 @@ export default function Register() {
             <input
               type="password"
               name="password"
-              value={inputs.password || ""}
-              onChange={handleChange}
+              value={password}
+              onChange={handlePasswordChange}
               className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[30px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
             />
           </div>
