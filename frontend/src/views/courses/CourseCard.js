@@ -38,8 +38,11 @@ export default function CourseCard({
         </span>
         {/* button */}
         <div className="flex flex-row mt-[10px]">
-          <span className="font-secondary font-bold text-[14px] mr-[20px] bg-[#639B6D] text-white rounded-full py-[5px] px-[20px] text-center ">
-            button1
+          <span className="font-secondary font-bold text-[14px] mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px] text-center ">
+            Enroll now
+          </span>
+          <span className="font-secondary font-bold text-[14px] mr-[20px] bg-white text-[#639B6D] border-[#639B6D] border-2 rounded-full py-[5px] px-[20px] text-center ">
+            More Details
           </span>
         </div>
       </div>

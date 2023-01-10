@@ -2,11 +2,8 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import CourseCard from "./CourseCard";
 import PageButton from "./PageButton";
-import Dropdown from "react-dropdown";
 
 export default function Courses() {
-  const tagOption = ["one", "two", "three"];
-  const tagDefaultOption = "Select Tag";
   return (
     <div>
       <Header />
