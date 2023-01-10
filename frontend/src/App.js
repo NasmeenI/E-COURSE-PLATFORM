@@ -5,6 +5,7 @@ import Home from "./views/home/Home";
 import Mycourses from "./views/mycourses/mycourses";
 import Login from "./views/login/Login";
 import Register from "./views/register/Register";
+import { UserProvider } from "./contexts/UserContext";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <UserProvider>
+      <RouterProvider router={router} />
+    </UserProvider>
+  );
 }
 
 export default App;
