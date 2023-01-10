@@ -1,9 +1,17 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import UserAPI from "../../api/UserAPI";
+import { toast } from "react-hot-toast";
 
 export default function Register() {
   const [inputs, setInputs] = useState({});
+
+  const {
+    data: { user },
+    action: { setUser },
+  } = useContext(UserContext);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -11,8 +19,14 @@ export default function Register() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const result = await UserAPI.register(inputs.email, inputs.password);
+    if (result.error) {
+      toast("Error " + result.error);
+    } else {
+      console.log(result.user.uid);
+    }
   };
 
   return (
@@ -35,12 +49,12 @@ export default function Register() {
           <div className="w-[70%] h-[3px] bg-[#E0E0E0] my-[20px]"></div>
 
           <div className="w-[70%] items-start flex flex-col">
-            <span className="font-secondary text-[16px]">Username :</span>
+            <span className="font-secondary text-[16px]">Email :</span>
             {/* Username textbox */}
             <input
               type="text"
-              name="username"
-              value={inputs.username || ""}
+              name="email"
+              value={inputs.email || ""}
               onChange={handleChange}
               className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[10px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
             />
