@@ -7,7 +7,12 @@ import { toast } from "react-hot-toast";
 
 export default function Register() {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const [checkStudent, setCheckStudent] = useState("");
+  const [checkInstructor, setCheckInstructor] = useState("");
 
   const {
     data: { user },
@@ -17,9 +22,14 @@ export default function Register() {
   function handleEmailChange(event) {
     setEmail(event.target.value);
   }
-
+  function handleUsernameChange(event) {
+    setUsername(event.target.value);
+  }
   function handlePasswordChange(event) {
     setPassword(event.target.value);
+  }
+  function handleConfirmPasswordChange(event) {
+    setConfirmPassword(event.target.value);
   }
 
   async function handleSubmit(event) {
@@ -51,14 +61,24 @@ export default function Register() {
 
           <div className="w-[70%] h-[3px] bg-[#E0E0E0] my-[20px]"></div>
 
+          {/* input box */}
           <div className="w-[70%] items-start flex flex-col">
             <span className="font-secondary text-[16px]">Email :</span>
-            {/* Username textbox */}
+            {/* Email textbox */}
             <input
               type="text"
               name="email"
               value={email}
               onChange={handleEmailChange}
+              className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[10px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
+            />
+            <span className="font-secondary text-[16px]">Username :</span>
+            {/* Username textbox */}
+            <input
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleUsernameChange}
               className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[10px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
             />
             <span className="font-secondary text-[16px]">Password :</span>
@@ -68,14 +88,45 @@ export default function Register() {
               name="password"
               value={password}
               onChange={handlePasswordChange}
-              className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[30px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
+              className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[10px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
             />
+            <span className="font-secondary text-[16px]">
+              Confirm Password :
+            </span>
+            {/* Confirm Password textbox */}
+            <input
+              type="password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={handleConfirmPasswordChange}
+              className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[10px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
+            />
+          </div>
+
+          {/* Role Selection */}
+          <div className="flex flex-row w-[50%] justify-around">
+            <div className="">
+              <span className="font-secondary text-[16px] mr-[12px] ${checkStudent}">
+                Student
+              </span>
+              <input
+                type="checkbox"
+              />
+
+              <span className="font-secondary text-[16px] mr-[12px] ml-[20px]">
+                Instructor
+              </span>
+              <input
+                type="checkbox"
+                onClick={() => setCheckInstructor((prev) => !prev)}
+              />
+            </div>
           </div>
 
           {/* Register button */}
           <button
             onClick={handleSubmit}
-            className="w-[70%] bg-[#2B788B] rounded-lg py-[5px]"
+            className="w-[70%] bg-[#2B788B] rounded-lg py-[5px] mt-[20px]"
           >
             <span className="text-white text-[16px] font-extrabold text-center font-secondary">
               Sign In
