@@ -14,7 +14,7 @@ export const removeCourse = async (req ,res) => {
     if(!snapshot.exists){
         return res.sendStatus(400);
     }
-    
+        
     let courses = snapshot.data().courses
     const index = courses.indexOf(course);
     if(index > -1){
