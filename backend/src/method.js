@@ -1,6 +1,6 @@
 import { db } from './firebase.js';
 
-export async function checkCollection(document){
+async function checkCollection(document){
     const studentRef = db.collection('student');
     const snapshotStudent = await studentRef.where('_id' ,'==' ,document).get()
     if(!snapshotStudent.empty) return 'student';
@@ -8,12 +8,14 @@ export async function checkCollection(document){
     const instructorRef = db.collection('instructor');
     const snapshotInstructor = await instructorRef.where('_id' ,'==' ,document).get()
     if(!snapshotInstructor.empty) return 'instructor';
-        
-    return 'error';
+
+    const coursesRef = db.collection('courses');
+    const snapshotCourses= await coursesRef.where('_id' ,'==' ,document).get()
+    if(!snapshotCourses.empty) return 'courses';
 }
 
-export async function getField(collection ,document ,field){
-    const collectionRef = db.collection(collection).doc(document);
+async function getField(document ,field){
+    const collectionRef = db.collection(await checkCollection(document)).doc(document);
     const doc = await collectionRef.get()
     if(!doc.exists){
         return null;
@@ -24,3 +26,13 @@ export async function getField(collection ,document ,field){
 
     return value;
 }
+
+async function addValueInFieldArray(document ,field ,value){
+    let myCourses = await getField(document ,field);
+    myCourses.push(value);
+    db.collection(await checkCollection(document)).doc(document).update({
+        [field] : myCourses
+    })
+}
+
+export { checkCollection ,getField ,addValueInFieldArray }

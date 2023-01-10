@@ -1,7 +1,6 @@
-import { db } from '../firebase.js';
 import bp from 'body-parser';
 import express from 'express';
-import { checkCollection ,getField } from '../method.js';
+import { checkCollection ,addValueInFieldArray} from '../method.js';
 
 const app = express();
 
@@ -13,19 +12,10 @@ export const enrollCourse = async (req ,res) => {
         const { userID ,courseID } = req.body;
 
         const collection = await checkCollection(userID);
-        if(collection == 'error') return res.send('user id is not match');
+        if(collection != 'student') return res.send('you are not a student');
         
-        const myCourses = await getField(collection ,userID ,'courses');
-        myCourses.push(courseID);
-        db.collection(collection).doc(userID).update({
-            ["courses"] : myCourses
-        })
-        
-        const myStudents = await getField('courses' ,courseID ,'students');
-        myStudents.push(userID);
-        db.collection('courses').doc(courseID).update({
-            ["students"] : myStudents
-        })
+        addValueInFieldArray(userID ,'courses' ,courseID);
+        addValueInFieldArray(courseID ,'students' ,userID);
         res.status(200).send("enroll new course complete");
     }
     catch(error) {
