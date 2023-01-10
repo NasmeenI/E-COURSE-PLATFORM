@@ -1,6 +1,7 @@
 import { db } from '../firebase.js';
 import bp from 'body-parser';
 import express from 'express';
+import { checkCollection ,addValueInFieldArray} from '../method.js';
 
 const app = express();
 
@@ -9,31 +10,17 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const createCourse = async (req ,res) => { 
     try{
-        // add in courses
-        const { class1 ,title ,description ,instructorName } = req.body;
-        const courseRef = db.collection('courses').doc(title);
-        const res2 = await courseRef.set({
+        const { _id ,class1 ,title ,description ,instructorName } = req.body;
+        await db.collection('courses').doc(_id).set({
+            "_id" : _id,
             "title" : title,
             "description" : description,
             "instructorName" : instructorName,
             "class" : class1,
             "students" : []
         })
-        console.log("create course completed")
 
-        // add in instructor
-        const instructorRef = db.collection('instructor').doc(instructorName);
-        const docInstructor = await instructorRef.get()
-        if(!docInstructor.exists){
-            return docInstructor.sendStatus(400);
-        }
-        const oldCourses = docInstructor.data().courses;
-
-        const newCourses = oldCourses
-        newCourses.push(title);
-        const res3 = await instructorRef.set({
-            ["courses"] : newCourses
-        })
+        addValueInFieldArray(instructorName ,'courses' ,title);
         res.status(200).send("complete");
     }
     catch(error) {
