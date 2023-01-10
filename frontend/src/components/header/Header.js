@@ -11,9 +11,11 @@ export default function Header() {
   function navigateToHome() {
     navigate("/");
   }
-  function navigateToMycourse() {
-    navigate("/mycourse");
+
+  function navigateToMyCourses() {
+    navigate("/mycourses");
   }
+
   return (
     <header className="fixed top-0 flex flex-row justify-evenly items-center w-full h-[60px] border-b-[1px] border-[#E0E0E0] bg-white">
       <div className="flex flex-row items-center h-full">
@@ -32,11 +34,20 @@ export default function Header() {
               location.pathname.startsWith("/courses") ? "font-bold" : ""
             }`}
           >
-            Courses
+            All Courses
           </span>
         </button>
-        
-        <span className="text-[18px] font-secondary ml-[30px]">Feature2</span>
+
+        <button onClick={navigateToMyCourses}>
+          <span
+            className={`text-[18px] font-secondary ml-[30px] ${
+              location.pathname.startsWith("/mycourses") ? "font-bold" : ""
+            }`}
+          >
+            My Courses
+          </span>
+        </button>
+
         <span className="text-[18px] font-secondary ml-[30px]">Features</span>
       </div>
       <div className="flex flex-row items-center h-full">
