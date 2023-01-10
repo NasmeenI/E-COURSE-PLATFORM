@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="w-full flex flex-row items-center justify-center border-t border-[#E0E0E0]">
+    <footer className="w-full flex flex-row items-center justify-center border-t border-[#E0E0E0] pt-2 pb-4">
       <span className="font-secondary text-[#757575] mt-2 font-bold text-sm">
         ©2021 Thinc. x Cleverse. Project for{" "}
         <a
