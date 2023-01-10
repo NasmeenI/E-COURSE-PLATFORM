@@ -1,4 +1,5 @@
 import pic5 from "../courses/assets/pic5.png";
+import { useNavigate } from "react-router-dom";
 
 export default function CourseCard({
   instructorName,
@@ -6,6 +7,12 @@ export default function CourseCard({
   description,
   courseName,
 }) {
+  const navigate = useNavigate();
+
+  function goToMoreDetails() {
+    navigate("/courses/psls");
+  }
+
   return (
     <div className="my-[20px] bg-white flex flex-row rounded-lg w-[60%] ">
       <img src={pic5} alt="pic5" className="w-[37%] rounded-l-lg"></img>
@@ -41,9 +48,14 @@ export default function CourseCard({
           <span className="font-secondary font-bold text-[14px] mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px] text-center ">
             Enroll now
           </span>
-          <span className="font-secondary font-bold text-[14px] mr-[20px] bg-white text-[#639B6D] border-[#639B6D] border-2 rounded-full py-[5px] px-[20px] text-center ">
-            More Details
-          </span>
+          <button
+            className="mr-[20px] bg-white border-[#639B6D] border-2 rounded-full py-[5px] px-[20px] flex items-center justify-center"
+            onClick={goToMoreDetails}
+          >
+            <span className="font-secondary font-bold text-[14px] text-[#639B6D]">
+              More Details
+            </span>
+          </button>
         </div>
       </div>
     </div>
