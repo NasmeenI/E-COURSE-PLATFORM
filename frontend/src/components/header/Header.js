@@ -4,8 +4,6 @@ export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.pathname);
-
   function navigateToCourses() {
     navigate("/courses");
   }
