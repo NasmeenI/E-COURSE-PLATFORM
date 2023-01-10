@@ -6,6 +6,7 @@ import Mycourses from "./views/mycourses/mycourses";
 import Login from "./views/login/Login";
 import Register from "./views/register/Register";
 import { UserProvider } from "./contexts/UserContext";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <UserProvider>
+      <Toaster />
       <RouterProvider router={router} />
     </UserProvider>
   );
