@@ -3,6 +3,8 @@ import Courses from "./views/courses/Courses";
 import Details from "./views/details/Details";
 import Home from "./views/home/Home";
 import Mycourses from "./views/mycourses/mycourses";
+import Login from "./views/login/Login";
+import Register from "./views/register/Register";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
   {
     path: "/mycourses",
     element: <Mycourses />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
   {
     path: "*",
