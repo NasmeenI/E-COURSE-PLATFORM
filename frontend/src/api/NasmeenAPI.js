@@ -55,7 +55,7 @@ async function removeCourse(userID, courseID) {
 }
 
 async function createAccount(_id, firstname, lastname, type) {
-  const result = await axios.patch(endpoint("/createAccount"), {
+  const result = await axios.post(endpoint("/createAccount"), {
     _id: _id,
     firstname: firstname,
     lastname: lastname,
@@ -91,4 +91,3 @@ const NasmeenAPI = {
 };
 
 export default NasmeenAPI;
-
