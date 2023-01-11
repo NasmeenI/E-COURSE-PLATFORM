@@ -54,12 +54,13 @@ async function removeCourse(userID, courseID) {
   return result;
 }
 
-async function createAccount(_id, firstname, lastname, type) {
+async function createAccount(userID, firstName, firstName, type ,image) {
   const result = await axios.post(endpoint("/createAccount"), {
-    _id: _id,
-    firstname: firstname,
-    lastname: lastname,
+    userID: userID,
+    firstName: firstName,
+    firstName: firstName,
     type: type,
+    image: image
   });
   return result;
 }
