@@ -1,6 +1,7 @@
 import bp from 'body-parser';
 import express from 'express';
 import { getField ,getDocumentWithCondition ,checkCollection } from '../method.js';
+import { getuid } from '../uid.js';
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readMyCourses = async (req ,res) => { 
     const { userID ,page } = req.body;
+    userID = getuid(userID);
     const Allcourses = await getField(userID ,'courses');
 
     const output = []

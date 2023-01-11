@@ -1,6 +1,7 @@
 import { db } from '../firebase.js';
 import bp from 'body-parser';
 import express from 'express';
+import { getuid } from '../uid.js';
 
 const app = express();
 
@@ -9,18 +10,10 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const createAccount = async (req ,res) => { 
     try{
-        const { idToken ,firstname ,lastname ,type } = req.body;
-        getAuth()
-            .verifyIdToken(idToken)
-            .then((decodedToken) => {
-                const uid = decodedToken.uid;
-            })
-            .catch((error) => {
-                res.sendStatus(404);
-            });
-        
-        await db.collection(type).doc(uid).set({
-            "uid" : uid,
+        const { userID ,firstname ,lastname ,type } = req.body;
+        userID = getuid(userID);
+        await db.collection(type).doc(userID).set({
+            "uid" : userID,
             "firstname" : firstname,
             "lastname" : lastname,
             "type" : type,
