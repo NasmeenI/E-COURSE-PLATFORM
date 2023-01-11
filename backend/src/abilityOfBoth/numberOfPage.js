@@ -1,7 +1,6 @@
 import { db } from '../firebase.js';
 import bp from 'body-parser';
 import express from 'express';
-import { getuid } from '../uid.js';
 
 const app = express();
 
