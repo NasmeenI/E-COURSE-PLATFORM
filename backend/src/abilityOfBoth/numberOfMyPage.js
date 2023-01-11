@@ -10,5 +10,6 @@ app.use(bp.urlencoded({ extended: true }))
 export const numberOfMyPage = async (req ,res) => { 
     const { userID } = req.body;
     const Allcourses = await getField(userID ,'courses');
-    res.send(String(Allcourses.length));
+    const numberOfPage = Math.ceil(Allcourses.length/5)
+    res.send(String(numberOfPage));
 }

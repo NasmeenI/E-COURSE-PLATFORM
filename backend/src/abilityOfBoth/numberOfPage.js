@@ -10,5 +10,6 @@ app.use(bp.urlencoded({ extended: true }))
 export const numberOfPage = async (req ,res) => { 
     const { classOfCourse } = req.body;
     const snapshot = await db.collection('courses').where('class' ,'==' ,classOfCourse).get();
-    res.send((String(snapshot.docs.length)))
+    const numberOfPage = Math.ceil(snapshot.docs.length/5);
+    res.send((String(numberOfPage)))
 }
