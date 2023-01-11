@@ -9,9 +9,18 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const createAccount = async (req ,res) => { 
     try{
-        const { _id ,firstname ,lastname ,type } = req.body;
-        await db.collection(type).doc(_id).set({
-            "_id" : _id,
+        const { idToken ,firstname ,lastname ,type } = req.body;
+        getAuth()
+            .verifyIdToken(idToken)
+            .then((decodedToken) => {
+                const uid = decodedToken.uid;
+            })
+            .catch((error) => {
+                res.sendStatus(404);
+            });
+        
+        await db.collection(type).doc(uid).set({
+            "uid" : uid,
             "firstname" : firstname,
             "lastname" : lastname,
             "type" : type,
