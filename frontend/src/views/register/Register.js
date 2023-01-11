@@ -74,8 +74,13 @@ export default function Register() {
       <div className="mt-[60px] flex flex-col items-center bg-[#F6F5F4] w-full justify-evenly">
         <div className="w-[40%] bg-white my-[50px] flex flex-col p-[50px] rounded-md items-center">
           {errorMessage ? (
-            <div className="bg-red-200 py-3 rounded-xl w-full flex items-center justify-center mb-4">
-              <span className="text-red-600">{"Error " + errorMessage}</span>
+            <div className="bg-red-200 py-3 rounded-xl w-full flex flex-col items-center justify-center mb-4">
+              <span className="text-red-600 font-bold font-secondary">
+                Error
+              </span>
+              <span className="text-red-600 font-secondary">
+                {errorMessage}
+              </span>
             </div>
           ) : (
             <></>
