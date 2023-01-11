@@ -1,6 +1,8 @@
+import cleverse from "../footer/assets/cleverse.png";
+import thinc from "../footer/assets/thinc.png";
 export default function Footer() {
   return (
-    <footer className="w-full flex flex-row items-center justify-center border-t border-[#E0E0E0] pt-2 pb-4">
+    <footer className="w-full flex flex-row items-center justify-center border-t border-[#E0E0E0] pt-2 pb-3">
       <span className="font-secondary text-[#757575] mt-2 font-bold text-sm">
         ©2021 Thinc. x Cleverse. Project for{" "}
         <a
@@ -12,6 +14,18 @@ export default function Footer() {
           hack to school
         </a>
       </span>
+
+      <img
+        src={cleverse}
+        alt="cleverse"
+        className="w-[50px] h-[30px] ml-[40px] mr-[20px]"
+      ></img>
+      <span className="font-primary">x</span>
+      <img
+        src={thinc}
+        alt="thinc"
+        className="w-[50px] h-[30px] ml-[20px] mr-[40px]"
+      ></img>
     </footer>
   );
 }
