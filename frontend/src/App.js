@@ -2,11 +2,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Courses from "./views/courses/Courses";
 import Details from "./views/details/Details";
 import Home from "./views/home/Home";
-import MyCourses from "./views/mycourses/MyCourses";
 import Login from "./views/login/Login";
 import Register from "./views/register/Register";
 import { UserProvider } from "./contexts/UserContext";
 import { Toaster } from "react-hot-toast";
+import MyCourses from "./views/mycourses/MyCourses";
 
 const router = createBrowserRouter([
   {

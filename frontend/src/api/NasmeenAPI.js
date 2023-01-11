@@ -54,6 +54,7 @@ async function removeCourse(userID, courseID) {
   return result;
 }
 
+
 async function createAccount(userID, firstName, lastName, type ,image) {
   const result = await axios.post(endpoint("/createAccount"), {
     userID: userID,
