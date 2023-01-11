@@ -7,6 +7,7 @@ import Register from "./views/register/Register";
 import { UserProvider } from "./contexts/UserContext";
 import { Toaster } from "react-hot-toast";
 import MyCourses from "./views/mycourses/MyCourses";
+import CourseMainMenu from "./views/courseMainMenu/CourseMainMenu";
 
 const router = createBrowserRouter([
   {
@@ -21,9 +22,14 @@ const router = createBrowserRouter([
     path: "/courses",
     element: <Courses />,
   },
+  
   {
     path: "/mycourses",
     element: <MyCourses />,
+  },
+  {
+    path: "/mycourses/:id",
+    element: <CourseMainMenu />,
   },
   {
     path: "/login",

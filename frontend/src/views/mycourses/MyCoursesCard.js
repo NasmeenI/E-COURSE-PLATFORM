@@ -1,11 +1,19 @@
+import { useNavigate } from "react-router-dom";
+
 export default function MyCourseCard({
     courseName,
     instructorName,
     profile,
-    annoucement
+    annoucement,
+    id
 }) {
+  const navigate = useNavigate();
+  function navigateToCourseMainMenu() {
+    navigate("/mycourses/" + id)
+  }
   return (
-    <li className="w-[400px] border-[1px] border-black my-[40px] rounded-md">
+    <button onClick={navigateToCourseMainMenu}>
+      <li className="w-[400px] border-[1px] border-black my-[40px] rounded-md">
       <div className="bg-white flex flex-col">
         <div className="pl-[20px] pb-[10px] w-full bg-[#2B788B] flex flex-row">
           <div className="mt-[40px] flex flex-col w-[70%]">
@@ -26,5 +34,7 @@ export default function MyCourseCard({
         
       </div>
     </li>
+    </button>
+    
   );
 }
