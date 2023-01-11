@@ -16,7 +16,7 @@ async function createCourse(_id, title ,class1 ,instructorName ,description) {
   const result = await axios.patch(endpoint("/createCourse"), {
     _id : _id,
     title : title,
-    class1 : class1,
+    tag : tag,
     instructorName : instructorName,
     description : description
   });
