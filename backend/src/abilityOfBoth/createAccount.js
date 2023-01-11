@@ -16,7 +16,7 @@ export const createAccount = async (req ,res) => {
             res.send({ error : newuserID.error.message });
             return ;
         }
-        await db.collection(type).doc(userID).set({
+        await db.collection(type).doc(newuserID.uid).set({
             "userID" : newuserID.uid,
             "firstName" : firstName,
             "lastName" : lastName,
@@ -24,10 +24,9 @@ export const createAccount = async (req ,res) => {
             "courses" : [],
             "image" : image
         })
-
         res.status(200).send({eror : null});
     }
     catch(error) {
-        res.send({ error: error });
+        res.send({ error: error.message });
     }
 }

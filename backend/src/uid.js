@@ -2,7 +2,7 @@ import { auth } from "./firebase.js";
 
 export const getuid = async function (idToken) {
   try {
-    const decodedToken = auth.verifyIdToken(idToken);
+    const decodedToken = await auth.verifyIdToken(idToken);
     const uid = decodedToken.uid;
     return { error: null, uid: uid };
   } catch (error) {
