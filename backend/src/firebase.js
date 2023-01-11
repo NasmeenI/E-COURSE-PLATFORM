@@ -1,9 +1,14 @@
-import { initializeApp ,cert } from "firebase-admin/app";
-import { getFirestore } from 'firebase-admin/firestore';
+import admin from "firebase-admin";
+import { getAuth } from "firebase-admin/auth";
+import { getFirestore } from "firebase-admin/firestore";
 import serviceAccount from "../creds.json" assert { type: "json" };
+import { getApp } from "firebase-admin/app";
 
-export const firebaseApp = initializeApp({
-    credential: cert(serviceAccount)
-})
-
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL:
+    "https://hacktoschool-e823b-default-rtdb.asia-southeast1.firebasedatabase.app",
+});
 export const db = getFirestore();
+
+export const auth = getAuth();
