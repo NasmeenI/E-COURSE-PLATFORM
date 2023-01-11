@@ -1,9 +1,6 @@
-// app
 import express from "express";
-const app = express();
-
-// body-parser
 import bp from "body-parser";
+<<<<<<< Updated upstream
 
 import cors from "cors";
 
@@ -26,20 +23,25 @@ app.post("/addfriends", create);
 app.patch("/change", update);
 app.delete("/field", deleteField);
 app.delete("/doc", deleteDoc);
+=======
+>>>>>>> Stashed changes
 
-// ability of instructors
 import { createCourse } from "./abilityOfInstructor/createCourse.js";
-app.post("/createCourse", createCourse);
-
-// ability of student
 import { enrollCourse } from "./abilityOfStudent/enrollCourse.js";
-app.patch("/enrollCourse", enrollCourse);
 
-// ability of both
 import { readCourses } from "./abilityOfBoth/readCourses.js";
 import { readAllCourses } from "./abilityOfBoth/readAllCourses.js";
 import { readEachCourses } from "./abilityOfBoth/readEachCourses.js";
 import { removeCourse } from "./abilityOfBoth/removeCourse.js";
+
+const app = express();
+app.use(bp.json());
+app.use(bp.urlencoded({ extended: true }));
+
+app.post("/createCourse", createCourse);
+
+app.patch("/enrollCourse", enrollCourse);
+
 app.get("/readCourses", readCourses);
 app.get("/readAllCourses", readAllCourses);
 app.get("/readEachCourses", readEachCourses);
