@@ -24,7 +24,7 @@ app.patch("/enrollCourse", enrollCourse);
 app.get("/readMyCourses", readMyCourses);
 app.get("/readAllCourses", readAllCourses);
 app.get("/readEachCourses", readEachCourses);
-app.delete("/removeCourse", removeCourse);
+app.patch("/removeCourse", removeCourse);
 app.post("/createAccount", createAccount);
 app.get("/numberOfPage", numberOfPage);
 app.get("/numberOfMyPage", numberOfMyPage);

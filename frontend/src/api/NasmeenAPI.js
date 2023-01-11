@@ -13,7 +13,7 @@ async function enrollCourse(userID, courseID) {
 }
 
 async function createCourse(_id, title, tag, instructorName, description) {
-  const result = await axios.patch(endpoint("/createCourse"), {
+  const result = await axios.post(endpoint("/createCourse"), {
     _id: _id,
     title: title,
     tag: tag,
@@ -24,15 +24,15 @@ async function createCourse(_id, title, tag, instructorName, description) {
 }
 
 async function readAllCourses(classOfCourse, page) {
-  const result = await axios.patch(endpoint("/readAllCourses"), {
+  const result = await axios.get(endpoint("/readAllCourses"), {
     classOfCourse: classOfCourse,
     page: page,
   });
   return result;
 }
 
-async function readCourses(userID, page) {
-  const result = await axios.patch(endpoint("/readCourses"), {
+async function readMyCourses(userID, page) {
+  const result = await axios.get(endpoint("/readCourses"), {
     userID: userID,
     page: page,
   });
@@ -40,7 +40,7 @@ async function readCourses(userID, page) {
 }
 
 async function readEachCourses(courseID) {
-  const result = await axios.patch(endpoint("/readEachCourses"), {
+  const result = await axios.get(endpoint("/readEachCourses"), {
     courseID: courseID,
   });
   return result;
@@ -54,25 +54,26 @@ async function removeCourse(userID, courseID) {
   return result;
 }
 
-async function createAccount(_id, firstname, lastname, type) {
-  const result = await axios.patch(endpoint("/createAccount"), {
-    _id: _id,
-    firstname: firstname,
-    lastname: lastname,
+async function createAccount(userID, firstName, firstName, type ,image) {
+  const result = await axios.post(endpoint("/createAccount"), {
+    userID: userID,
+    firstName: firstName,
+    firstName: firstName,
     type: type,
+    image: image
   });
   return result;
 }
 
 async function numberOfPage(classOfCourse) {
-  const result = await axios.patch(endpoint("/numberOfPage"), {
+  const result = await axios.get(endpoint("/numberOfPage"), {
     classOfCourse: classOfCourse,
   });
   return result;
 }
 
 async function numberOfMyPage(userID) {
-  const result = await axios.patch(endpoint("/numberOfMyPage"), {
+  const result = await axios.get(endpoint("/numberOfMyPage"), {
     userID: userID,
   });
   return result;
@@ -82,7 +83,7 @@ const NasmeenAPI = {
   enrollCourse,
   createCourse,
   readAllCourses,
-  readCourses,
+  readMyCourses,
   readEachCourses,
   removeCourse,
   createAccount,
@@ -91,4 +92,3 @@ const NasmeenAPI = {
 };
 
 export default NasmeenAPI;
-
