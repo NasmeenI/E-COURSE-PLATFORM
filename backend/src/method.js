@@ -54,10 +54,29 @@ async function addValueInFieldArray(document ,field ,value){
     })
 }
 
+async function removeFieldArray(document ,field ,value){
+    const collectionRef = db.collection(await checkCollection(document)).doc(document);
+    const snapshot = await collectionRef.get()
+    if(!snapshot.exists){
+        return 'error';
+    }
+    let data = ''
+    if(field == 'courses') data = snapshot.data().courses;
+    else if(field == 'students') data = snapshot.data().students;
+    const index = data.indexOf(value);
+    if(index > -1){
+        data.splice(index, 1);
+    }
+    await collectionRef.update({
+        [field] : data
+    })
+}
+
 export { 
-    checkCollection ,
+    checkCollection,
     getDocument, 
-    getDocumentWithCondition ,
-    getField ,
-    addValueInFieldArray 
+    getDocumentWithCondition,
+    getField,
+    addValueInFieldArray,
+    removeFieldArray
 }
