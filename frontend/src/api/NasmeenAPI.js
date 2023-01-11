@@ -46,12 +46,48 @@ async function readEachCourses(courseID) {
   return result;
 }
 
+async function removeCourse(userID ,courseID) {
+  const result = await axios.patch(endpoint("/removeCourse"), {
+    userID : userID,
+    courseID : courseID
+  });
+  return result;
+}
+
+async function createAccount(_id ,firstname ,lastname ,type) {
+  const result = await axios.patch(endpoint("/createAccount"), {
+    _id : _id,
+    firstname : firstname,
+    lastname : lastname,
+    type : type
+  });
+  return result;
+}
+
+async function numberOfPage(classOfCourse) {
+  const result = await axios.patch(endpoint("/numberOfPage"), {
+    classOfCourse : classOfCourse
+  });
+  return result;
+}
+
+async function numberOfMyPage(userID) {
+  const result = await axios.patch(endpoint("/numberOfMyPage"), {
+    userID : userID
+  });
+  return result;
+}
+
 const NasmeenAPI = {
   enrollCourse,
   createCourse,
   readAllCourses,
   readCourses,
-  readEachCourses
+  readEachCourses,
+  removeCourse,
+  createAccount,
+  numberOfPage,
+  numberOfMyPage
 };
 
 export default NasmeenAPI;
