@@ -1,3 +1,5 @@
+import { getAuth } from "firebase/auth";
+
 export const getuid = async function (idToken) {
   try {
     const decodedToken = await getAuth().verifyIdToken(idToken);

@@ -11,19 +11,23 @@ app.use(bp.urlencoded({ extended: true }))
 export const createAccount = async (req ,res) => { 
     try{
         const { userID ,firstName ,lastName ,type ,image} = req.body;
-        userID = getuid(userID);
+        const newuserID = await getuid(userID);
+        if(newuserID.error){  
+            res.send({ error : newuserID.error.message });
+            return ;
+        }
         await db.collection(type).doc(userID).set({
-            "userID" : userID,
+            "userID" : newuserID.uid,
             "firstName" : firstName,
-            "firstName" : lastName,
+            "lastName" : lastName,
             "type" : type,
             "courses" : [],
             "image" : image
         })
 
-        res.status(200).send("complete");
+        res.status(200).send({eror : null});
     }
     catch(error) {
-        res.send(error);
+        res.send({ error: error });
     }
 }
