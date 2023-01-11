@@ -1,5 +1,5 @@
 import { getAuth } from "firebase/auth";
-import { firebaseApp } from "./firebase";
+import { firebaseApp } from "./firebase.js";
 
 export const getuid = async function (idToken) {
   try {
