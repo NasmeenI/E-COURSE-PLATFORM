@@ -1,11 +1,9 @@
-export const getuid = function(idToken){
-    getAuth()
-        .verifyIdToken(idToken)
-        .then((decodedToken) => {
-            const uid = decodedToken.uid;
-            return uid;
-        })
-        .catch((error) => {
-            return res.sendStatus(404);
-        });
-}
+export const getuid = async function (idToken) {
+  try {
+    const decodedToken = await getAuth().verifyIdToken(idToken);
+    const uid = decodedToken.uid;
+    return { error: null, uid: uid };
+  } catch (error) {
+    return { error: error, uid: null };
+  }
+};
