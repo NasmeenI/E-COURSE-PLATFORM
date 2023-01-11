@@ -61,8 +61,10 @@ export default function Register() {
       setErrorMessage(result.error);
     } else {
       console.log(result);
+      const token = await result.user.getIdToken();
+      console.log("token", token);
       const regisResult = await NasmeenAPI.createAccount(
-        result.user.uid,
+        token,
         firstName,
         lastName,
         role
