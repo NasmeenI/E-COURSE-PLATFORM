@@ -10,14 +10,15 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const createAccount = async (req ,res) => { 
     try{
-        const { userID ,firstname ,lastname ,type } = req.body;
+        const { userID ,firstName ,lastName ,type } = req.body;
         userID = getuid(userID);
         await db.collection(type).doc(userID).set({
-            "uid" : userID,
-            "firstname" : firstname,
-            "lastname" : lastname,
+            "userID" : userID,
+            "firstName" : firstName,
+            "lastName" : lastName,
             "type" : type,
-            "courses" : []
+            "courses" : [],
+            "image" : ''
         })
 
         res.status(200).send("complete");
