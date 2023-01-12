@@ -1,14 +1,17 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import { auth } from "./firebase";
 
 /**
- * 
+ *
  * @param email the user email
  * @param password the user password (must be at least 6 characters)
- * @returns 
+ * @returns
  */
-export async function register(email, password) {
+async function register(email, password) {
   try {
     const result = await createUserWithEmailAndPassword(auth, email, password);
     return result;
@@ -18,8 +21,20 @@ export async function register(email, password) {
     };
   }
 }
-
-export async function login(email, password) {}
+/**
+ *
+ * @param email the user email
+ * @param password the user password (must be at least 6 characters)
+ * @returns
+ */
+async function login(email, password) {
+  try {
+    const result = await signInWithEmailAndPassword(auth, email, password);
+    return result;
+  } catch (e) {
+    return { error: e.message };
+  }
+}
 
 const UserAPI = { register, login };
 
