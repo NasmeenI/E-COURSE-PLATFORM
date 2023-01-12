@@ -65,7 +65,7 @@ export default function Login() {
   return (
     <div>
       <Header />
-      <div className="mt-[60px] flex flex-col items-center bg-[#F6F5F4] w-full justify-evenly">
+      <div className="min-h-[600px]  mt-[60px] flex flex-col items-center bg-[#F6F5F4] w-full justify-evenly">
         {loggingIn ? (
           <div className="my-[200px]">
             <TailSpin
