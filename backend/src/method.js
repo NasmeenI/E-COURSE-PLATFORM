@@ -39,10 +39,7 @@ async function getField(document ,field){
     if(!doc.exists){
         return null;
     }
-    let value = '';
-    if(field == 'courses') value = doc.data().courses;
-    else if(field == 'students') value = doc.data().students;
-
+    const value = doc.data()[field];
     return value;
 }
 
