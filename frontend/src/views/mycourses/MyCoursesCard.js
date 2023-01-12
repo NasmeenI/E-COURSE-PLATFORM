@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
-export default function MyCourseCard({
+export default function MyCoursesCard({
   courseName,
   instructorName,
   profile,

@@ -4,7 +4,7 @@ export default function LectureCard({ title, lectureID }) {
   const navigate = useNavigate();
   const param = useParams();
   function toLecture() {
-    navigate("/mycourses/student/" + param.courseID + "/lecture/" + lectureID);
+    navigate("/mycourses/" + param.courseID + "/lecture/" + lectureID);
   }
 
   return (

@@ -1,6 +1,6 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import MyCourseCard from "./MyCoursesCard";
+import MyCoursesCard from "./MyCoursesCard";
 import profile from "../mycourses/assets/profile_sample.jpg";
 
 export default function MyCourses() {
@@ -13,19 +13,19 @@ export default function MyCourses() {
             My Courses
           </span>
           <ol className=" flex flex-wrap justify-evenly">
-            <MyCourseCard
+            <MyCoursesCard
               courseName="Course Nameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
               instructorName="Instructorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
               profile={profile}
               annoucement="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
               courseID="12345"
             />
-            <MyCourseCard />
-            <MyCourseCard />
-            <MyCourseCard />
-            <MyCourseCard />
-            <MyCourseCard />
-            <MyCourseCard />
+            <MyCoursesCard />
+            <MyCoursesCard />
+            <MyCoursesCard />
+            <MyCoursesCard />
+            <MyCoursesCard />
+            <MyCoursesCard />
           </ol>
         </div>
       </div>

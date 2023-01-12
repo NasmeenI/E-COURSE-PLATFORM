@@ -3,7 +3,7 @@ export default function AssignmentCard({ title, assignmentID }) {
   const navigate = useNavigate();
   const param = useParams();
   function toAssignment() {
-    navigate("/mycourses/student/" + param.courseID + "/assignment/" + assignmentID);
+    navigate("/mycourses/" + param.courseID + "/assignment/" + assignmentID);
   }
 
   return (
