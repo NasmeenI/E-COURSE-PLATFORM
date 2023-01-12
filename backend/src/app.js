@@ -5,6 +5,7 @@ import cors from "cors";
 import { createCourse } from "./abilityOfInstructor/createCourse.js";
 import { enrollCourse } from "./abilityOfStudent/enrollCourse.js";
 
+import { getProfile } from "./abilityOfBoth/getProfile.js";
 import { readMyCourses } from "./abilityOfBoth/readMyCourses.js";
 import { readAllCourses } from "./abilityOfBoth/readAllCourses.js";
 import { readEachCourses } from "./abilityOfBoth/readEachCourses.js";
@@ -21,6 +22,7 @@ app.use(cors());
 app.post("/createCourse", createCourse);
 app.patch("/enrollCourse", enrollCourse);
 
+app.get("/getProfile", getProfile);
 app.get("/readMyCourses", readMyCourses);
 app.get("/readAllCourses", readAllCourses);
 app.get("/readEachCourses", readEachCourses);
