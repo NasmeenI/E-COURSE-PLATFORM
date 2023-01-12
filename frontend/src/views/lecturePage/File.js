@@ -1,4 +1,4 @@
-export default function LectureFile({ filePath, fileName }) {
+export default function File({ filePath, fileName }) {
   return (
     <li className="w-full border-[1px] border-black py-[10px] px-[20px] rounded-md mt-[20px] flex flex-row justify-between items-center">
       <span className="font-secondary truncate">{fileName}</span>

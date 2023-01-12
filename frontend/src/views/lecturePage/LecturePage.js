@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import ReturnButton from "../../components/returnButton/ReturnButton";
-import LectureFile from "./LectureFile";
+import File from "./File";
 
 export default function LecturePage({ lectureHeader, lectureDesc }) {
   const param = useParams();
-  lectureHeader = "Lecture 1"
+  lectureHeader = "Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1"
   lectureDesc = "Lecture descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription"
   return (
     <div>
@@ -14,7 +14,7 @@ export default function LecturePage({ lectureHeader, lectureDesc }) {
       <div className="mt-[60px] bg-[#F6F5F4] py-[30px] px-[20%] flex flex-col">
         <ReturnButton />
         <div className="py-[30px] px-[5%] bg-white flex flex-col w-full rounded-lg">
-          <div className="flex flex-row w-full items-center">
+          <div className="flex flex-row w-full ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlSpace="preserve"
@@ -38,7 +38,7 @@ export default function LecturePage({ lectureHeader, lectureDesc }) {
           </span>
 
           <ol>
-            <LectureFile fileName="Lecture-1.pdf" filePath="path.pdf" />
+            <File fileName="Lecture-1.pdf" filePath="path.pdf" />
           </ol>
         </div>
       </div>
