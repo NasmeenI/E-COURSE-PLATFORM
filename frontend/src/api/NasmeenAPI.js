@@ -6,18 +6,18 @@ function endpoint(path) {
 
 // ------------- ability of instructor ------------- //
 
-async function createCourse(userID, title, image ,tag ,description) {
+async function createCourse(userID, title, image, tag, description) {
   const result = await axios.post(endpoint("/createCourse"), {
     userID: userID,
     title: title,
-    image : image,
+    image: image,
     tag: tag,
     description: description,
   });
   return result.data;
 }
 
-async function createLecture(userID ,courseID ,title, text ,file) {
+async function createLecture(userID, courseID, title, text, file) {
   const result = await axios.post(endpoint("/createLecture"), {
     userID: userID,
     courseID: courseID,
@@ -28,7 +28,7 @@ async function createLecture(userID ,courseID ,title, text ,file) {
   return result.data;
 }
 
-async function createAssignment(userID ,courseID ,title, text ,file) {
+async function createAssignment(userID, courseID, title, text, file) {
   const result = await axios.post(endpoint("/createAssignment"), {
     userID: userID,
     courseID: courseID,
@@ -39,7 +39,7 @@ async function createAssignment(userID ,courseID ,title, text ,file) {
   return result.data;
 }
 
-async function createAnnouncement(userID ,courseID ,text) {
+async function createAnnouncement(userID, courseID, text) {
   const result = await axios.post(endpoint("/createAnnouncement"), {
     userID: userID,
     courseID: courseID,
@@ -48,9 +48,9 @@ async function createAnnouncement(userID ,courseID ,text) {
   return result.data;
 }
 
-async function viewMember() {
+async function viewMember(courseID) {
   const result = await axios.post(endpoint("/viewMember"), {
-    courseID : courseID
+    courseID: courseID,
   });
   return result.data;
 }
@@ -65,7 +65,7 @@ async function enrollCourse(userID, courseID) {
   return result.data;
 }
 
-async function sendWork(userID ,assignmentID ,file) {
+async function sendWork(userID, assignmentID, file) {
   const result = await axios.post(endpoint("/sendWork"), {
     userID: userID,
     assignmentID: assignmentID,
@@ -95,8 +95,7 @@ async function getProfile(userID) {
 }
 
 async function getAllTag() {
-  const result = await axios.post(endpoint("/getAllTag"), {
-  });
+  const result = await axios.post(endpoint("/getAllTag"), {});
   return result.data;
 }
 
@@ -110,7 +109,7 @@ async function removeCourse(userID, courseID) {
 
 async function numberOfPage(tag) {
   const result = await axios.post(endpoint("/numberOfPage"), {
-    tag: tag
+    tag: tag,
   });
   return result.data;
 }
@@ -132,7 +131,7 @@ async function readAllCourses(tag, page) {
 
 async function readDetailCourses(courseID) {
   const result = await axios.post(endpoint("/readDetailCourses"), {
-    courseID : courseID
+    courseID: courseID,
   });
   return result.data;
 }
@@ -154,14 +153,14 @@ async function readDetailMycourses(courseID) {
 
 async function readLecture(lectureID) {
   const result = await axios.post(endpoint("/readLecture"), {
-    lectureID: lectureID
+    lectureID: lectureID,
   });
   return result.data;
 }
 
 async function readAssignment(assignmentID) {
   const result = await axios.post(endpoint("/readAssignment"), {
-    assignmentID: assignmentID
+    assignmentID: assignmentID,
   });
   return result.data;
 }
@@ -188,7 +187,7 @@ const NasmeenAPI = {
   readMyCourses,
   readDetailMycourses,
   readLecture,
-  readAssignment
+  readAssignment,
 };
 
 export default NasmeenAPI;
