@@ -15,7 +15,7 @@ export const getProfile = async (req ,res) => {
         res.send({ error : newuserID.error.message });
         return ;
     }
-    let profile = await getDocument(newuserID)
+    let profile = await getDocument(newuserID.uid)
     profile.userID = null;
     res.send({ profile : profile });
 }

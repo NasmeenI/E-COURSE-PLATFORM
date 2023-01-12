@@ -13,8 +13,6 @@ import FileAPI from "../../api/FileAPI";
 export default function Register() {
   const [profilePicture, setProfilePicture] = useState(defaultProfilePicture);
 
-  console.log("default", defaultProfilePicture);
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -73,7 +71,6 @@ export default function Register() {
   }
 
   async function handleSubmit(event) {
-    console.log(await FileAPI.upload(profilePicture));
     function error(message) {
       setErrorMessage(message);
       setRegistering(false);
@@ -99,18 +96,25 @@ export default function Register() {
       return;
     }
 
+    const imagePath = await FileAPI.upload(profilePicture);
     const token = await result.user.getIdToken();
     const regisResult = await NasmeenAPI.createAccount(
       token,
       firstName,
       lastName,
-      role
+      role,
+      imagePath
     );
 
     if (regisResult.error) {
       error(regisResult.error);
     } else {
-      // TODO: Register success
+      setUser({
+        firstName,
+        lastName,
+        type: role,
+        image: imagePath,
+      });
     }
 
     setRegistering(false);
