@@ -52,6 +52,7 @@ export default function Login() {
       error(loginResult.error);
     } else {
       setUser(loginResult.profile);
+      navigate("/");
     }
 
     setLoggingIn(false);
