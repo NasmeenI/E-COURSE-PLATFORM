@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function Lecture({ head }) {
+export default function Lecture({ head, id}) {
     const navigate = useNavigate();
+    const param = useParams();
     function toLecture() {
-        navigate("/mycourse/:id/:lectureId");
+        navigate("/mycourses/" + param.id + "/lecture/" + id)
     }
 
   return (
