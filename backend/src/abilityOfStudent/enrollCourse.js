@@ -11,16 +11,16 @@ app.use(bp.urlencoded({ extended: true }));
 export const enrollCourse = async (req ,res) => { 
     try{
         const { userID ,courseID } = req.body;
-        // const newuserID = await getuid(userID);
-        // if(newuserID.error){  
-        //     res.send({ error : newuserID.error.message });
-        //     return ;
-        // }
-        const collection = await checkCollection(userID);
+        const newuserID = await getuid(userID);
+        if(newuserID.error){  
+            res.send({ error : newuserID.error.message });
+            return ;
+        }
+        const collection = await checkCollection(newuserID.uid);
         if(collection != 'student') return res.send({ error : 'you are not a student' });
         
-        addValueInFieldArray(userID ,'courses' ,courseID);
-        addValueInFieldArray(courseID ,'students' ,userID);
+        addValueInFieldArray(newuserID.uid ,'courses' ,courseID);
+        addValueInFieldArray(courseID ,'students' ,newuserID.uid);
         const newNumberOfStudent = await getField(courseID ,'numberOfStudent') + 1;
         updateField(courseID ,'numberOfStudent' ,newNumberOfStudent);
         
