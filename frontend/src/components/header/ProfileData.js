@@ -5,21 +5,12 @@ import FileAPI from "../../api/FileAPI";
 import { useNavigate } from "react-router-dom";
 
 export default function ProfileData() {
-  const [imageUrl, setImageUrl] = useState("");
   const navigate = useNavigate();
 
   const {
     data: { user },
     action: { setUser },
   } = useContext(UserContext);
-
-  useEffect(() => {
-    async function fetchImage() {
-      setImageUrl(await FileAPI.getURL(user.image));
-    }
-
-    fetchImage();
-  }, [user]);
 
   function signOut() {
     auth.signOut();
@@ -30,12 +21,10 @@ export default function ProfileData() {
   return (
     <div className="flex flex-row items-center h-full">
       <div className="rounded-full w-[44px] h-[44px] overflow-hidden bg-black">
-        <img src={imageUrl} alt="profile" />
+        <img src={user.imageURL} alt="profile" />
       </div>
 
-      <span className="text-lg font-secondary ml-[20px]">
-        {user.firstName}
-      </span>
+      <span className="text-lg font-secondary ml-[20px]">{user.firstName}</span>
 
       <button
         onClick={signOut}
