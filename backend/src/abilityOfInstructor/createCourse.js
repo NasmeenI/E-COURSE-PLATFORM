@@ -1,7 +1,7 @@
 import { db } from '../firebase.js';
 import bp from 'body-parser';
 import express from 'express';
-import { addValueInFieldArray, checkCollection ,getField} from '../method.js';
+import { addValueInFieldArray, checkCollection ,getField ,updateField} from '../method.js';
 import { getuid } from '../uid.js';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -37,6 +37,14 @@ export const createCourse = async (req ,res) => {
         })
 
         addValueInFieldArray(newuserID.uid ,'courses' ,courseID);
+
+        // add tag to global data
+        const allTag = await db.collection('globalValue').doc('tag').get();
+        const index = allTag.data().tag.indexOf(tag);
+        if(index == -1){
+            addValueInFieldArray('tag' ,'tag' ,tag);
+        }
+        
         res.status(200).send({ error: null });
     }
     catch(error) {
