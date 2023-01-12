@@ -40,7 +40,6 @@ async function getField(document ,field){
         return null;
     }
     const value = doc.data()[field];
-    // console.log(value)
     return value;
 }
 
