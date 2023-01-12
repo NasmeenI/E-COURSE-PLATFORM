@@ -12,7 +12,7 @@ export const getProfile = async (req, res) => {
   const { userID } = req.body;
   const newuserID = await getuid(userID);
   if (newuserID.error) {
-    console.log(error);
+    console.log(newuserID.error);
     res.send({ error: newuserID.error.message });
     return;
   }
