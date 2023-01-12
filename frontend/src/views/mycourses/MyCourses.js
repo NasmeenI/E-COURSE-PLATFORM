@@ -2,9 +2,15 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import MyCoursesCard from "./MyCoursesCard";
 import profile from "../mycourses/assets/profile_sample.jpg";
+import LoginFirst from "../error/LoginFirst";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function MyCourses() {
-  return (
+  const {
+    data: { user },
+  } = useContext(UserContext);
+  return user ? (
     <div>
       <Header />
       <div className="mt-[60px] flex flex-col bg-[#F6F5F4] w-full">
@@ -31,5 +37,5 @@ export default function MyCourses() {
       </div>
       <Footer />
     </div>
-  );
+  ) : (<LoginFirst />)
 }
