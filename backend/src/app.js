@@ -3,7 +3,12 @@ import bp from "body-parser";
 import cors from "cors";
 
 import { createCourse } from "./abilityOfInstructor/createCourse.js";
+import { createLecture } from "./abilityOfInstructor/createLecture.js";
+import { createAssignment } from "./abilityOfInstructor/createAssignment.js";
+import { createAnnouncement } from "./abilityOfInstructor/createAnnouncement.js";
+
 import { enrollCourse } from "./abilityOfStudent/enrollCourse.js";
+import { sendWork } from "./abilityOfStudent/sendWork.js";
 
 import { getProfile } from "./abilityOfBoth/getProfile.js";
 import { readMyCourses } from "./abilityOfBoth/readMyCourses.js";
@@ -20,7 +25,12 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(cors());
 
 app.post("/createCourse", createCourse);
+app.post("/createLecture", createLecture);
+app.post("/createAssignment", createAssignment);
+app.post("/createAnnouncement", createAnnouncement);
+
 app.patch("/enrollCourse", enrollCourse);
+app.post("/sendWork", sendWork);
 
 app.post("/getProfile", getProfile);
 app.post("/readMyCourses", readMyCourses);
