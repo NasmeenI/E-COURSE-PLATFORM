@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { useState } from "react";
 
 export default function Login() {
   const [inputs, setInputs] = useState({});
+
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -14,6 +17,11 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
   };
+
+  const goToRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <div>
       <Header />
@@ -22,7 +30,7 @@ export default function Login() {
           <span className="font-primary text-[32px] mb-[30px]">Login</span>
 
           {/* Login with google button */}
-          <button
+          {/* <button
             onClick={""}
             className="w-[70%] bg-blue-600 rounded-lg py-[5px]"
           >
@@ -31,7 +39,7 @@ export default function Login() {
             </span>
           </button>
 
-          <div className="w-[70%] h-[3px] bg-[#E0E0E0] my-[20px]"></div>
+          <div className="w-[70%] h-[3px] bg-[#E0E0E0] my-[20px]"></div> */}
 
           <div className="w-[70%] items-start flex flex-col">
             <span className="font-secondary text-[16px]">Username :</span>
@@ -66,9 +74,9 @@ export default function Login() {
           <div className="flex flex-row mt-[20px] items-baseline">
             <span className="font-secondary">Don't have an account ?</span>
             {/* Sign in text */}
-            <button onClick={handleSubmit}>
+            <button onClick={goToRegister}>
               <span className="text-[#2B788B] text-[16px] underline ml-[15px] font-extrabold text-center font-secondary">
-                Sign In
+                Register
               </span>
             </button>
           </div>
