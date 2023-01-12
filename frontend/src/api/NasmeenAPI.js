@@ -24,14 +24,14 @@ async function createCourse(_id, title, tag, instructorName, description) {
 }
 
 async function getProfile(userID) {
-  const result = await axios.get(endpoint("/getProfile"), {
-    userID: userID
+  const result = await axios.post(endpoint("/getProfile"), {
+    userID: userID,
   });
   return result.data;
 }
 
 async function readAllCourses(classOfCourse, page) {
-  const result = await axios.get(endpoint("/readAllCourses"), {
+  const result = await axios.post(endpoint("/readAllCourses"), {
     classOfCourse: classOfCourse,
     page: page,
   });
@@ -39,7 +39,7 @@ async function readAllCourses(classOfCourse, page) {
 }
 
 async function readMyCourses(userID, page) {
-  const result = await axios.get(endpoint("/readCourses"), {
+  const result = await axios.post(endpoint("/readCourses"), {
     userID: userID,
     page: page,
   });
@@ -47,7 +47,7 @@ async function readMyCourses(userID, page) {
 }
 
 async function readEachCourses(courseID) {
-  const result = await axios.get(endpoint("/readEachCourses"), {
+  const result = await axios.post(endpoint("/readEachCourses"), {
     courseID: courseID,
   });
   return result.data;
@@ -73,14 +73,14 @@ async function createAccount(userID, firstName, lastName, type, image) {
 }
 
 async function numberOfPage(classOfCourse) {
-  const result = await axios.get(endpoint("/numberOfPage"), {
+  const result = await axios.post(endpoint("/numberOfPage"), {
     classOfCourse: classOfCourse,
   });
   return result.data;
 }
 
 async function numberOfMyPage(userID) {
-  const result = await axios.get(endpoint("/numberOfMyPage"), {
+  const result = await axios.post(endpoint("/numberOfMyPage"), {
     userID: userID,
   });
   return result.data;

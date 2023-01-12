@@ -22,14 +22,14 @@ app.use(cors());
 app.post("/createCourse", createCourse);
 app.patch("/enrollCourse", enrollCourse);
 
-app.get("/getProfile", getProfile);
-app.get("/readMyCourses", readMyCourses);
-app.get("/readAllCourses", readAllCourses);
-app.get("/readEachCourses", readEachCourses);
+app.post("/getProfile", getProfile);
+app.post("/readMyCourses", readMyCourses);
+app.post("/readAllCourses", readAllCourses);
+app.post("/readEachCourses", readEachCourses);
 app.patch("/removeCourse", removeCourse);
 app.post("/createAccount", createAccount);
-app.get("/numberOfPage", numberOfPage);
-app.get("/numberOfMyPage", numberOfMyPage);
+app.post("/numberOfPage", numberOfPage);
+app.post("/numberOfMyPage", numberOfMyPage);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
