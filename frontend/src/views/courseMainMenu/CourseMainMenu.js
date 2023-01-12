@@ -1,7 +1,7 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Anouncement from "./Anouncement";
-import Assignment from "./Assignment";
+import AssignmentCard from "./AssignmentCard";
 import LectureCard from "./LectureCard";
 
 export default function CourseMainMenu() {
@@ -21,7 +21,10 @@ export default function CourseMainMenu() {
                         head = "Lecture 1 : We need some milk" 
                         lectureid = "1234"
                     />
-                    <Assignment />
+                    <AssignmentCard 
+                        head = "Assignment 1 : We don't need some milk, we need some sleep"
+                        assignmentid="12"
+                    />
                     
                 </div>
             </div>
