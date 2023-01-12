@@ -24,6 +24,10 @@ async function checkCollection(document){
     const studentWorkRef = db.collection('studentWork');
     const snapshotstudentWork= await studentWorkRef.where('studentWorkID' ,'==' ,document).get()
     if(!snapshotstudentWork.empty) return 'lectstudentWorkure';
+
+    const globalValueWorkRef = db.collection('globalValue');
+    const snapshotglobalValue= await globalValueWorkRef.where('globalValueID' ,'==' ,document).get()
+    if(!snapshotglobalValue.empty) return 'globalValue';
 }
 
 async function getDocument(document){
@@ -76,9 +80,7 @@ async function removeFieldArray(document ,field ,value){
     if(!snapshot.exists){
         return 'error';
     }
-    let data = ''
-    if(field == 'courses') data = snapshot.data().courses;
-    else if(field == 'students') data = snapshot.data().students;
+    let data = snapshot.data()[field]
     const index = data.indexOf(value);
     if(index > -1){
         data.splice(index, 1);
