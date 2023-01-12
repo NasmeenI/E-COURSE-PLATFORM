@@ -10,6 +10,7 @@ import MyCourses from "./views/mycourses/MyCourses";
 import CourseStudentMenu from "./views/courseStudentMenu/CourseStudentMenu";
 import Error from "./views/error/Error";
 import LecturePage from "./views/lecturePage/LecturePage";
+import AssignmentPage from "./views/assignmentPage/AssignmentPage";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/mycourses/student/:courseID/lecture/:lectureID",
     element: <LecturePage />,
+  },
+  {
+    path: "/mycourses/student/:courseID/assignment/:assignmentID",
+    element: <AssignmentPage />,
   },
   {
     path: "/login",

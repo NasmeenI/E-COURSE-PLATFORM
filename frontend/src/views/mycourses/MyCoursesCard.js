@@ -22,7 +22,7 @@ export default function MyCourseCard({
   return (
     <button
       onClick={
-        user.type == "student"
+        user.type === "student"
           ? navigateToCourseStudentMenu
           : navigateToCourseInstructorMenu
       }

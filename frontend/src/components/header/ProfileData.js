@@ -34,7 +34,7 @@ export default function ProfileData() {
       </div>
 
       <span className="text-lg font-secondary ml-[20px]">
-        {user.firstName + " " + user.lastName}
+        {user.firstName}
       </span>
 
       <button
