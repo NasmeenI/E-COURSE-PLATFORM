@@ -50,7 +50,7 @@ async function createAnnouncement(userID ,courseID ,text) {
 
 async function viewMember() {
   const result = await axios.post(endpoint("/viewMember"), {
-    "courseID" : courseID
+    courseID : courseID
   });
   return result.data;
 }
