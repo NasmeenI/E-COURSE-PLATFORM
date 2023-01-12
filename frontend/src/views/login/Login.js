@@ -47,14 +47,12 @@ export default function Login() {
     }
 
     const token = await result.user.getIdToken();
-    console.log(token);
     const loginResult = await NasmeenAPI.getProfile(token);
     if (loginResult.error) {
       error(loginResult.error);
     } else {
       setUser(loginResult.profile);
     }
-    console.log(loginResult);
 
     setLoggingIn(false);
   };
