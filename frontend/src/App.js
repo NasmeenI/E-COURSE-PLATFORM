@@ -8,6 +8,7 @@ import { UserProvider } from "./contexts/UserContext";
 import { Toaster } from "react-hot-toast";
 import MyCourses from "./views/mycourses/MyCourses";
 import CourseMainMenu from "./views/courseMainMenu/CourseMainMenu";
+import Error from "./views/error/Error";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>404 not found XD</div>,
+    element: <Error />,
   },
 ]);
 
