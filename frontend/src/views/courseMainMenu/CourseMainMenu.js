@@ -17,7 +17,10 @@ export default function CourseMainMenu() {
                     <Anouncement
                         text = "Text that want to announce but long longlonglongl onglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong" 
                     />
-                    <Lecture />
+                    <Lecture
+                        head = "Lecture 1 : We need some milk" 
+                        id = "1234"
+                    />
                     <Assignment />
                     
                 </div>
