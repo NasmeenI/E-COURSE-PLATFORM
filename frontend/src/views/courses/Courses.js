@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import CourseCard from "./CourseCard";
-import PageButton from "./PageButton";
 import { TailSpin } from "react-loader-spinner";
 import NasmeenAPI from "../../api/NasmeenAPI";
+import ReactPaginate from "react-paginate";
 
 export default function Courses() {
   const [loadingTags, setLoadingTags] = useState(false);
@@ -55,7 +55,6 @@ export default function Courses() {
         tags[currentTag],
         currentPage + 1
       );
-      console.log(result);
       setPageData(result.AllCourses);
       setLoadingPage(false);
     }
@@ -133,21 +132,16 @@ export default function Courses() {
             </div>
 
             {/* Page Selector */}
-            <div className="mt-[30px] mb-[60px] flex flex-row justify-evenly items-center">
-              <PageButton page="<" />
-              <PageButton page="1" />
-              <PageButton page="2" current={true} />
-              <PageButton page="3" />
-
-              {/* page split with ... */}
-              <span className="text-[#2B788B] font-secondary font-bold text-[20px] rounded-full flex items-center justify-evenly mx-[10px]">
-                ...
-              </span>
-
-              <PageButton page="7" />
-              <PageButton page="8" />
-              <PageButton page=">" />
-            </div>
+            <ReactPaginate
+              pageCount={pagesCount}
+              nextLabel=">"
+              previousLabel="<"
+              className="mt-[30px] mb-[60px] flex flex-row items-center"
+              activeClassName="bg-[#2B788B] text-white"
+              pageClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
+              nextClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px]"
+              previousClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px]"
+            />
           </>
         )}
       </div>
