@@ -29,7 +29,7 @@ export const createCourse = async (req ,res) => {
             "description" : description,
             "instructorName" : await getField(newuserID.uid ,'firstName'),
             "instructorID" : newuserID.uid,
-            "numberOfStudent" : "0",
+            "numberOfStudent" : 0,
             "students" : [],
             "lectures" : [],
             "announcments" : [],
