@@ -13,12 +13,12 @@ app.use(bp.urlencoded({ extended: true }))
 export const createCourse = async (req ,res) => { 
     try{
         const { userID ,title ,image ,tag ,description } = req.body;
-        // const newuserID = await getuid(userID);
-        // if(newuserID.error){  
-        //     res.send({ error : newuserID.error.message });
-        //     return ;
-        // }
-        const collection = await checkCollection(userID);
+        const newuserID = await getuid(userID);
+        if(newuserID.error){  
+            res.send({ error : newuserID.error.message });
+            return ;
+        }
+        const collection = await checkCollection(newuserID.uid);
         if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
         const courseID = uuidv4();
         await db.collection('courses').doc(courseID).set({
@@ -27,8 +27,8 @@ export const createCourse = async (req ,res) => {
             "image" : image,
             "tag" : tag,
             "description" : description,
-            "instructorName" : await getField(userID ,'firstName'),
-            "instructorID" : userID,
+            "instructorName" : await getField(newuserID.uid ,'firstName'),
+            "instructorID" : newuserID.uid,
             "numberOfStudent" : 0,
             "students" : [],
             "lectures" : [],
@@ -36,7 +36,7 @@ export const createCourse = async (req ,res) => {
             "assignments" : []
         })
 
-        addValueInFieldArray(userID ,'courses' ,courseID);
+        addValueInFieldArray(newuserID.uid ,'courses' ,courseID);
 
         // add tag to global data
         const allTag = await db.collection('globalValue').doc('tag').get();
