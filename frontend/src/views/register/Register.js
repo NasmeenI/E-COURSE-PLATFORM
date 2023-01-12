@@ -108,13 +108,14 @@ export default function Register() {
 
     if (regisResult.error) {
       error(regisResult.error);
+      return;
+    }
+
+    const loadResult = await UserAPI.loadUserData(setUser);
+    if (loadResult.error) {
+      error(loadResult.error);
     } else {
-      setUser({
-        firstName,
-        lastName,
-        type: role,
-        image: imagePath,
-      });
+      setUser(loadResult);
       navigate("/");
     }
 
