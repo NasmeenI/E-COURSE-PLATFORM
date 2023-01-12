@@ -109,6 +109,12 @@ async function numberOfMyPage(userID) {
   return result.data;
 }
 
+async function numberOfTag() {
+  const result = await axios.post(endpoint("/numberOfTag"), {
+  });
+  return result.data;
+}
+
 async function readAllCourses(tag, page) {
   const result = await axios.post(endpoint("/readAllCourses"), {
     tag: tag,
@@ -168,6 +174,7 @@ const NasmeenAPI = {
   removeCourse,
   numberOfPage,
   numberOfMyPage,
+  numberOfTag,
   readAllCourses,
   readDetailCourses,
   readMyCourses,
