@@ -9,7 +9,7 @@ async function enrollCourse(userID, courseID) {
     student: userID,
     course: courseID,
   });
-  return result;
+  return result.data;
 }
 
 async function createCourse(_id, title, tag, instructorName, description) {
@@ -20,7 +20,7 @@ async function createCourse(_id, title, tag, instructorName, description) {
     instructorName: instructorName,
     description: description,
   });
-  return result;
+  return result.data;
 }
 
 async function readAllCourses(classOfCourse, page) {
@@ -28,7 +28,7 @@ async function readAllCourses(classOfCourse, page) {
     classOfCourse: classOfCourse,
     page: page,
   });
-  return result;
+  return result.data;
 }
 
 async function readMyCourses(userID, page) {
@@ -36,14 +36,14 @@ async function readMyCourses(userID, page) {
     userID: userID,
     page: page,
   });
-  return result;
+  return result.data;
 }
 
 async function readEachCourses(courseID) {
   const result = await axios.get(endpoint("/readEachCourses"), {
     courseID: courseID,
   });
-  return result;
+  return result.data;
 }
 
 async function removeCourse(userID, courseID) {
@@ -51,33 +51,32 @@ async function removeCourse(userID, courseID) {
     userID: userID,
     courseID: courseID,
   });
-  return result;
+  return result.data;
 }
 
-
-async function createAccount(userID, firstName, lastName, type ,image) {
+async function createAccount(userID, firstName, lastName, type, image) {
   const result = await axios.post(endpoint("/createAccount"), {
     userID: userID,
     firstName: firstName,
     lastName: lastName,
     type: type,
-    image: image
+    image: image,
   });
-  return result;
+  return result.data;
 }
 
 async function numberOfPage(classOfCourse) {
   const result = await axios.get(endpoint("/numberOfPage"), {
     classOfCourse: classOfCourse,
   });
-  return result;
+  return result.data;
 }
 
 async function numberOfMyPage(userID) {
   const result = await axios.get(endpoint("/numberOfMyPage"), {
     userID: userID,
   });
-  return result;
+  return result.data;
 }
 
 const NasmeenAPI = {
