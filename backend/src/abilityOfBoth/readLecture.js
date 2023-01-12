@@ -7,7 +7,7 @@ const app = express();
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
-export const readLectureStudent = async (req ,res) => { 
+export const readLecture = async (req ,res) => { 
     const { lectureID } = req.body;
     const lecture = await getDocument(lectureID);
     const detailOflecture = {

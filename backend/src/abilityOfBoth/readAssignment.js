@@ -7,7 +7,7 @@ const app = express();
 app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
-export const readAssignmentStudent = async (req ,res) => { 
+export const readAssignment = async (req ,res) => { 
     const { assignmentID } = req.body;
     const assignment = await getDocument(assignmentID);
     const detailOfassignment = {
