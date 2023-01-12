@@ -10,14 +10,14 @@ import { createAnnouncement } from "./abilityOfInstructor/createAnnouncement.js"
 import { enrollCourse } from "./abilityOfStudent/enrollCourse.js";
 import { sendWork } from "./abilityOfStudent/sendWork.js";
 
-import { getProfile } from "./abilityOfBoth/getProfile.js";
-import { readAllCourses } from "./abilityOfBoth/readAllCourses.js";
-import { readDetailCourses } from "./abilityOfBoth/readDetailCourses.js";
-import { removeCourse } from "./abilityOfBoth/removeCourse.js";
 import { createAccount } from "./abilityOfBoth/createAccount.js";
+import { getProfile } from "./abilityOfBoth/getProfile.js";
+import { getAllTag } from "./abilityOfBoth/getAllTag.js";
+import { removeCourse } from "./abilityOfBoth/removeCourse.js";
 import { numberOfPage } from "./abilityOfBoth/numberOfPage.js";
 import { numberOfMyPage } from "./abilityOfBoth/numberOfMyPage.js";
-import { numberOfTag } from "./abilityOfBoth/numberOfTag.js";
+import { readAllCourses } from "./abilityOfBoth/readAllCourses.js";
+import { readDetailCourses } from "./abilityOfBoth/readDetailCourses.js";
 import { readMyCourses } from "./abilityOfBoth/readMyCourses.js";
 import { readLecture } from "./abilityOfBoth/readLecture.js";
 import { readAssignment } from "./abilityOfBoth/readAssignment.js";
@@ -38,10 +38,10 @@ app.post("/sendWork", sendWork);
 
 app.post("/createAccount", createAccount);
 app.post("/getProfile", getProfile);
+app.post("/getAllTag", getAllTag);
 app.patch("/removeCourse", removeCourse);
 app.post("/numberOfPage", numberOfPage);
 app.post("/numberOfMyPage", numberOfMyPage);
-app.post("/numberOfTag", numberOfTag);
 app.post("/readAllCourses", readAllCourses);
 app.post("/readDetailCourses", readDetailCourses);
 app.post("/readMyCourses", readMyCourses);

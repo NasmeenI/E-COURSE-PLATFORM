@@ -87,6 +87,12 @@ async function getProfile(userID) {
   return result.data;
 }
 
+async function getAllTag() {
+  const result = await axios.post(endpoint("/getAllTag"), {
+  });
+  return result.data;
+}
+
 async function removeCourse(userID, courseID) {
   const result = await axios.patch(endpoint("/removeCourse"), {
     userID: userID,
@@ -105,12 +111,6 @@ async function numberOfPage(tag) {
 async function numberOfMyPage(userID) {
   const result = await axios.post(endpoint("/numberOfMyPage"), {
     userID: userID,
-  });
-  return result.data;
-}
-
-async function numberOfTag() {
-  const result = await axios.post(endpoint("/numberOfTag"), {
   });
   return result.data;
 }
@@ -171,10 +171,10 @@ const NasmeenAPI = {
   // -- ability of both -- //
   createAccount,
   getProfile,
+  getAllTag,
   removeCourse,
   numberOfPage,
   numberOfMyPage,
-  numberOfTag,
   readAllCourses,
   readDetailCourses,
   readMyCourses,
