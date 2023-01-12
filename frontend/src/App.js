@@ -4,7 +4,7 @@ import Details from "./views/details/Details";
 import Home from "./views/home/Home";
 import Login from "./views/login/Login";
 import Register from "./views/register/Register";
-import { UserProvider } from "./contexts/UserContext";
+import { UserContext, UserProvider } from "./contexts/UserContext";
 import { Toaster } from "react-hot-toast";
 import MyCourses from "./views/mycourses/MyCourses";
 import CourseMenu from "./views/courseMenu/CourseMenu";
@@ -12,6 +12,10 @@ import Error from "./views/error/Error";
 import LecturePage from "./views/lecturePage/LecturePage";
 import AssignmentPage from "./views/assignmentPage/AssignmentPage";
 import ViewStudent from "./views/viewStudent/ViewStudent";
+import { auth } from "./api/firebase";
+import { useContext } from "react";
+import UserAPI from "./api/UserAPI";
+import Loader from "./Loader";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +30,7 @@ const router = createBrowserRouter([
     path: "/courses",
     element: <Courses />,
   },
-  
+
   {
     path: "/mycourses",
     element: <MyCourses />,
@@ -65,6 +69,7 @@ function App() {
   return (
     <UserProvider>
       <Toaster />
+      <Loader />
       <RouterProvider router={router} />
     </UserProvider>
   );
