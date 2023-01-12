@@ -10,11 +10,10 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readAllCourses = async (req ,res) => { 
     const { classOfCourse ,page } = req.body;
-    const courses = await getDocumentWithCondition('courses' ,'class' ,classOfCourse);
-
+    const courses = await getDocumentWithCondition('courses' ,'tag' ,classOfCourse);
     const output = []
     for(let i=5*(Number(page)-1);i<=Math.min((Number(page)*5)-1 ,courses.length-1);i++){
-        if(courses[i].data().class != classOfCourse) continue;
+        if(courses[i].data().tag != classOfCourse) continue;
         output.push(courses[i].data())
     }
     res.send({ AllCourses : output });

@@ -12,7 +12,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const createAssignment = async (req ,res) => { 
     try{
-        const { userID ,courseID ,header ,text ,file } = req.body;
+        const { userID ,courseID ,title ,text ,file } = req.body;
         const newuserID = await getuid(userID);
         if(newuserID.error){  
             res.send({ error : newuserID.error.message });
@@ -24,7 +24,7 @@ export const createAssignment = async (req ,res) => {
         await db.collection('assignment').doc(assignmentID).set({
             "assignmentID" : assignmentID,
             "courseID" : courseID,
-            "header" : header,
+            "title" : title,
             "text" : text,
             "file" : file,
             "studentFile" : [],
