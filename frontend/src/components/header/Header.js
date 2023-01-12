@@ -1,8 +1,16 @@
+import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext";
+import SignUpOrLogin from "./SignUpOrLogin";
+import ProfileData from "./ProfileData";
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const {
+    data: { user },
+  } = useContext(UserContext);
 
   function navigateToCourses() {
     navigate("/courses");
@@ -50,12 +58,8 @@ export default function Header() {
 
         <span className="text-[18px] font-secondary ml-[30px]">Features</span>
       </div>
-      <div className="flex flex-row items-center h-full">
-        <span className="text-xl font-secondary">Passa</span>
-        <span className="text-xl font-secondary ml-[30px] font-extrabold border-[#2B788B] border-2 py-[3px] px-[15px] rounded-full">
-          Sign Out
-        </span>
-      </div>
+
+      {user ? <ProfileData /> : <SignUpOrLogin />}
     </header>
   );
 }

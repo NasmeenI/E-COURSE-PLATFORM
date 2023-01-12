@@ -115,6 +115,7 @@ export default function Register() {
         type: role,
         image: imagePath,
       });
+      navigate("/");
     }
 
     setRegistering(false);

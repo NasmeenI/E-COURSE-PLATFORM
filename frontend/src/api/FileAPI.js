@@ -1,4 +1,4 @@
-import { ref, uploadBytes } from "@firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { storage } from "./firebase";
 
@@ -15,13 +15,20 @@ async function blobUrlToBlob(blobUrl) {
  */
 async function upload(blobUrl) {
   const id = uuidv4();
-  const result = await uploadBytes(
-    ref(storage, id),
-    await blobUrlToBlob(blobUrl)
-  );
+  await uploadBytes(ref(storage, id), await blobUrlToBlob(blobUrl));
   return id;
 }
 
-const FileAPI = { upload };
+/**
+ *
+ * @param path path in firebase storage
+ * @returns the file download url
+ */
+async function getURL(path) {
+  const result = await getDownloadURL(ref(storage, path));
+  return result;
+}
+
+const FileAPI = { upload, getURL };
 
 export default FileAPI;
