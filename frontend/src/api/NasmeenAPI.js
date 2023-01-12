@@ -48,6 +48,13 @@ async function createAnnouncement(userID ,courseID ,text) {
   return result.data;
 }
 
+async function viewMember() {
+  const result = await axios.post(endpoint("/viewMember"), {
+    "courseID" : courseID
+  });
+  return result.data;
+}
+
 // ------------- ability of student ------------- //
 
 async function enrollCourse(userID, courseID) {
@@ -165,6 +172,7 @@ const NasmeenAPI = {
   createLecture,
   createAssignment,
   createAnnouncement,
+  viewMember,
   // -- ability of student -- //
   enrollCourse,
   sendWork,
