@@ -19,7 +19,7 @@ async function upload(blobUrl) {
     ref(storage, id),
     await blobUrlToBlob(blobUrl)
   );
-  return result;
+  return id;
 }
 
 const FileAPI = { upload };
