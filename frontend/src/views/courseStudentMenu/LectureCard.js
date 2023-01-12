@@ -1,16 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function LectureCard({ head, lectureid }) {
+export default function LectureCard({ title, lectureID }) {
   const navigate = useNavigate();
   const param = useParams();
   function toLecture() {
-    navigate("/mycourses/" + param.id + "/lecture/" + lectureid);
+    navigate("/mycourses/student/" + param.courseID + "/lecture/" + lectureID);
   }
 
   return (
     <button onClick={toLecture}>
       <div className="bg-white mt-[20px] px-[5%] flex flex-col py-[20px]">
-        <div className="flex flex-row">
+        <div className="flex flex-row items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlSpace="preserve"
@@ -23,7 +23,7 @@ export default function LectureCard({ head, lectureid }) {
             />
           </svg>
           <span className="font-secondary text-[20px] font-extrabold mt-[5px] truncate">
-            {head}
+            {title}
           </span>
         </div>
       </div>

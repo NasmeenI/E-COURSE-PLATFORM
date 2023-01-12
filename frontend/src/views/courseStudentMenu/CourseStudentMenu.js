@@ -5,7 +5,7 @@ import Anouncement from "./Anouncement";
 import AssignmentCard from "./AssignmentCard";
 import LectureCard from "./LectureCard";
 
-export default function CourseMainMenu() {
+export default function CourseStudentMenu() {
   return (
     <div>
       <Header />
@@ -25,12 +25,12 @@ export default function CourseMainMenu() {
           <div className="flex flex-col mb-[30px] w-full">
             <Anouncement text="Text that want to announce but long longlonglongl onglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong" />
             <LectureCard
-              head="Lecture 1 : We need some milk"
-              lectureid="1234"
+              title="Lecture 1 : We need some milk"
+              lectureID="1234"
             />
             <AssignmentCard
-              head="Assignment 1 : We don't need some milk, we need some sleep"
-              assignmentid="12"
+              title="Assignment 1 : We don't need some milk, we need some sleepppppppppppppppppp"
+              assignmentID="12"
             />
           </div>
         </div>

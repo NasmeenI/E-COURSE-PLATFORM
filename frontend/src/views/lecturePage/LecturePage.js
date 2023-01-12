@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
+import ReturnButton from "../../components/returnButton/ReturnButton";
 import LectureFile from "./LectureFile";
 
 export default function LecturePage({ lectureHeader, lectureDesc }) {
@@ -10,7 +11,8 @@ export default function LecturePage({ lectureHeader, lectureDesc }) {
   return (
     <div>
       <Header />
-      <div className="mt-[60px] bg-[#F6F5F4] py-[30px] px-[20%]">
+      <div className="mt-[60px] bg-[#F6F5F4] py-[30px] px-[20%] flex flex-col">
+        <ReturnButton />
         <div className="py-[30px] px-[5%] bg-white flex flex-col w-full rounded-lg">
           <div className="flex flex-row w-full items-center">
             <svg

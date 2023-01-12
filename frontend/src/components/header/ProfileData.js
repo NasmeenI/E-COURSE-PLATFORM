@@ -2,9 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { auth } from "../../api/firebase";
 import { UserContext } from "../../contexts/UserContext";
 import FileAPI from "../../api/FileAPI";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileData() {
   const [imageUrl, setImageUrl] = useState("");
+  const navigate = useNavigate();
 
   const {
     data: { user },
@@ -22,6 +24,7 @@ export default function ProfileData() {
   function signOut() {
     auth.signOut();
     setUser(null);
+    navigate("/");
   }
 
   return (

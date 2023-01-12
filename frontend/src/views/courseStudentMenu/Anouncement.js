@@ -1,7 +1,7 @@
 export default function Anouncement({text}) {
   return (
     <div className="bg-white mt-[20px] px-[5%] flex flex-col py-[20px]">
-      <div className="flex flex-row items-stretch mb-[10px]">
+      <div className="flex flex-row items-center mb-[10px]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlSpace="preserve"

@@ -7,7 +7,7 @@ import Register from "./views/register/Register";
 import { UserProvider } from "./contexts/UserContext";
 import { Toaster } from "react-hot-toast";
 import MyCourses from "./views/mycourses/MyCourses";
-import CourseMainMenu from "./views/courseMainMenu/CourseMainMenu";
+import CourseStudentMenu from "./views/courseStudentMenu/CourseStudentMenu";
 import Error from "./views/error/Error";
 import LecturePage from "./views/lecturePage/LecturePage";
 
@@ -30,11 +30,11 @@ const router = createBrowserRouter([
     element: <MyCourses />,
   },
   {
-    path: "/mycourses/:id",
-    element: <CourseMainMenu />,
+    path: "/mycourses/student/:courseID",
+    element: <CourseStudentMenu />,
   },
   {
-    path: "/mycourses/:id/lecture/:lectureid",
+    path: "/mycourses/student/:courseID/lecture/:lectureID",
     element: <LecturePage />,
   },
   {
