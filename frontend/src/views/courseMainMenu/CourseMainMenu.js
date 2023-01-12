@@ -1,8 +1,8 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Anouncement from "./Anouncement";
-import Assignment from "./Assignment";
-import Lecture from "./Lecture";
+import AssignmentCard from "./AssignmentCard";
+import LectureCard from "./LectureCard";
 
 export default function CourseMainMenu() {
     return <div>
@@ -17,11 +17,14 @@ export default function CourseMainMenu() {
                     <Anouncement
                         text = "Text that want to announce but long longlonglongl onglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong" 
                     />
-                    <Lecture
+                    <LectureCard
                         head = "Lecture 1 : We need some milk" 
-                        id = "1234"
+                        lectureid = "1234"
                     />
-                    <Assignment />
+                    <AssignmentCard 
+                        head = "Assignment 1 : We don't need some milk, we need some sleep"
+                        assignmentid="12"
+                    />
                     
                 </div>
             </div>

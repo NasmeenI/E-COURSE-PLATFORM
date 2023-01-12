@@ -165,7 +165,7 @@ export default function Register() {
                   Setup Your Profile
                 </span>
                 {/* Upload Profile Picture */}
-                <div className="flex flex-row w-full items-center justify-center mb-[10px] mt-[10px] px-[10px] pb-[3px]">
+                <div className="flex flex-row w-full items-center justify-center mb-[10px] mt-[20px] px-[10px] pb-[3px]">
                   <input
                     type="file"
                     accept="image/*"
