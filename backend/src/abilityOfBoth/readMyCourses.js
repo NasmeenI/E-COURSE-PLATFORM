@@ -10,15 +10,19 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readMyCourses = async (req ,res) => { 
     const { userID ,page } = req.body;
-    userID = getuid(userID);
-    const Allcourses = await getField(userID ,'courses');
+    const newuserID = await getuid(userID);
+    if(newuserID.error){  
+        res.send({ error : newuserID.error.message });
+        return ;
+    }
+    const Allcourses = await getField(newuserID.uid ,'courses');
 
     const output = []
     for(let i=5*(Number(page)-1);i<=Math.min((Number(page)*5)-1 ,Allcourses.length-1);i++){
         const courses = await getDocumentWithCondition('courses' ,'_id' ,Allcourses[i]);
 
         let temp = courses[0].data()
-        if(checkCollection(userID) != 'instructor') output.students = null
+        if(checkCollection(newuserID.uid) != 'instructor') output.students = null
         output.push(temp)
     }
     res.send(output);

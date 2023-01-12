@@ -11,19 +11,23 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const removeCourse = async (req ,res) => { 
     const { userID ,courseID } = req.body;
-    userID = getuid(userID);
-    const collection = await checkCollection(userID)
+    const newuserID = await getuid(userID);
+    if(newuserID.error){  
+        res.send({ error : newuserID.error.message });
+        return ;
+    }
+    const collection = await checkCollection(newuserID)
     if(collection == "instructor"){
         const students = await getField(courseID ,'students');
         students.forEach(student => {
             removeFieldArray(student ,'courses' ,courseID);
         });
-        removeFieldArray(userID ,'courses' ,courseID);
+        removeFieldArray(newuserID ,'courses' ,courseID);
         db.collection('courses').doc(courseID).delete();
     }
     else if(collection == "student"){
-        removeFieldArray(courseID ,'students' ,userID); 
-        removeFieldArray(userID ,'courses' ,courseID);
+        removeFieldArray(courseID ,'students' ,newuserID); 
+        removeFieldArray(newuserID ,'courses' ,courseID);
     }
     res.send('success');
 }

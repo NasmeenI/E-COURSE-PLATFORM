@@ -13,8 +13,12 @@ app.use(bp.urlencoded({ extended: true }))
 export const createCourse = async (req ,res) => { 
     try{
         const { userID ,tag ,title ,description ,instructorName } = req.body;
-        userID = getuid(userID);
-        const collection = await checkCollection(userID);
+        const newuserID = await getuid(userID);
+        if(newuserID.error){  
+            res.send({ error : newuserID.error.message });
+            return ;
+        }
+        const collection = await checkCollection(newuserID);
         if(collection != 'instructor') res.send('you are not an instructor');
         const courseID = uuidv4();
         await db.collection('courses').doc(courseID).set({
@@ -22,7 +26,7 @@ export const createCourse = async (req ,res) => {
             "title" : title,
             "description" : description,
             "instructorName" : instructorName,
-            "instructorID" : userID,
+            "instructorID" : newuserID,
             "tag" : tag,
             "students" : []
         })

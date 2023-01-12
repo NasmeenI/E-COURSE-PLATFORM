@@ -2,15 +2,15 @@ import { db } from './firebase.js';
 
 async function checkCollection(document){
     const studentRef = db.collection('student');
-    const snapshotStudent = await studentRef.where('_id' ,'==' ,document).get()
+    const snapshotStudent = await studentRef.where('userID' ,'==' ,document).get()
     if(!snapshotStudent.empty) return 'student';
 
     const instructorRef = db.collection('instructor');
-    const snapshotInstructor = await instructorRef.where('_id' ,'==' ,document).get()
+    const snapshotInstructor = await instructorRef.where('userID' ,'==' ,document).get()
     if(!snapshotInstructor.empty) return 'instructor';
 
     const coursesRef = db.collection('courses');
-    const snapshotCourses= await coursesRef.where('_id' ,'==' ,document).get()
+    const snapshotCourses= await coursesRef.where('userID' ,'==' ,document).get()
     if(!snapshotCourses.empty) return 'courses';
 }
 
