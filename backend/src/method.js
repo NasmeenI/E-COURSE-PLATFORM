@@ -12,6 +12,10 @@ async function checkCollection(document){
     const coursesRef = db.collection('courses');
     const snapshotCourses = await coursesRef.where('courseID' ,'==' ,document).get()
     if(!snapshotCourses.empty) return 'courses';
+    
+    const assignmentRef = db.collection('assignment');
+    const snapshotassignment = await assignmentRef.where('assignmentID' ,'==' ,document).get()
+    if(!snapshotassignment.empty) return 'assignment';
 }
 
 async function getDocument(document){
