@@ -8,9 +8,17 @@ async function blobUrlToBlob(blobUrl) {
   return blob;
 }
 
+/**
+ *
+ * @param blobUrl the url of the blob to upload
+ * @returns a string representing path in firebase storage
+ */
 async function upload(blobUrl) {
   const id = uuidv4();
-  const result = await uploadBytes(ref(storage, id), await blobUrlToBlob(blobUrl));
+  const result = await uploadBytes(
+    ref(storage, id),
+    await blobUrlToBlob(blobUrl)
+  );
   return result;
 }
 
