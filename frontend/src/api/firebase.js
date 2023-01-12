@@ -2,6 +2,8 @@ import { initializeApp } from "firebase/app";
 
 import { getAuth } from "firebase/auth";
 
+import { getStorage, ref, uploadBytes } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyAiYNzuzY5mzhFrB3kS5DeFbtCKww5yeck",
   authDomain: "hacktoschool-e823b.firebaseapp.com",
@@ -16,3 +18,5 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+
+export const storage = getStorage();
