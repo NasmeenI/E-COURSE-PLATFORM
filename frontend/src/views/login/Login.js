@@ -67,16 +67,18 @@ export default function Login() {
       <Header />
       <div className="mt-[60px] flex flex-col items-center bg-[#F6F5F4] w-full justify-evenly">
         {loggingIn ? (
-          <TailSpin
-            height="80"
-            width="80"
-            color="#2B788B"
-            ariaLabel="tail-spin-loading"
-            radius="1"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
+          <div className="my-[200px]">
+            <TailSpin
+              height="80"
+              width="80"
+              color="#2B788B"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </div>
         ) : (
           <div className="w-[40%] bg-white my-[50px] flex flex-col p-[50px] rounded-md items-center">
             <span className="font-primary text-[32px] mb-[30px]">Login</span>
