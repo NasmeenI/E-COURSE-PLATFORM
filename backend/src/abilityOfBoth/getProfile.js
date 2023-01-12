@@ -1,6 +1,7 @@
 import bp from 'body-parser';
 import express from 'express';
 import { getDocument } from '../method.js';
+import { getuid } from '../uid.js';
 
 const app = express();
 
