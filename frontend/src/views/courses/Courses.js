@@ -62,6 +62,10 @@ export default function Courses() {
     getPageData();
   }, [currentPage, pagesCount, currentTag]);
 
+  function handlePageChange(event) {
+    setCurrentPage(event.selected);
+  }
+
   return (
     <div>
       <Header />
@@ -134,6 +138,7 @@ export default function Courses() {
             {/* Page Selector */}
             <ReactPaginate
               pageCount={pagesCount}
+              onPageChange={handlePageChange}
               nextLabel=">"
               previousLabel="<"
               className="mt-[30px] mb-[60px] flex flex-row items-center"
