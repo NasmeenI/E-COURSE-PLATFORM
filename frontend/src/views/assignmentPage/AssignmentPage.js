@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import StudentUpload from "./StudentUpload";
 import InstructorScore from "./InstructorScore";
+import File from "../lecturePage/File";
 
 export default function AssignmentPage() {
   const param = useParams();
@@ -42,6 +43,7 @@ export default function AssignmentPage() {
           <span className="font-secondary mt-[20px] break-words">
             {AssignmentDesc}
           </span>
+          <File fileName="assignment1.pdf" filePath="123"/>
         </div>
         
         {(user.type === "student") ? <StudentUpload /> : <InstructorScore />}
