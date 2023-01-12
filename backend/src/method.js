@@ -16,6 +16,14 @@ async function checkCollection(document){
     const assignmentRef = db.collection('assignment');
     const snapshotassignment = await assignmentRef.where('assignmentID' ,'==' ,document).get()
     if(!snapshotassignment.empty) return 'assignment';
+
+    const lectureRef = db.collection('lecture');
+    const snapshotlecture = await lectureRef.where('lectureID' ,'==' ,document).get()
+    if(!snapshotlecture.empty) return 'lecture';
+
+    const studentWorkRef = db.collection('studentWork');
+    const snapshotstudentWork= await studentWorkRef.where('studentWorkID' ,'==' ,document).get()
+    if(!snapshotstudentWork.empty) return 'lectstudentWorkure';
 }
 
 async function getDocument(document){

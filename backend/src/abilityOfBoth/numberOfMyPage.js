@@ -15,6 +15,7 @@ export const numberOfMyPage = async (req ,res) => {
         res.send({ error : newuserID.error.message });
         return ;
     }
+
     const Allcourses = await getField(newuserID.uid ,'courses');
     const numberOfMyPage = Math.ceil(Allcourses.length/5)
     res.send({ numberOfMyPage : String(numberOfMyPage) });

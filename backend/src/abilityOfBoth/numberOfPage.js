@@ -8,8 +8,8 @@ app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
 export const numberOfPage = async (req ,res) => { 
-    const { classOfCourse } = req.body;
-    const snapshot = await db.collection('courses').where('class' ,'==' ,classOfCourse).get();
+    const { tag } = req.body;
+    const snapshot = await db.collection('courses').where('tag' ,'==' ,tag).get();
     const numberOfPage = Math.ceil(snapshot.docs.length/5);
     res.send({ numberOfPage : String(numberOfPage) });
 }

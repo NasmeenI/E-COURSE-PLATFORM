@@ -9,11 +9,13 @@ import { createAnnouncement } from "./abilityOfInstructor/createAnnouncement.js"
 
 import { enrollCourse } from "./abilityOfStudent/enrollCourse.js";
 import { sendWork } from "./abilityOfStudent/sendWork.js";
+import { readMyCoursesStudent } from "./abilityOfStudent/readMyCoursesStudent.js";
+import { readLectureStudent } from "./abilityOfStudent/readLectureStudent.js";
+import { readAssignmentStudent } from "./abilityOfStudent/readAssignmentStudent.js";
 
 import { getProfile } from "./abilityOfBoth/getProfile.js";
-import { readMyCourses } from "./abilityOfBoth/readMyCourses.js";
 import { readAllCourses } from "./abilityOfBoth/readAllCourses.js";
-import { readEachCourses } from "./abilityOfBoth/readEachCourses.js";
+import { readDetailCourses } from "./abilityOfBoth/readDetailCourses.js";
 import { removeCourse } from "./abilityOfBoth/removeCourse.js";
 import { createAccount } from "./abilityOfBoth/createAccount.js";
 import { numberOfPage } from "./abilityOfBoth/numberOfPage.js";
@@ -31,11 +33,13 @@ app.post("/createAnnouncement", createAnnouncement);
 
 app.patch("/enrollCourse", enrollCourse);
 app.post("/sendWork", sendWork);
+app.post("/readMyCoursesStudent", readMyCoursesStudent);
+app.post("/readLectureStudent", readLectureStudent);
+app.post("/readAssignmentStudent", readAssignmentStudent);
 
 app.post("/getProfile", getProfile);
-app.post("/readMyCourses", readMyCourses);
 app.post("/readAllCourses", readAllCourses);
-app.post("/readEachCourses", readEachCourses);
+app.post("/readDetailCourses", readDetailCourses);
 app.patch("/removeCourse", removeCourse);
 app.post("/createAccount", createAccount);
 app.post("/numberOfPage", numberOfPage);
