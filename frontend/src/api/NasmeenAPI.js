@@ -23,6 +23,13 @@ async function createCourse(_id, title, tag, instructorName, description) {
   return result.data;
 }
 
+async function getProfile(userID) {
+  const result = await axios.get(endpoint("/getProfile"), {
+    userID: userID
+  });
+  return result.data;
+}
+
 async function readAllCourses(classOfCourse, page) {
   const result = await axios.get(endpoint("/readAllCourses"), {
     classOfCourse: classOfCourse,
@@ -82,6 +89,7 @@ async function numberOfMyPage(userID) {
 const NasmeenAPI = {
   enrollCourse,
   createCourse,
+  getProfile,
   readAllCourses,
   readMyCourses,
   readEachCourses,
