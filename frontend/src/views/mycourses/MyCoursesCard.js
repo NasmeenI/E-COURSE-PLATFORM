@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
 
 export default function MyCoursesCard({
   courseName,
@@ -10,22 +8,12 @@ export default function MyCoursesCard({
   courseID,
 }) {
   const navigate = useNavigate();
-  const {
-    data: { user },
-  } = useContext(UserContext);
-  function navigateToCourseStudentMenu() {
-    navigate("/mycourses/student/" + courseID);
-  }
-  function navigateToCourseInstructorMenu() {
-    navigate("/mycourses/instructor/" + courseID);
+  function navigateToCourseMenu() {
+    navigate("/mycourses/" + courseID);
   }
   return (
     <button
-      onClick={
-        user.type === "student"
-          ? navigateToCourseStudentMenu
-          : navigateToCourseInstructorMenu
-      }
+      onClick={ navigateToCourseMenu }
     >
       <li className="w-[400px] border-[1px] border-black my-[40px] rounded-md">
         <div className="bg-white flex flex-col">
