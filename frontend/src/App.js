@@ -8,6 +8,8 @@ import { UserProvider } from "./contexts/UserContext";
 import { Toaster } from "react-hot-toast";
 import MyCourses from "./views/mycourses/MyCourses";
 import CourseMainMenu from "./views/courseMainMenu/CourseMainMenu";
+import Error from "./views/error/Error";
+import LecturePage from "./views/lecturePage/LecturePage";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,10 @@ const router = createBrowserRouter([
     element: <CourseMainMenu />,
   },
   {
+    path: "/mycourses/:id/lecture/:lectureid",
+    element: <LecturePage />,
+  },
+  {
     path: "/login",
     element: <Login />,
   },
@@ -41,7 +47,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <div>404 not found XD</div>,
+    element: <Error />,
   },
 ]);
 
