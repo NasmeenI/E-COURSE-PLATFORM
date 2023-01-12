@@ -10,7 +10,7 @@ async function checkCollection(document){
     if(!snapshotInstructor.empty) return 'instructor';
 
     const coursesRef = db.collection('courses');
-    const snapshotCourses= await coursesRef.where('userID' ,'==' ,document).get()
+    const snapshotCourses = await coursesRef.where('courseID' ,'==' ,document).get()
     if(!snapshotCourses.empty) return 'courses';
 }
 
@@ -40,7 +40,15 @@ async function getField(document ,field){
         return null;
     }
     const value = doc.data()[field];
+    // console.log(value)
     return value;
+}
+
+async function updateField(document ,field ,newvalue){
+    const collectionRef = db.collection(await checkCollection(document)).doc(document);
+    await collectionRef.update({
+        [field] : newvalue
+    })
 }
 
 async function addValueInFieldArray(document ,field ,value){
@@ -74,6 +82,7 @@ export {
     getDocument, 
     getDocumentWithCondition,
     getField,
+    updateField,
     addValueInFieldArray,
     removeFieldArray
 }
