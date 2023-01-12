@@ -29,5 +29,5 @@ export const removeCourse = async (req ,res) => {
         removeFieldArray(courseID ,'students' ,newuserID); 
         removeFieldArray(newuserID ,'courses' ,courseID);
     }
-    res.send('success');
+    res.send({ error: null });
 }

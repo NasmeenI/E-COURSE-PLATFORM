@@ -19,7 +19,7 @@ export const createCourse = async (req ,res) => {
             return ;
         }
         const collection = await checkCollection(newuserID);
-        if(collection != 'instructor') res.send('you are not an instructor');
+        if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
         const courseID = uuidv4();
         await db.collection('courses').doc(courseID).set({
             "courseID" : courseID,
@@ -32,9 +32,9 @@ export const createCourse = async (req ,res) => {
         })
 
         addValueInFieldArray(instructorName ,'courses' ,courseID);
-        res.status(200).send("complete");
+        res.status(200).send({ error: null });
     }
     catch(error) {
-        res.send(error);
+        res.send({ error: error.message });
     }
 }

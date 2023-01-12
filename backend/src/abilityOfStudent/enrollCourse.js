@@ -17,13 +17,13 @@ export const enrollCourse = async (req ,res) => {
             return ;
         }
         const collection = await checkCollection(newuserID);
-        if(collection != 'student') return res.send('you are not a student');
+        if(collection != 'student') return res.send({ error : 'you are not a student' });
         
         addValueInFieldArray(newuserID ,'courses' ,courseID);
         addValueInFieldArray(courseID ,'students' ,newuserID);
-        res.status(200).send("enroll new course complete");
+        res.status(200).send({ error: null });
     }
     catch(error) {
-        res.send(error);
+        res.send({ error: error.message });
     }
 }

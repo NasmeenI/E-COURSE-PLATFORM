@@ -9,5 +9,5 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readEachCourses = async (req ,res) => { 
     const { courseID } = req.body;
-    res.send(await getDocument(courseID));
+    res.send({ Courses : await getDocument(courseID) });
 }

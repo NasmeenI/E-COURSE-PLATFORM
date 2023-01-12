@@ -17,5 +17,5 @@ export const readAllCourses = async (req ,res) => {
         if(courses[i].data().class != classOfCourse) continue;
         output.push(courses[i].data())
     }
-    res.send(output);
+    res.send({ AllCourses : output });
 }

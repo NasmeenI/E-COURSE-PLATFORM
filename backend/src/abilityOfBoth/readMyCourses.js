@@ -25,5 +25,5 @@ export const readMyCourses = async (req ,res) => {
         if(checkCollection(newuserID.uid) != 'instructor') output.students = null
         output.push(temp)
     }
-    res.send(output);
+    res.send({ myCourses : output });
 }
