@@ -5,6 +5,7 @@ import {
 
 import { auth } from "./firebase";
 import NasmeenAPI from "./NasmeenAPI";
+import FileAPI from "./FileAPI";
 
 /**
  * When a user is logged in, loads user's profile data, and passing it to callback function
@@ -30,6 +31,16 @@ async function enrollCourse(courseID) {
   } else {
     return result;
   }
+}
+
+async function getMyCourse(page) {
+  const token = await auth.currentUser.getIdToken();
+  let result = await NasmeenAPI.readMyCourses(token, page);
+  result = result.myCourses;
+  for (let i = 0; i < result.length; i++) {
+    result[i].image = FileAPI.getURL(result[i].image);
+  }
+  return result;
 }
 
 /**
@@ -63,6 +74,6 @@ async function login(email, password) {
   }
 }
 
-const UserAPI = { register, login, loadUserData, enrollCourse };
+const UserAPI = { register, login, loadUserData, enrollCourse, getMyCourse };
 
 export default UserAPI;
