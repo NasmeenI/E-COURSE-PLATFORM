@@ -32,14 +32,22 @@ export const readDetailMycourses = async (req ,res) => {
             }
         }
         dataAssighnments.push({
+            assignmentID : assignmentID,
             title : await getField(assignmentID ,'title'),
             score : score
         });
     }
 
-    // get Lectures
-    const detailOfLecture= {
-        "title" : course.title
+    // get Lectures;
+    let detailLectures = []
+    const lectures = await getField(courseID ,'lectures');
+    for(let i=0;i<lectures.length;i++){
+        const lectureID = lectures[i].lectureID;
+        const lectureTitle = lectures[i].title;
+        detailLectures.push({
+            lectureID : lectureID,
+            title : lectureTitle
+        });
     }
 
     // get scoreCourseByStudent
@@ -54,7 +62,7 @@ export const readDetailMycourses = async (req ,res) => {
         "image" : course.image, 
         "announcments" : course.announcments,
         "assignments" : dataAssighnments,
-        "lectures" : detailOfLecture,
+        "lectures" : detailLectures,
         "scoreCourseByStudent" : scoreCourseByStudent,
         "scoreCourse" : course.scoreCourse
     }

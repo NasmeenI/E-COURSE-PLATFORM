@@ -13,12 +13,12 @@ app.use(bp.urlencoded({ extended: true }))
 export const createAssignment = async (req ,res) => { 
     try{
         const { userID ,courseID ,title ,text ,file ,scoreMax } = req.body;
-        const newuserID = await getuid(userID);
-        if(newuserID.error){  
-            res.send({ error : newuserID.error.message });
-            return ;
-        }
-        const collection = await checkCollection(newuserID.uid);
+        // const newuserID = await getuid(userID);
+        // if(newuserID.error){  
+        //     res.send({ error : newuserID.error.message });
+        //     return ;
+        // }
+        const collection = await checkCollection(userID);
         if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
         const assignmentID = uuidv4();
         await db.collection('assignment').doc(assignmentID).set({
