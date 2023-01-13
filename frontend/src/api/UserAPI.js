@@ -20,6 +20,19 @@ async function loadUserData() {
 }
 
 /**
+ * Make the user enroll to the course
+ */
+async function enrollCourse(courseID) {
+  const token = await auth.currentUser.getIdToken();
+  const result = await NasmeenAPI.enrollCourse(token, courseID);
+  if (result.error) {
+    return { error: result.error };
+  } else {
+    return result;
+  }
+}
+
+/**
  *
  * @param email the user email
  * @param password the user password (must be at least 6 characters)
