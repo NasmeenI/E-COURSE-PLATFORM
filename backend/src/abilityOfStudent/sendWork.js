@@ -34,7 +34,7 @@ export const sendWork = async (req ,res) => {
             userID : newuserID.uid,
             score : ''
         }
-        addValueInFieldArray(assignmentID ,'studentFile' ,studentFile);
+        await addValueInFieldArray(assignmentID ,'studentFile' ,studentFile);
         res.status(200).send({ error: null });
     }
     catch(error) {
