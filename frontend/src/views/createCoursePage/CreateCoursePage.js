@@ -7,7 +7,7 @@ import CreateButton from "../../components/button/CreateButton";
 
 export default function CreateCoursePage() {
   // temp const
-  const hasUploadImage = true;
+  const hasUploadImage = false;
   const courseImage = pic5;
 
   const navigate = useNavigate();
