@@ -27,7 +27,7 @@ export const readDetailMycourses = async (req ,res) => {
         const studentFiles = await getField(assignmentID ,'studentFile');
 
         for(let j=0;j<studentFiles.length;j++){
-            if(userID == studentFiles[j].userID){
+            if(newuserID.uid == studentFiles[j].userID){
                 score = studentFiles[j].score;
             }
         }
@@ -45,7 +45,7 @@ export const readDetailMycourses = async (req ,res) => {
     // get scoreCourseByStudent
     let map = await getField(courseID ,'scoreCourseByStudent');
     let scoreCourseByStudent = null
-    if(map.has(userID)) scoreCourseByStudent = map.get(userID);
+    if(map.has(newuserID.uid)) scoreCourseByStudent = map.get(newuserID.uid);
     
     const detailOfCourse = {
         "courseID" : course.courseID,
