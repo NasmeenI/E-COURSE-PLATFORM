@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import Error from "../error/Error";
-import ReturnButton from "../../components/returnButton/ReturnButton"
+import ReturnButton from "../../components/button/ReturnButton"
 import StudentInfo from "./StudentInfo";
 
 export default function ViewStudent() {

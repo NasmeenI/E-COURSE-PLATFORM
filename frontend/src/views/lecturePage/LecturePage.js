@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
-import ReturnButton from "../../components/returnButton/ReturnButton";
+import ReturnButton from "../../components/button/ReturnButton";
 import File from "./File";
 
 export default function LecturePage({ lectureHeader, lectureDesc }) {

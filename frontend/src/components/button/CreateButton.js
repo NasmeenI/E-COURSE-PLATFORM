@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom"
 
-export default function CreateCourseButton() {
+export default function CreateButton({path ,text}) {
     const navigate = useNavigate();
     function toCreateCoursePage() {
-        navigate("/mycourses/createcourse")
+        navigate(path)
     }
     return <button className="w-[90%] h-[70px] border-dashed border-[#cccccc] border-2 mt-[40px] mb-[20px] flex justify-center mx-[5%] items-center" onClick={toCreateCoursePage}>
         <div className="flex flex-row justify-center items-center">
@@ -22,7 +22,7 @@ export default function CreateCourseButton() {
               fill="#cccccc"
             />
           </svg>
-          <span className="font-secondary text-[#cccccc] text-[20px] ml-[20px]">Create new Course</span>
+          <span className="font-secondary text-[#cccccc] text-[20px] ml-[20px]">{text}</span>
         </div>
     </button>
 }

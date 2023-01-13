@@ -5,7 +5,7 @@ import profile from "../mycourses/assets/profile_sample.jpg";
 import LoginFirst from "../error/LoginFirst";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import CreateCourseButton from "./CreateCourseButton";
+import CreateButton from "../../components/button/CreateButton";
 
 export default function MyCourses() {
   const {
@@ -20,7 +20,7 @@ export default function MyCourses() {
             My Courses
           </span>
           
-          {user.type === "instructor" ? (<CreateCourseButton />) : (<div></div>)}
+          {user.type === "instructor" ? (<CreateButton path={"/mycourses/createcourse"} text="New Course"/>) : (<div></div>)}
           <ol className=" flex flex-wrap justify-between mx-[5%]">
             <MyCoursesCard
               courseName="Course Nameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"

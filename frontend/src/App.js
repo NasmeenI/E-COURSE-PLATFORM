@@ -17,6 +17,7 @@ import { useContext } from "react";
 import UserAPI from "./api/UserAPI";
 import Loader from "./Loader";
 import CreateCoursePage from "./views/createCoursePage/CreateCoursePage";
+import CreateMaterialPage from "./views/createMaterialPage/CreateMaterialPage";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/mycourses/:courseID",
     element: <CourseMenu />,
+  },
+  {
+    path: "/mycourses/:courseID/creatematerial",
+    element: <CreateMaterialPage />,
   },
   {
     path: "/mycourses/:courseID/viewStudent",

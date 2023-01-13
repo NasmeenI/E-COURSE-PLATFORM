@@ -1,7 +1,7 @@
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { useParams } from "react-router-dom";
-import ReturnButton from "../../components/returnButton/ReturnButton";
+import ReturnButton from "../../components/button/ReturnButton";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import StudentUpload from "./StudentUpload";
