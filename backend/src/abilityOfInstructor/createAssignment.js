@@ -12,7 +12,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const createAssignment = async (req ,res) => { 
     try{
-        const { userID ,courseID ,title ,text ,file } = req.body;
+        const { userID ,courseID ,title ,text ,file ,scoreMax } = req.body;
         const newuserID = await getuid(userID);
         if(newuserID.error){  
             res.send({ error : newuserID.error.message });
@@ -28,6 +28,7 @@ export const createAssignment = async (req ,res) => {
             "text" : text,
             "file" : file,
             "studentFile" : [],
+            "scoreMax" : scoreMax,
             "time" : "",
         })
         

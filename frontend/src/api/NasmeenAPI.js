@@ -28,13 +28,14 @@ async function createLecture(userID, courseID, title, text, file) {
   return result.data;
 }
 
-async function createAssignment(userID, courseID, title, text, file) {
+async function createAssignment(userID, courseID, title, text, file, scoreMax) {
   const result = await axios.post(endpoint("/createAssignment"), {
     userID: userID,
     courseID: courseID,
     title: title,
     text: text,
     file: file,
+    scoreMax: scoreMax,
   });
   return result.data;
 }
