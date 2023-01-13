@@ -111,7 +111,7 @@ async function readAllCoursesStudent(userID, tag, page) {
 }
 
 async function readAssignmentStudent(userID, assignmentID) {
-  const result = await axios.patch(endpoint("/readAssignmentStudent"), {
+  const result = await axios.post(endpoint("/readAssignmentStudent"), {
     userID: userID,
     assignmentID: assignmentID,
   });
@@ -119,7 +119,7 @@ async function readAssignmentStudent(userID, assignmentID) {
 }
 
 async function giveScoreStudent(userID, courseID, score) {
-  const result = await axios.patch(endpoint("/giveScoreStudent"), {
+  const result = await axios.post(endpoint("/giveScoreStudent"), {
     userID: userID,
     courseID: courseID,
     score: score,
@@ -214,13 +214,6 @@ async function readLecture(lectureID) {
   return result.data;
 }
 
-async function readAssignment(assignmentID) {
-  const result = await axios.post(endpoint("/readAssignment"), {
-    assignmentID: assignmentID,
-  });
-  return result.data;
-}
-
 const NasmeenAPI = {
   // -- ability of instructor -- //
   createCourse,
@@ -248,8 +241,7 @@ const NasmeenAPI = {
   readDetailCourses,
   readMyCourses,
   readDetailMycourses,
-  readLecture,
-  readAssignment,
+  readLecture
 };
 
 export default NasmeenAPI;
