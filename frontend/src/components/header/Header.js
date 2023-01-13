@@ -24,6 +24,7 @@ export default function Header() {
     navigate("/mycourses");
   }
 
+
   return (
     <header className="fixed top-0 flex flex-row justify-evenly items-center w-full h-[60px] border-b-[1px] border-[#E0E0E0] bg-white z-50">
       <div className="flex flex-row items-center h-full">

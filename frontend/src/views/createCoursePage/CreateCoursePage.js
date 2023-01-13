@@ -26,7 +26,7 @@ export default function CreateCoursePage() {
         <div className="bg-white px-[5%] py-[30px]  flex flex-col rounded-lg">
           {/* Course Name */}
           <span className="text-[20px] font-secondary font-extrabold mb-[20px]">
-            Your Course Name :
+            Course Name :
           </span>
           <input className="w-[90%] bg-[#cccccc] ml-[10%] h-[30px] px-[10px]"></input>
           {/* Course Tag */}

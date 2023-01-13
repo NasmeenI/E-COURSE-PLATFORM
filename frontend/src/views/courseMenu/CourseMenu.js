@@ -21,7 +21,7 @@ export default function CourseStudentMenu() {
   return (
     <div>
       <Header />
-      <div className="px-[20%] py-[30px] mt-[60px] w-full items-center bg-[#F6F5F4]">
+      <div className="px-[20%] py-[30px] mt-[60px] w-full items-center bg-[#F6F5F4] min-h-[83vh]">
         <div className="flex flex-col w-full">
           <div className="flex flex-row justify-between">
             <ReturnButton />

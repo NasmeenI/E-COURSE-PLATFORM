@@ -18,6 +18,7 @@ import UserAPI from "./api/UserAPI";
 import Loader from "./Loader";
 import CreateCoursePage from "./views/createCoursePage/CreateCoursePage";
 import CreateMaterialPage from "./views/createMaterialPage/CreateMaterialPage";
+import Profile from "./views/profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -29,10 +30,13 @@ const router = createBrowserRouter([
     element: <Details />,
   },
   {
+    path: "/profile",
+    element: <Profile />,
+  },
+  {
     path: "/courses",
     element: <Courses />,
   },
-
   {
     path: "/mycourses",
     element: <MyCourses />,
