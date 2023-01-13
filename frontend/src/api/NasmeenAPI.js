@@ -120,6 +120,16 @@ async function createAccount(userID, firstName, lastName, type, image) {
   return result.data;
 }
 
+async function changeProfile(userID ,newFirstName, newLastName, newImage) {
+  const result = await axios.post(endpoint("/changeProfile"), {
+    userID: userID,
+    newFirstName: newFirstName,
+    newLastName: newLastName,
+    newImage: newImage,
+  });
+  return result.data;
+}
+
 async function getProfile(userID) {
   const result = await axios.post(endpoint("/getProfile"), {
     userID: userID,
@@ -206,6 +216,7 @@ const NasmeenAPI = {
   readAssignmentStudent,
   // -- ability of both -- //
   createAccount,
+  changeProfile,
   getProfile,
   getAllTag,
   removeCourse,

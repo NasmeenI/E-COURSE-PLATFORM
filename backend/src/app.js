@@ -15,6 +15,7 @@ import { sendWork } from "./abilityOfStudent/sendWork.js";
 import { readAllCoursesStudent } from "./abilityOfStudent/readAllCoursesStudent.js";
 import { readAssignmentStudent } from "./abilityOfStudent/readAssignmentStudent.js";
 
+import { changeProfile } from "./abilityOfBoth/changeProfile.js";
 import { createAccount } from "./abilityOfBoth/createAccount.js";
 import { getProfile } from "./abilityOfBoth/getProfile.js";
 import { getAllTag } from "./abilityOfBoth/getAllTag.js";
@@ -45,6 +46,7 @@ app.post("/readAllCoursesStudent", readAllCoursesStudent);
 app.post("/readAssignmentStudent", readAssignmentStudent);
 
 app.post("/createAccount", createAccount);
+app.post("/changeProfile", changeProfile);
 app.post("/getProfile", getProfile);
 app.post("/getAllTag", getAllTag);
 app.patch("/removeCourse", removeCourse);
