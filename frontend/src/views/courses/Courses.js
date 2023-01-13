@@ -5,6 +5,7 @@ import CourseCard from "./CourseCard";
 import { TailSpin } from "react-loader-spinner";
 import NasmeenAPI from "../../api/NasmeenAPI";
 import ReactPaginate from "react-paginate";
+import pic5 from "../courses/assets/pic5.png";
 
 export default function Courses() {
   const [loadingTags, setLoadingTags] = useState(false);
@@ -137,6 +138,7 @@ export default function Courses() {
                       instructorName={course.instructorName}
                       tag={course.tag}
                       description={course.description}
+                      image={pic5}
                     />
                   ))}
                 </>

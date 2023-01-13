@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import pic5 from "../courses/assets/pic5.png";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import ConfirmModal from "../../components/confirmModal/ConfirmModal";
@@ -9,6 +8,7 @@ export default function CourseCard({
   tag,
   description,
   courseName,
+  image,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,6 +21,7 @@ export default function CourseCard({
         tag,
         description,
         courseName,
+        image
       },
     });
   }
@@ -37,7 +38,7 @@ export default function CourseCard({
   return (
     <div className="my-[20px] bg-white flex flex-row rounded-lg w-[80%]">
       <img
-        src={pic5}
+        src={image}
         alt="pic5"
         className="w-[37%] rounded-l-lg object-cover"
       ></img>
