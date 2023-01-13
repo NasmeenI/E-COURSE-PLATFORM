@@ -40,7 +40,7 @@ export default function ProfileData() {
         <div className="rounded-full w-[44px] h-[44px] mr-[10px] overflow-hidden bg-black">
           <img src={user.imageURL} alt="profile" className="w-full h-full" />
         </div>
-        <span className="text-lg font-secondary mx-[10px]">
+        <span className="text-lg font-secondary mx-[10px] font-bold">
           {user.firstName}
         </span>
         {user.type === "instructor" ? (
