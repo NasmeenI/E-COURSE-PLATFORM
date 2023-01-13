@@ -18,7 +18,7 @@ export default function CreateCoursePage() {
   return (
     <div>
       <Header />
-      <div className="mt-[60px] bg-[#F6F5F4] w-full flex flex-col py-[30px] px-[20%]">
+      <div className="mt-[60px] bg-[#F6F5F4] w-full flex flex-col py-[30px] px-[20%] min-h-[83vh]">
         <ReturnButton />
         <span className="font-primary text-[32px] mb-[20px]">
           Create Your Own Course

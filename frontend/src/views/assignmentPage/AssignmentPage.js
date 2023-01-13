@@ -62,7 +62,7 @@ export default function AssignmentPage() {
   return (
     <div>
       <Header />
-      <div className="mt-[60px] bg-[#F6F5F4] py-[30px] px-[20%] flex flex-col">
+      <div className="mt-[60px] bg-[#F6F5F4] py-[30px] px-[20%] flex flex-col min-h-[83vh]">
         <ReturnButton />
         {data === null ? (
           <TailSpin
