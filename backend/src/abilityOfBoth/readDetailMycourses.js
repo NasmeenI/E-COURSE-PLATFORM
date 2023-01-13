@@ -42,6 +42,11 @@ export const readDetailMycourses = async (req ,res) => {
         "title" : course.title
     }
 
+    // get scoreCourseByStudent
+    let map = await getField(courseID ,'scoreCourseByStudent');
+    let scoreCourseByStudent = null
+    if(map.has(userID)) scoreCourseByStudent = map.get(userID);
+    
     const detailOfCourse = {
         "courseID" : course.courseID,
         "title" : course.title, 
@@ -49,7 +54,8 @@ export const readDetailMycourses = async (req ,res) => {
         "image" : course.image, 
         "announcments" : course.announcments,
         "assignments" : dataAssighnments,
-        "lectures" : detailOfLecture
+        "lectures" : detailOfLecture,
+        "scoreCourseByStudent" : scoreCourseByStudent
     }
     res.send({ Courses : detailOfCourse });
 }

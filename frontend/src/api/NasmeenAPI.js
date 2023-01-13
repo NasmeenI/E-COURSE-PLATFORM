@@ -118,10 +118,11 @@ async function readAssignmentStudent(userID, assignmentID) {
   return result.data;
 }
 
-async function giveScoreStudent(userID, assignmentID) {
+async function giveScoreStudent(userID, courseID, score) {
   const result = await axios.patch(endpoint("/giveScoreStudent"), {
     userID: userID,
-    assignmentID: assignmentID,
+    courseID: courseID,
+    score: score,
   });
   return result.data;
 }
