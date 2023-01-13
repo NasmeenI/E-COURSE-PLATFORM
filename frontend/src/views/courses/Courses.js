@@ -8,6 +8,7 @@ import ReactPaginate from "react-paginate";
 import pic5 from "../courses/assets/pic5.png";
 import { UserContext } from "../../contexts/UserContext";
 import { auth } from "../../api/firebase";
+import FileAPI from "../../api/FileAPI";
 
 export default function Courses() {
   const [loadingTags, setLoadingTags] = useState(false);
@@ -77,7 +78,12 @@ export default function Courses() {
         currentPage + 1
       );
     }
-    setPageData(result.AllCourses);
+
+    let data = result.AllCourses;
+    for (let i = 0; i < data.length; i++) {
+      data[i].image = await FileAPI.getURL(data[i].image);
+    }
+    setPageData(data);
     setLoadingPage(false);
   }
 
@@ -156,7 +162,7 @@ export default function Courses() {
                       instructorName={course.instructorName}
                       tag={course.tag}
                       description={course.description}
-                      image={pic5}
+                      image={course.image}
                       enrolled={course.enroll}
                       id={course.courseID}
                       setTryingToEnroll={setTryingToEnroll}
