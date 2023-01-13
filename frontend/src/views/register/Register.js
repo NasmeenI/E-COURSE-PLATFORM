@@ -194,7 +194,7 @@ export default function Register() {
                   >
                     <img
                       src={profilePicture}
-                      className="w-[80px]"
+                      className="w-full h-full"
                       alt="profile"
                     />
                   </button>
