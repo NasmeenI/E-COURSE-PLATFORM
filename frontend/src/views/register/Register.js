@@ -5,7 +5,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { TailSpin } from "react-loader-spinner";
 import UserAPI from "../../api/UserAPI";
 import NasmeenAPI from "../../api/NasmeenAPI";
-import defaultProfilePicture from "./assets/default_profile_picture.jpg";
+import defaultProfilePicture from "../../assets/default_profile_picture.jpg";
 import googleLogo from "./assets/google_logo.svg";
 import { useNavigate } from "react-router";
 import FileAPI from "../../api/FileAPI";
