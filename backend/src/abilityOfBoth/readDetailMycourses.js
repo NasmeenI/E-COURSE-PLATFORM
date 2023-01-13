@@ -42,8 +42,8 @@ export const readDetailMycourses = async (req ,res) => {
     let detailLectures = []
     const lectures = await getField(courseID ,'lectures');
     for(let i=0;i<lectures.length;i++){
-        const lectureID = lectures[i].lectureID;
-        const lectureTitle = lectures[i].title;
+        const lectureID = lectures[i];
+        const lectureTitle = await getField(lectureID ,'title');
         detailLectures.push({
             lectureID : lectureID,
             title : lectureTitle
