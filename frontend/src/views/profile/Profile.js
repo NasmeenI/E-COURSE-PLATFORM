@@ -151,7 +151,6 @@ export default function Profile() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="svg-icon"
                     viewBox="0 0 1024 1024"
                     className="w-[30px] h-[30px]"
                   >
@@ -190,7 +189,6 @@ export default function Profile() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    class="svg-icon"
                     viewBox="0 0 1024 1024"
                     className="w-[30px] h-[30px]"
                   >
