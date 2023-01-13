@@ -71,13 +71,11 @@ export default function Courses() {
         tags[currentTag],
         currentPage + 1
       );
-      console.log(result);
     } else {
       result = await NasmeenAPI.readAllCoursesNonStudent(
         tags[currentTag],
         currentPage + 1
       );
-      console.log(result);
     }
     setPageData(result.AllCourses);
     setLoadingPage(false);
