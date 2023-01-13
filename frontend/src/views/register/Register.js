@@ -71,14 +71,13 @@ export default function Register() {
     setRole("instructor");
   }
 
-  async function handleSubmit(event) {
+  async function register() {
     function error(message) {
       setErrorMessage(message);
       setRegistering(false);
       window.scrollTo(0, 0);
     }
 
-    event.preventDefault();
     setErrorMessage(null);
     setRegistering(true);
     if (!firstName) {
@@ -117,11 +116,23 @@ export default function Register() {
       error(loadResult.error);
     } else {
       setUser(loadResult);
-      toast("Registration Completed")
+      toast("Registration Completed");
       navigate("/");
     }
 
     setRegistering(false);
+  }
+
+  const handleKeyDown = (event) => {
+    // enter key
+    if (event.keyCode === 13) {
+      register();
+    }
+  };
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    register();
   }
 
   function goToLogin() {
@@ -255,6 +266,7 @@ export default function Register() {
                 name="confirmPassword"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
+                onKeyDown={handleKeyDown}
                 className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[10px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
               />
             </div>

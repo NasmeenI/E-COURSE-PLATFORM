@@ -30,14 +30,13 @@ export default function Login() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const login = async () => {
     function error(message) {
       setErrorMessage(message);
       setLoggingIn(false);
       window.scrollTo(0, 0);
     }
 
-    event.preventDefault();
     setErrorMessage(null);
     setLoggingIn(true);
 
@@ -57,6 +56,18 @@ export default function Login() {
     }
 
     setLoggingIn(false);
+  };
+
+  const handleKeyDown = (event) => {
+    // enter key
+    if (event.keyCode === 13) {
+      login();
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    login();
   };
 
   const goToRegister = () => {
@@ -122,6 +133,7 @@ export default function Login() {
                 type="password"
                 value={password}
                 onChange={handlePasswordChange}
+                onKeyDown={handleKeyDown}
                 className="w-full border-[1px] border-[#2B788B] rounded-lg mb-[30px] mt-[10px] px-[10px] pb-[3px] text-[16px] font-secondary"
               />
             </div>
