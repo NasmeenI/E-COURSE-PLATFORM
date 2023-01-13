@@ -55,6 +55,14 @@ async function viewMember(courseID) {
   return result.data;
 }
 
+async function readAllCoursesInstructor(tag, page) {
+  const result = await axios.post(endpoint("/readAllCoursesInstructor"), {
+    tag: tag,
+    page: page,
+  });
+  return result.data;
+}
+
 // ------------- ability of student ------------- //
 
 async function enrollCourse(userID, courseID) {
@@ -70,6 +78,23 @@ async function sendWork(userID, assignmentID, file) {
     userID: userID,
     assignmentID: assignmentID,
     file: file,
+  });
+  return result.data;
+}
+
+async function readAssignmentStudent(userID, assignmentID) {
+  const result = await axios.patch(endpoint("/readAssignmentStudent"), {
+    userID: userID,
+    assignmentID: assignmentID,
+  });
+  return result.data;
+}
+
+async function readAllCoursesStudent(userID, tag, page) {
+  const result = await axios.post(endpoint("/readAllCoursesStudent"), {
+    userID : userID,
+    tag: tag,
+    page: page,
   });
   return result.data;
 }
@@ -121,13 +146,7 @@ async function numberOfMyPage(userID) {
   return result.data;
 }
 
-async function readAllCourses(tag, page) {
-  const result = await axios.post(endpoint("/readAllCourses"), {
-    tag: tag,
-    page: page,
-  });
-  return result.data;
-}
+
 
 async function readDetailCourses(courseID) {
   const result = await axios.post(endpoint("/readDetailCourses"), {
@@ -172,9 +191,12 @@ const NasmeenAPI = {
   createAssignment,
   createAnnouncement,
   viewMember,
+  readAllCoursesInstructor,
   // -- ability of student -- //
   enrollCourse,
   sendWork,
+  readAssignmentStudent,
+  readAllCoursesStudent,
   // -- ability of both -- //
   createAccount,
   getProfile,
@@ -182,7 +204,6 @@ const NasmeenAPI = {
   removeCourse,
   numberOfPage,
   numberOfMyPage,
-  readAllCourses,
   readDetailCourses,
   readMyCourses,
   readDetailMycourses,

@@ -28,8 +28,13 @@ export const sendWork = async (req ,res) => {
             "file" : file,
             "score" : null
         })
-
-        addValueInFieldArray(assignmentID ,'studentFile' ,workID);
+        
+        const studentFile = {
+            studentWork : workID,
+            userID : newuserID.uid,
+            score : ''
+        }
+        addValueInFieldArray(assignmentID ,'studentFile' ,studentFile);
         res.status(200).send({ error: null });
     }
     catch(error) {

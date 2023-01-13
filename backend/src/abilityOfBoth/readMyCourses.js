@@ -16,15 +16,17 @@ export const readMyCourses = async (req ,res) => {
         return ;
     }
 
-    const Allcourses = await getField(userID ,'courses');
+    const Allcourses = await getField(newuserID.uid ,'courses');
     const output = []
     for(let i=6*(Number(page)-1);i<=Math.min((Number(page)*6)-1 ,Allcourses.length-1);i++){
         const courses = await getDocumentWithCondition('courses' ,'courseID' ,Allcourses[i]);
 
-        const course = courses[i].data()
+        const course = courses[0].data()
         let detailOfCourse = {
+            "courseID" : course.courseID,
             "title" : course.title, 
             "instructorName" : course.instructorName, 
+            "description" : course.description,
             "image" : course.image, 
         }
         output.push(detailOfCourse)

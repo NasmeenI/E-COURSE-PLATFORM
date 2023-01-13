@@ -30,7 +30,7 @@ export const createAssignment = async (req ,res) => {
             "studentFile" : [],
             "time" : "",
         })
-
+        
         addValueInFieldArray(courseID ,'assignments' ,assignmentID);
         res.status(200).send({ error: null });
     }

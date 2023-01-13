@@ -1,6 +1,7 @@
 import bp from 'body-parser';
 import express from 'express';
-import { getDocument } from '../method.js';
+import { getField ,getDocument } from '../method.js';
+import { getuid } from '../uid.js';
 
 const app = express();
 
@@ -8,15 +9,47 @@ app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
 export const readDetailMycourses = async (req ,res) => { 
-    const { courseID } = req.body;
+    const { userID ,courseID } = req.body;
+    const newuserID = await getuid(userID);
+    if(newuserID.error){  
+        res.send({ error : newuserID.error.message });
+        return ;
+    }
+
     const course = await getDocument(courseID);
+
+    // get Assignments
+    let dataAssighnments = [];
+    const assignments = await getField(courseID ,'assignments');
+    for(let i=0;i<assignments.length;i++){
+        let score = null;
+        const assignmentID = assignments[i];
+        const studentFiles = await getField(assignmentID ,'studentFile');
+
+        for(let j=0;j<studentFiles.length;j++){
+            if(userID == studentFiles[j].userID){
+                score = studentFiles[j].score;
+            }
+        }
+        dataAssighnments.push({
+            title : await getField(assignmentID ,'title'),
+            score : score
+        });
+    }
+
+    // get Lectures
+    const detailOfLecture= {
+        "title" : course.title
+    }
+
     const detailOfCourse = {
+        "courseID" : course.courseID,
         "title" : course.title, 
         "instructorName" : course.instructorName, 
         "image" : course.image, 
         "announcments" : course.announcments,
-        "assignments" : course.assignments,
-        "lectures" : course.lectures
+        "assignments" : dataAssighnments,
+        "lectures" : detailOfLecture
     }
     res.send({ Courses : detailOfCourse });
 }

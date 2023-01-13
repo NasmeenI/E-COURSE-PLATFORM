@@ -16,18 +16,18 @@ export const removeCourse = async (req ,res) => {
         res.send({ error : newuserID.error.message });
         return ;
     }
-    const collection = await checkCollection(newuserID)
+    const collection = await checkCollection(newuserID.uid)
     if(collection == "instructor"){
         const students = await getField(courseID ,'students');
         students.forEach(student => {
             removeFieldArray(student ,'courses' ,courseID);
         });
-        removeFieldArray(newuserID ,'courses' ,courseID);
+        removeFieldArray(newuserID.uid ,'courses' ,courseID);
         db.collection('courses').doc(courseID).delete();
     }
     else if(collection == "student"){
-        removeFieldArray(courseID ,'students' ,newuserID); 
-        removeFieldArray(newuserID ,'courses' ,courseID);
+        removeFieldArray(courseID ,'students' ,newuserID.uid); 
+        removeFieldArray(newuserID.uid ,'courses' ,courseID);
     }
     res.send({ error: null });
 }
