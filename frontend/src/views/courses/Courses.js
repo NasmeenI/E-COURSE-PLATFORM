@@ -35,7 +35,7 @@ export default function Courses() {
 
   useEffect(() => {
     async function getPagesCount() {
-      if (!tags || pagesCount) {
+      if (!tags) {
         return;
       }
 
@@ -50,7 +50,7 @@ export default function Courses() {
 
   useEffect(() => {
     async function getPageData() {
-      if (!pagesCount || pageData) {
+      if (!pagesCount) {
         return;
       }
 
