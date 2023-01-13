@@ -1,7 +1,8 @@
+import { useContext, useState } from "react";
 import pic5 from "../courses/assets/pic5.png";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import ConfirmModal from "../../components/confirmModal/ConfirmModal";
 
 export default function CourseCard({
   instructorName,
@@ -9,10 +10,12 @@ export default function CourseCard({
   description,
   courseName,
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
 
   function goToMoreDetails() {
-    navigate("/courses/psls", {
+    navigate("/details", {
       state: {
         instructorName,
         tag,
@@ -25,9 +28,19 @@ export default function CourseCard({
     data: { user },
   } = useContext(UserContext);
 
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function enrollCourse() {}
+
   return (
     <div className="my-[20px] bg-white flex flex-row rounded-lg w-[80%]">
-      <img src={pic5} alt="pic5" className="w-[37%] rounded-l-lg object-cover"></img>
+      <img
+        src={pic5}
+        alt="pic5"
+        className="w-[37%] rounded-l-lg object-cover"
+      ></img>
 
       <div className="flex flex-col w-[63%] p-[30px] justify-between">
         <div className="flex flex-col">
@@ -62,14 +75,14 @@ export default function CourseCard({
         {/* button */}
         <div className="flex flex-row mt-[10px]">
           {/* Enroll now */}
-          {user.type == "student" ? (
+          {user?.type == "student" ? (
             <button className="mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px]">
               <span className="font-secondary font-bold text-[14px] text-white text-center ">
                 Enroll now
               </span>
             </button>
           ) : (
-            <div />
+            <></>
           )}
 
           <button
@@ -82,6 +95,13 @@ export default function CourseCard({
           </button>
         </div>
       </div>
+
+      <ConfirmModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        onConfirm={enrollCourse}
+        message={`Are you sure you want to enroll in ${courseName}?`}
+      />
     </div>
   );
 }
