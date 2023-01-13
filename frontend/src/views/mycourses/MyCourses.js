@@ -29,7 +29,6 @@ export default function MyCourses() {
       setLoadingPagesCount(true);
       const token = await auth.currentUser.getIdToken();
       const result = await NasmeenAPI.numberOfMyPage(token);
-      console.log(result);
       setPagesCount(parseInt(result.numberOfMyPage));
       setLoadingPagesCount(false);
     }
@@ -38,9 +37,7 @@ export default function MyCourses() {
   }, []);
 
   async function getPageData() {
-    console.log("pagesCount", pagesCount);
     if (pagesCount === 0) {
-      console.log("pagesCount", pagesCount);
       setPageData([]);
       return;
     }
@@ -51,7 +48,6 @@ export default function MyCourses() {
 
     setLoadingPage(true);
     const result = await UserAPI.getMyCourse(currentPage + 1);
-    console.log(result);
     setPageData(result);
     setLoadingPage(false);
   }
