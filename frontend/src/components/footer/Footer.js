@@ -18,13 +18,13 @@ export default function Footer() {
       <img
         src={cleverse}
         alt="cleverse"
-        className="w-[50px] h-[30px] ml-[40px] mr-[20px]"
+        className="w-[50px] h-[30px] ml-[40px] mr-[20px] mt-[10px]"
       ></img>
       <span className="font-primary">x</span>
       <img
         src={thinc}
         alt="thinc"
-        className="w-[50px] h-[30px] ml-[20px] mr-[40px]"
+        className="w-[50px] h-[30px] ml-[20px] mr-[40px] mt-[10px]"
       ></img>
     </footer>
   );

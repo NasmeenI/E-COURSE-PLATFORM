@@ -95,7 +95,7 @@ export default function Courses() {
     <div>
       <Header />
       {/* body */}
-      <div className="min-h-[600px] bg-[#F6F5F4] mt-[60px] w-full flex flex-col justify-evenly items-center">
+      <div className="min-h-[83vh] bg-[#F6F5F4] mt-[60px] w-full flex flex-col justify-evenly items-center">
         {!tags || !pagesCount || !pageData ? (
           <TailSpin
             height="80"
@@ -134,7 +134,7 @@ export default function Courses() {
 
             {/* Course */}
             <div
-              className={`flex flex-col items-center min-h-[600px] ${
+              className={`flex flex-col items-center min-h-[350px] ${
                 loadingPage ? "justify-center" : "justify-start"
               }`}
             >

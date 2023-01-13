@@ -14,7 +14,7 @@ export default function ViewStudent() {
   return user.type === "instructor" ? (
     <div>
       <Header />
-      <div className="mt-[60px] bg-[#F6F5F4] w-full flex flex-col py-[30px] px-[20%]">
+      <div className="mt-[60px] bg-[#F6F5F4] w-full flex flex-col py-[30px] px-[20%] min-h-[85vh]">
         <ReturnButton />
         {/* Total student */}
         <div className="flex flex-row">
