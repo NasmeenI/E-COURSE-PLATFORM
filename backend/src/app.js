@@ -9,6 +9,7 @@ import { createAnnouncement } from "./abilityOfInstructor/createAnnouncement.js"
 import { viewMember } from "./abilityOfInstructor/viewMember.js";
 import { readAllCoursesInstructor } from "./abilityOfInstructor/readAllCoursesInstructor.js";
 import { readAssignmentInstructor } from "./abilityOfInstructor/readAssignmentInstructor.js";
+import { giveScoreInstructor } from "./abilityOfInstructor/giveScoreInstructor.js";
 
 import { enrollCourse } from "./abilityOfStudent/enrollCourse.js";
 import { sendWork } from "./abilityOfStudent/sendWork.js";
@@ -39,6 +40,7 @@ app.post("/createAnnouncement", createAnnouncement);
 app.post("/viewMember", viewMember);
 app.post("/readAllCoursesInstructor", readAllCoursesInstructor);
 app.post("/readAssignmentInstructor", readAssignmentInstructor);
+app.post("/giveScoreInstructor", giveScoreInstructor);
 
 app.patch("/enrollCourse", enrollCourse);
 app.post("/sendWork", sendWork);

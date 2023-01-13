@@ -71,6 +71,16 @@ async function readAssignmentInstructor(userID, assignmentID) {
   return result.data;
 }
 
+async function giveScoreInstructor(userID, assignmentID, studentID, score) {
+  const result = await axios.post(endpoint("/giveScoreInstructor"), {
+    userID: userID,
+    assignmentID: assignmentID,
+    studentID: studentID,
+    score: score,
+  });
+  return result.data;
+}
+
 // ------------- ability of student ------------- //
 
 async function enrollCourse(userID, courseID) {
@@ -209,6 +219,7 @@ const NasmeenAPI = {
   viewMember,
   readAllCoursesNonStudent,
   readAssignmentInstructor,
+  giveScoreInstructor,
   // -- ability of student -- //
   enrollCourse,
   sendWork,
