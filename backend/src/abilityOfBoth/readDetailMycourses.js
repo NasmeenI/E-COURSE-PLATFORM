@@ -34,7 +34,8 @@ export const readDetailMycourses = async (req ,res) => {
         dataAssighnments.push({
             assignmentID : assignmentID,
             title : await getField(assignmentID ,'title'),
-            score : score
+            score : score,
+            scoreMax : await getField(assignmentID ,'scoreMax'),
         });
     }
 
