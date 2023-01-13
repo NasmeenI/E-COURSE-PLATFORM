@@ -96,8 +96,8 @@ export default function MyCourses() {
                 text="New Course"
               />
             ) : user.type === "student" && pagesCount == 0 ? (
-              <div className="w-full border-dashed border-[#cccccc] py-[20px] px-[5%] items-center justify-center h-[200px]">
-                <span>You don't have any course</span>
+              <div className="w-[90%] my-[20px] mx-[5%] items-center justify-center h-[200px] border-[#cccccc] border-dashed border-2 flex">
+                <span className="flex font-primary text-[#cccccc] text-[32px]">You don't have any course</span>
               </div>
             ) : (
               <div />

@@ -78,9 +78,14 @@ export default function CourseCard({
             <span className="font-secondary font-bold text-[18px] my-[5px] truncate">
               {instructorName}
             </span>
-            <span className="font-secondary font-bold text-[14px] bg-red-600 rounded-md ml-[20px] text-white py-[3px] px-[10px]">
-              Status
-            </span>
+            {/* popular score */}
+            <div className="font-secondary font-bold text-[14px] bg-red-600 rounded-md ml-[20px] text-white py-[3px] px-[10px] flex flex-row items-center justify-center">
+              <span>4.56</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 245" className="w-[15px] h-[15px] ml-[5px]">
+                <path d="m56,237 74-228 74,228L10,96h240" 
+                fill="#ffffff"/>
+              </svg>
+            </div>
           </div>
           {/* h3 */}
           <span className="font-secondary text-[16px] my-[5px] truncate">
@@ -100,9 +105,15 @@ export default function CourseCard({
             <button
               onClick={openModal}
               disabled={enrolled}
-              className={`mr-[20px] rounded-full py-[5px] px-[20px] ${enrolled ? "bg-white border-2 border-[#639B6D]" : "bg-[#639B6D]"}`}
+              className={`mr-[20px] rounded-full py-[5px] px-[20px] items-center flex ${
+                enrolled ? "bg-white border-2 border-[#639B6D]" : "bg-[#639B6D]"
+              }`}
             >
-              <span className={`font-secondary font-bold text-[14px] text-center ${enrolled ? "text-[#639B6D]" : "text-white"}`}>
+              <span
+                className={`font-secondary font-bold text-[14px] text-center ${
+                  enrolled ? "text-[#639B6D]" : "text-white"
+                }`}
+              >
                 {enrolled ? "Enrolled" : "Enroll now"}
               </span>
             </button>
