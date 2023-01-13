@@ -16,6 +16,7 @@ import { auth } from "./api/firebase";
 import { useContext } from "react";
 import UserAPI from "./api/UserAPI";
 import Loader from "./Loader";
+import CreateCoursePage from "./views/createCoursePage/CreateCoursePage";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/mycourses",
     element: <MyCourses />,
+  },
+  {
+    path: "/mycourses/createcourse",
+    element: <CreateCoursePage />,
   },
   {
     path: "/mycourses/:courseID",

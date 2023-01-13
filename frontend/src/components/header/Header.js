@@ -55,8 +55,6 @@ export default function Header() {
             My Courses
           </span>
         </button>
-
-        <span className="text-[18px] font-secondary ml-[30px]">Features</span>
       </div>
 
       {user ? <ProfileData /> : <SignUpOrLogin />}

@@ -5,6 +5,7 @@ import profile from "../mycourses/assets/profile_sample.jpg";
 import LoginFirst from "../error/LoginFirst";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import CreateCourseButton from "./CreateCourseButton";
 
 export default function MyCourses() {
   const {
@@ -15,10 +16,12 @@ export default function MyCourses() {
       <Header />
       <div className="mt-[60px] flex flex-col bg-[#F6F5F4] w-full">
         <div className="flex flex-col items-start mb-[40px] mt-[40px] mx-[40px] bg-white">
-          <span className="font-primary mt-[50px] ml-[50px] text-[32px]">
+          <span className="font-primary mt-[50px] ml-[5%] text-[32px]">
             My Courses
           </span>
-          <ol className=" flex flex-wrap justify-evenly">
+          
+          {user.type === "instructor" ? (<CreateCourseButton />) : (<div></div>)}
+          <ol className=" flex flex-wrap justify-between mx-[5%]">
             <MyCoursesCard
               courseName="Course Nameeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
               instructorName="Instructorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"
