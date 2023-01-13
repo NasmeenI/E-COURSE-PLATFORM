@@ -18,6 +18,8 @@ export default function Profile() {
     action: { setUser },
   } = useContext(UserContext);
 
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const [submitting, setSubmitting] = useState(false);
 
   const [isEditFirstName, setIsEditFirstName] = useState(0);
@@ -33,27 +35,43 @@ export default function Profile() {
   function enableEditFirstName() {
     setIsEditFirstName(1);
   }
+
   function enableEditLastName() {
     setIsEditLastName(1);
   }
+
   const handleFirstName = (event) => {
     setNewFirstName(event.target.value);
   };
+
   const handleLastName = (event) => {
     setNewLastName(event.target.value);
   };
+
   function handleImagePicked(event) {
     setProfilePicture(URL.createObjectURL(event.target.files[0]));
   }
+
   function pickImage() {
     imagePickerRef.current.click();
   }
 
   // didn't include pic and intitial old value
   async function submit() {
+    function error(message) {
+      setErrorMessage(message);
+      setSubmitting(false);
+      window.scrollTo(0, 0);
+    }
+
     setSubmitting(true);
+    setErrorMessage(null);
     const token = await auth.currentUser.getIdToken();
-    const imagePath = await FileAPI.upload(profilePicture);
+    //quick fix, no time to research the bug
+    const imagePath =
+      profilePicture === user.imageURL
+        ? user.image
+        : await FileAPI.upload(profilePicture);
     const result = await NasmeenAPI.changeProfile(
       token,
       newFirstName || user.firstName,
@@ -62,22 +80,19 @@ export default function Profile() {
     );
 
     if (result.error) {
-      toast(result.error);
-      setSubmitting(false);
+      error(result.error);
       return;
     }
 
     const loadResult = await UserAPI.loadUserData();
     if (loadResult.error) {
-      toast(result.error);
-      setSubmitting(false);
+      error(loadResult.error);
       return;
-    } else {
-      setUser(loadResult);
-      toast("Profile Change Completed");
-      navigate("/");
     }
 
+    setUser(loadResult);
+    toast("Profile Change Completed");
+    navigate("/");
     setSubmitting(false);
   }
 
@@ -100,6 +115,19 @@ export default function Profile() {
           />
         ) : (
           <div className="bg-white px-[5%] py-[30px]  flex flex-col rounded-lg items-center w-[90%]">
+            {errorMessage ? (
+              <div className="bg-red-200 py-3 rounded-xl w-full flex flex-col items-center justify-center mb-4">
+                <span className="text-red-600 font-bold font-secondary">
+                  Something went wrong
+                </span>
+                <span className="text-red-600 font-secondary mx-5">
+                  {errorMessage}
+                </span>
+              </div>
+            ) : (
+              <></>
+            )}
+
             <img
               src={profilePicture}
               className="rounded-full overflow-hidden w-[225px] h-[225px]"
