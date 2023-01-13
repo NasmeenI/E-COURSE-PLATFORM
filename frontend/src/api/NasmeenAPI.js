@@ -63,6 +63,14 @@ async function readAllCoursesNonStudent(tag, page) {
   return result.data;
 }
 
+async function readAssignmentInstructor(userID, assignmentID) {
+  const result = await axios.post(endpoint("/readAssignmentInstructor"), {
+    userID: userID,
+    assignmentID: assignmentID,
+  });
+  return result.data;
+}
+
 // ------------- ability of student ------------- //
 
 async function enrollCourse(userID, courseID) {
@@ -82,19 +90,19 @@ async function sendWork(userID, assignmentID, file) {
   return result.data;
 }
 
-async function readAssignmentStudent(userID, assignmentID) {
-  const result = await axios.patch(endpoint("/readAssignmentStudent"), {
-    userID: userID,
-    assignmentID: assignmentID,
-  });
-  return result.data;
-}
-
 async function readAllCoursesStudent(userID, tag, page) {
   const result = await axios.post(endpoint("/readAllCoursesStudent"), {
     userID : userID,
     tag: tag,
     page: page,
+  });
+  return result.data;
+}
+
+async function readAssignmentStudent(userID, assignmentID) {
+  const result = await axios.patch(endpoint("/readAssignmentStudent"), {
+    userID: userID,
+    assignmentID: assignmentID,
   });
   return result.data;
 }
@@ -190,11 +198,12 @@ const NasmeenAPI = {
   createAnnouncement,
   viewMember,
   readAllCoursesNonStudent,
+  readAssignmentInstructor,
   // -- ability of student -- //
   enrollCourse,
   sendWork,
-  readAssignmentStudent,
   readAllCoursesStudent,
+  readAssignmentStudent,
   // -- ability of both -- //
   createAccount,
   getProfile,
