@@ -43,7 +43,6 @@ export default function MyCourses() {
 
     setLoadingPage(true);
     const result = await UserAPI.getMyCourse(currentPage + 1);
-    console.log(result);
     setPageData(result);
     setLoadingPage(false);
   }
