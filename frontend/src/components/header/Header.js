@@ -28,7 +28,7 @@ export default function Header() {
     <header className="fixed top-0 flex flex-row justify-evenly items-center w-full h-[60px] border-b-[1px] border-[#E0E0E0] bg-white z-50">
       <div className="flex flex-row items-center h-full">
         <button onClick={navigateToHome}>
-          <span className="text-xl font-primary font-extrabold">
+          <span className="text-xl font-primary font-extrabold text-center">
             E-Learning
           </span>
         </button>
@@ -38,7 +38,7 @@ export default function Header() {
 
         <button onClick={navigateToCourses}>
           <span
-            className={`text-[18px] font-secondary ml-[30px] ${
+            className={`text-[18px] font-secondary ml-[30px] text-center ${
               location.pathname.startsWith("/courses") ? "font-bold" : ""
             }`}
           >
@@ -48,7 +48,7 @@ export default function Header() {
 
         <button onClick={navigateToMyCourses}>
           <span
-            className={`text-[18px] font-secondary ml-[30px] ${
+            className={`text-[18px] font-secondary ml-[30px] text-center ${
               location.pathname.startsWith("/mycourses") ? "font-bold" : ""
             }`}
           >
