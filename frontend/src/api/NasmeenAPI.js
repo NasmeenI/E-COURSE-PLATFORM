@@ -199,8 +199,9 @@ async function readMyCourses(userID, page) {
   return result.data;
 }
 
-async function readDetailMycourses(courseID) {
+async function readDetailMycourses(userID ,courseID) {
   const result = await axios.post(endpoint("/readDetailMycourses"), {
+    userID: userID,
     courseID: courseID,
   });
   return result.data;
