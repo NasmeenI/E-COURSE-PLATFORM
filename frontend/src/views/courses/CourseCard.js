@@ -100,9 +100,9 @@ export default function CourseCard({
             <button
               onClick={openModal}
               disabled={enrolled}
-              className="mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px]"
+              className={`mr-[20px] rounded-full py-[5px] px-[20px] ${enrolled ? "bg-white border-2 border-[#639B6D]" : "bg-[#639B6D]"}`}
             >
-              <span className="font-secondary font-bold text-[14px] text-white text-center ">
+              <span className={`font-secondary font-bold text-[14px] text-center ${enrolled ? "text-[#639B6D]" : "text-white"}`}>
                 {enrolled ? "Enrolled" : "Enroll now"}
               </span>
             </button>

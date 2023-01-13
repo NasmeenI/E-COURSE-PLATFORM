@@ -11,6 +11,7 @@ import { auth } from "../../api/firebase";
 import { TailSpin } from "react-loader-spinner";
 import UserAPI from "../../api/UserAPI";
 import ReactPaginate from "react-paginate";
+import Blankpage from "./Blankpage";
 
 export default function MyCourses() {
   const [loadingPagesCount, setLoadingPagesCount] = useState(false);
@@ -94,9 +95,14 @@ export default function MyCourses() {
                 path={"/mycourses/createcourse"}
                 text="New Course"
               />
+            ) : user.type === "student" && pagesCount == 0 ? (
+              <div className="w-full border-dashed border-[#cccccc] py-[20px] px-[5%] items-center justify-center h-[200px]">
+                <span>You don't have any course</span>
+              </div>
             ) : (
-              <div></div>
+              <div />
             )}
+
             <ol className="flex flex-wrap justify-between mx-[5%]">
               {pageData.map((course) => (
                 <MyCoursesCard
