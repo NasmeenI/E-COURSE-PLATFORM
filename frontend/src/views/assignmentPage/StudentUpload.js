@@ -1,10 +1,9 @@
 import File from "../lecturePage/File";
 
-export default function StudentUpload({ issubmit, score, maxscore }) {
+export default function StudentUpload({ score, maxscore, file }) {
   // for now
-  issubmit = false;
-  score = 10;
-  maxscore = 10;
+  const issubmit = !(score === null || score === "");
+
   return (
     <div className="bg-white w-full flex flex-col rounded-b-lg mt-[20px] p-[5%]">
       <div className="flex flex-col">
@@ -15,7 +14,7 @@ export default function StudentUpload({ issubmit, score, maxscore }) {
             } `}
           >
             <span className="font-secondary font-extrabold text-white">
-              {issubmit ? "Submitted" : "Unsubmit"}
+              {issubmit ? "Submitted" : "Pending"}
             </span>
           </div>
           <span className="font-primary">
@@ -24,10 +23,11 @@ export default function StudentUpload({ issubmit, score, maxscore }) {
         </div>
 
         <ol>
+          {issubmit ?
           <File
-            fileName="HW-111111111111111111111111111111111111111111111111.pdf"
-            filePath="hw1"
-          />
+            fileName="My Submission"
+            filePath={file}
+          /> : <></>}
         </ol>
         {issubmit ? (
           <div />

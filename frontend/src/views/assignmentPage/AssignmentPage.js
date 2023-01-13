@@ -10,6 +10,7 @@ import File from "../lecturePage/File";
 import { auth } from "../../api/firebase";
 import NasmeenAPI from "../../api/NasmeenAPI";
 import { TailSpin } from "react-loader-spinner";
+import FileAPI from "../../api/FileAPI";
 
 export default function AssignmentPage() {
   const param = useParams();
@@ -32,14 +33,23 @@ export default function AssignmentPage() {
           token,
           param.assignmentID
         );
+
+        result = result.assignment;
+        if (result.studentFile) {
+          result.file = await FileAPI.getURL(result.studentFile);
+        }
+        if (result.Instructorfile) {
+          result.includedFile = await FileAPI.getURL(result.Instructorfile);
+        }
       } else {
         result = await NasmeenAPI.readAssignmentInstructor(
           token,
           param.assignmentID
         );
+        result = result.assignment;
       }
       console.log(result);
-      setData(result.assignment);
+      setData(result);
     }
 
     getData();
@@ -87,14 +97,22 @@ export default function AssignmentPage() {
             <span className="font-secondary mt-[20px] break-words">
               {data.text}
             </span>
-            <File fileName="assignment1.pdf" filePath="123" />
+            {data.Instructorfile ? (
+              <File fileName="Included File" filePath={data.includedFile} />
+            ) : (
+              <></>
+            )}
           </div>
         )}
 
         {data === null ? (
           <></>
         ) : user.type === "student" ? (
-          <StudentUpload />
+          <StudentUpload
+            score={data.score}
+            maxscore={parseInt(data.scoreMax)}
+            file={data.file}
+          />
         ) : (
           <InstructorScore />
         )}
