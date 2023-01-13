@@ -67,7 +67,7 @@ export default function MyCourses() {
   return user ? (
     <div>
       <Header />
-      <div className="mt-[60px] min-h-[600px] flex flex-col bg-[#F6F5F4] w-full">
+      <div className="mt-[60px] min-h-[600px] flex flex-col bg-[#F6F5F4] w-full items-center p-[40px]">
         {pagesCount === null || pageData === null ? (
           <TailSpin
             height="80"
@@ -80,7 +80,7 @@ export default function MyCourses() {
             visible={true}
           />
         ) : (
-          <div className="flex flex-col items-start mb-[40px] mt-[40px] mx-[40px] bg-white">
+          <div className="flex flex-col items-start w-[90%] bg-white">
             <span className="font-primary mt-[50px] ml-[5%] text-[32px]">
               My Courses
             </span>

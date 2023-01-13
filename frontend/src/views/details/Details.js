@@ -48,7 +48,7 @@ export default function Details() {
   return (
     <div>
       <Header />
-      <div className="mt-[60px] min-h-[600px] flex flex-col items-center bg-[#F6F5F4] w-full justify-evenly">
+      <div className="mt-[60px] min-h-[83vh] flex flex-col items-center bg-[#F6F5F4] w-full justify-evenly">
         {/* Top info */}
 
         {tryingToEnroll ? (
@@ -97,9 +97,13 @@ export default function Details() {
                 <button
                   onClick={openModal}
                   disabled={enrolled || nowEnrolled}
-                  className="mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px]"
+                  className= {`mr-[20px] border-2 border-[#639B6D] rounded-full py-[5px] px-[20px] w-[60%] items-center ${enrolled ? "bg-white" : "bg-[#639B6D] "}`}
                 >
-                  <span className="font-secondary font-bold text-[14px] text-white text-center ">
+                  <span
+                    className={`font-secondary font-bold text-[14px] text-white text-center ${
+                      enrolled ? "text-[#639B6D]" : "text-white"
+                    }`}
+                  >
                     {enrolled || nowEnrolled ? "Enrolled" : "Enroll now"}
                   </span>
                 </button>
