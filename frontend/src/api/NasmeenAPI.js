@@ -118,6 +118,14 @@ async function readAssignmentStudent(userID, assignmentID) {
   return result.data;
 }
 
+async function giveScoreStudent(userID, assignmentID) {
+  const result = await axios.patch(endpoint("/giveScoreStudent"), {
+    userID: userID,
+    assignmentID: assignmentID,
+  });
+  return result.data;
+}
+
 // ------------- ability of both ------------- //
 
 async function createAccount(userID, firstName, lastName, type, image) {
@@ -183,7 +191,7 @@ async function readDetailCourses(courseID) {
 }
 
 async function readMyCourses(userID, page) {
-  const result = await axios.post(endpoint("/readCourses"), {
+  const result = await axios.post(endpoint("/readMyCourses"), {
     userID: userID,
     page: page,
   });
@@ -226,6 +234,7 @@ const NasmeenAPI = {
   sendWork,
   readAllCoursesStudent,
   readAssignmentStudent,
+  giveScoreStudent,
   // -- ability of both -- //
   createAccount,
   changeProfile,
