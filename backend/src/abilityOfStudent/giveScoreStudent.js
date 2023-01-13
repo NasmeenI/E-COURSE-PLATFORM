@@ -15,9 +15,18 @@ export const giveScoreStudent = async (req ,res) => {
         res.send({ error : newuserID.error.message });
         return ;
     }    
+    if(score > 5){
+        res.send({ error : "your score it too high"});
+        return ;
+    }
 
     let scoreCourseByStudent = await getField(courseID ,'scoreCourseByStudent');
-    scoreCourseByStudent[newuserID] = score;
+    const result = scoreCourseByStudent.hasOwnProperty(newuserID.uid); 
+    if(result){
+        res.send({ error : "you have been gived the score"});
+        return;
+    }
+    scoreCourseByStudent[newuserID.uid] = score;
 
     const scoreCourse = await getField(courseID ,'scoreCourse');
     const newScoreCourse = Number(scoreCourse) + Number(score);

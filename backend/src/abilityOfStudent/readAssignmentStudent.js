@@ -33,7 +33,8 @@ export const readAssignmentStudent = async (req ,res) => {
         "text" : assignment.text,
         "Instructorfile" : assignment.file,
         "studentFile" : file,
-        "score" : score
+        "score" : score,
+        "scoreMax" : await getField(assignmentID ,'scoreMax')
     }
     res.send({ assignment : detailOfassignment });
 }
