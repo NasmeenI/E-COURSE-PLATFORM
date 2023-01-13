@@ -63,6 +63,6 @@ async function login(email, password) {
   }
 }
 
-const UserAPI = { register, login, loadUserData };
+const UserAPI = { register, login, loadUserData, enrollCourse };
 
 export default UserAPI;

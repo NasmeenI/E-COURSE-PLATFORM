@@ -46,7 +46,7 @@ export default function Login() {
       return;
     }
 
-    const loadResult = await UserAPI.loadUserData(setUser);
+    const loadResult = await UserAPI.loadUserData();
     if (loadResult.error) {
       error(loadResult.error);
     } else {
@@ -54,6 +54,7 @@ export default function Login() {
       toast("Login Completed");
       navigate("/");
     }
+    console.log(loadResult);
 
     setLoggingIn(false);
   };

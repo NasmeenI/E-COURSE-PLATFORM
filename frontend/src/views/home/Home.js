@@ -11,8 +11,6 @@ import HomeBox from "./HomeBox";
 export default function Home() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
-  useEffect(() => console.log(isMobile), [isMobile]);
-
   return (
     <div>
       <Header />
