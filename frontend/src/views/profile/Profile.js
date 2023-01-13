@@ -3,11 +3,37 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
+  const navigate = useNavigate();
   const {
     data: { user },
   } = useContext(UserContext);
+  
+  const [isEditFirstName, setIsEditFirstName] = useState(0);
+  const [isEditLastName, setIsEditLastName] = useState(0);
+  const [newFirstName, setNewFirstName] = useState("");
+  const [newLastName, setNewLastName] = useState("");
+  const [submit , setSubmit] = useState({});
+  function enableEditFirstName() {
+    setIsEditFirstName(1);
+  }
+  function enableEditLastName() {
+    setIsEditLastName(1);
+  }
+  const handleFirstName = (event) => {
+    setNewFirstName(event.target.value);
+  };
+  const handleLastName = (event) => {
+    setNewLastName(event.target.value);
+  };
+
+  // didn't include pic and intitial old value
+  function submitting(){
+    setSubmit({newFirstName , newLastName});
+    navigate("/");
+  }
   return (
     <div>
       <Header />
@@ -29,21 +55,93 @@ export default function Profile() {
               <path d="M865.07 543.02c-2.72.78-7.57 2.91-10.68 4.66-3.3 1.75-66.2 63.68-140.17 137.64L579.88 819.86l-17.86 66.01c-16.89 62.32-18.25 66.4-24.65 73.19-8.54 9.12-9.51 18.25-2.33 25.82 6.99 7.38 17.28 6.79 26.79-1.75 6.6-6.02 12.81-8.15 72.22-24.46 35.72-9.9 66.4-18.64 67.95-19.41 1.75-.97 62.71-61.54 135.51-134.73 83.48-84.06 133.76-136.09 136.29-140.94 6.02-11.65 6.99-24.46 2.91-38.05-3.11-10.68-5.24-13.39-34.56-43.1-17.28-17.49-34.95-33.6-39.22-35.74-8.35-4.46-29.51-6.4-37.86-3.68zm51.06 61.93c38.05 37.86 37.86 34.36 2.33 70.08l-26.21 26.4-36.3-36.3-36.5-36.5 25.24-25.43c13.98-13.98 26.99-26.21 29.12-26.98 7.96-3.5 13.78.38 42.32 28.73zm-84.06 84.83 35.92 35.92-87.94 87.94-87.75 87.75-36.3-36.5-36.5-36.3 87.36-87.36c47.95-47.95 87.75-87.36 88.33-87.36s17.08 16.11 36.88 35.91zM657.35 916.15c0 1.17-72.41 21.16-73.38 20.38-.2-.39 4.08-17.28 9.71-37.86l10.09-37.27 26.79 26.79c14.75 14.76 26.79 27.18 26.79 27.96z" />
             </svg>
           </button>
+
+
+
           <div className="flex flex-col w-full px-[5%] mt-[30px]">
             <div className="flex flex-row items-center">
               <span className="font-secondary text-[24px] font-extrabold mr-[20px]">
                 First Name :
               </span>
-              <span className="font-secondary text-[24px] truncate">{user.firstName}</span>
+              {isEditFirstName ? (
+                <input
+                  className="bg-[#cccccc] w-[70%] font-secondary px-[7px]"
+                  value={newFirstName}
+                  onChange={handleFirstName}
+                />
+              ) : (
+                <span className="font-secondary text-[24px] truncate">
+                  {user.firstName}
+                </span>
+              )}
+            </div>
+
+            <div className="flex flex-row items-center justify-between">
+              <button
+                className="flex flex-row items-center w-[170px] justify-evenly border-2 border-black rounded-lg my-[10px]"
+                onClick={enableEditFirstName}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="svg-icon"
+                  viewBox="0 0 1024 1024"
+                  className="w-[30px] h-[30px]"
+                >
+                  <path
+                    d="M857.058 979.307h-696.21c-64.08 0-116.035-51.981-116.035-116.097V166.55c0-64.123 52.716-121.611 116.803-121.611h467.187v58.397h-467.18c-32.044 0-58.785 31.145-58.785 63.205v696.66c0 32.054 25.974 58.043 58.01 58.043h696.21c32.018 0 63.733-26.698 63.733-58.733v-467.18h58.397v467.187c.006 64.123-58.054 116.785-122.133 116.785l.003.004zm-346.771-281.33c-8.476 8.484-19.097 12.743-30.055 14.884L226.22 838.502c-28.588 13.257-51.486-12.364-40.954-40.971L310.838 543.33c2.13-10.958 6.371-21.58 14.865-30.066L776.958 61.682c22.659-22.65 59.387-22.65 82.046 0L961.553 164.31c22.66 22.66 22.66 59.44 0 82.1L510.29 697.974l-.003.003zm-269.45 64.424c-6.637 13.396 6.177 27.131 20.46 20.493l156.863-95.003-82.382-82.444-94.94 156.952-.001.002zm146.392-187.574 61.535 61.579c11.321 11.338-17.939-17.957 20.511 20.502l328.193-328.39-103.291-101.893L366.716 554.28c10.907 10.922 9.19 9.21 20.511 20.547h.002zm512.796-389.975-61.535-61.579c-11.32-11.356-29.693-11.356-41.024 0l-60.068 60.094L838.48 287.472l61.535-61.588c11.347-11.338 11.347-29.711.006-41.031l.004-.001z"
+                    fill="#000000"
+                  />
+                </svg>
+                <span className="font-secondary text-[16px]">
+                  Edit First Name
+                </span>
+              </button>
             </div>
 
             <div className="flex flex-row items-center">
               <span className="font-secondary text-[24px] font-extrabold mr-[20px]">
                 Last Name :
               </span>
-              <span className="font-secondary text-[24px] truncate">{user.lastName}</span>
+              {isEditLastName ? (
+                <input
+                  className="bg-[#cccccc] w-[70%] font-secondary px-[7px]"
+                  value={newLastName}
+                  onChange={handleLastName}
+                />
+              ) : (
+                <span className="font-secondary text-[24px] truncate">
+                  {user.lastName}
+                </span>
+              )}
+            </div>
+
+            <div className="flex flex-row items-center">
+              <button
+                className="flex flex-row items-center w-[170px] justify-evenly border-2 border-black rounded-lg my-[10px]"
+                onClick={enableEditLastName}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="svg-icon"
+                  viewBox="0 0 1024 1024"
+                  className="w-[30px] h-[30px]"
+                >
+                  <path
+                    d="M857.058 979.307h-696.21c-64.08 0-116.035-51.981-116.035-116.097V166.55c0-64.123 52.716-121.611 116.803-121.611h467.187v58.397h-467.18c-32.044 0-58.785 31.145-58.785 63.205v696.66c0 32.054 25.974 58.043 58.01 58.043h696.21c32.018 0 63.733-26.698 63.733-58.733v-467.18h58.397v467.187c.006 64.123-58.054 116.785-122.133 116.785l.003.004zm-346.771-281.33c-8.476 8.484-19.097 12.743-30.055 14.884L226.22 838.502c-28.588 13.257-51.486-12.364-40.954-40.971L310.838 543.33c2.13-10.958 6.371-21.58 14.865-30.066L776.958 61.682c22.659-22.65 59.387-22.65 82.046 0L961.553 164.31c22.66 22.66 22.66 59.44 0 82.1L510.29 697.974l-.003.003zm-269.45 64.424c-6.637 13.396 6.177 27.131 20.46 20.493l156.863-95.003-82.382-82.444-94.94 156.952-.001.002zm146.392-187.574 61.535 61.579c11.321 11.338-17.939-17.957 20.511 20.502l328.193-328.39-103.291-101.893L366.716 554.28c10.907 10.922 9.19 9.21 20.511 20.547h.002zm512.796-389.975-61.535-61.579c-11.32-11.356-29.693-11.356-41.024 0l-60.068 60.094L838.48 287.472l61.535-61.588c11.347-11.338 11.347-29.711.006-41.031l.004-.001z"
+                    fill="#000000"
+                  />
+                </svg>
+                <span className="font-secondary text-[16px]">
+                  Edit Last Name
+                </span>
+              </button>
             </div>
           </div>
+
+          {/* submit */}
+          <button className="bg-[#2B788B] rounded-full w-[80%] my-[20px] py-[5px]">
+            <span className="font-primary text-white">Submit</span>
+          </button>
         </div>
       </div>
       <Footer />
