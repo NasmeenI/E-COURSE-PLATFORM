@@ -1,6 +1,7 @@
 import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { storage } from "./firebase";
+import defaultImage from "../assets/default_profile_picture.jpg";
 
 async function blobUrlToBlob(blobUrl) {
   const res = await fetch(blobUrl);
@@ -25,8 +26,12 @@ async function upload(blobUrl) {
  * @returns the file download url
  */
 async function getURL(path) {
-  const result = await getDownloadURL(ref(storage, path));
-  return result;
+  try {
+    const result = await getDownloadURL(ref(storage, path));
+    return result;
+  } catch (error) {
+    return defaultImage;
+  }
 }
 
 const FileAPI = { upload, getURL };
