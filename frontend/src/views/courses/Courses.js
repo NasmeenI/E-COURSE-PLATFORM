@@ -20,6 +20,10 @@ export default function Courses() {
 
   useEffect(() => {
     async function getTags() {
+      if (tags) {
+        return;
+      }
+
       setLoadingTags(true);
       const result = await NasmeenAPI.getAllTag();
       setTags(result);
@@ -31,7 +35,7 @@ export default function Courses() {
 
   useEffect(() => {
     async function getPagesCount() {
-      if (!tags) {
+      if (!tags || pagesCount) {
         return;
       }
 
@@ -46,7 +50,7 @@ export default function Courses() {
 
   useEffect(() => {
     async function getPageData() {
-      if (!pagesCount) {
+      if (!pagesCount || pageData) {
         return;
       }
 

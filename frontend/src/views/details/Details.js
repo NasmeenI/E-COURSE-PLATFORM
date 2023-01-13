@@ -1,10 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import pic5 from "../courses/assets/pic5.png";
 
 export default function Details() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const { instructorName, tag, description, courseName } = location.state;
 
   function goBack() {
     navigate(-1);
@@ -20,17 +23,14 @@ export default function Details() {
             <img src={pic5} alt="pic5.1" className="w-[30%]"></img>
             <div className="flex flex-col justify-between">
               <span className="break-words mx-[30px] font-primary text-[26px]">
-                Course name which has a very very long long long very very long
-                long long very very long long long very very long long long very
-                very long long long very very long long long name
+                {courseName}
               </span>
               <div className="flex flex-col">
                 <span className="mx-[30px] font-secondary text-[20px] font-semibold mt-[20px]">
-                  Instructor name which also long long name long long namelong
-                  long name long long name long long name
+                  {instructorName}
                 </span>
                 <span className="mx-[30px] font-secondary text-[20px] mt-[20px]">
-                  Tag name
+                  {tag}
                 </span>
               </div>
             </div>
@@ -40,7 +40,7 @@ export default function Details() {
 
           {/* Description */}
           <div className="my-[10px] w-full items-start font-secondary text-[16px] break-words">
-            desssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssdesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+            {description}
           </div>
 
           {/* Button */}

@@ -10,7 +10,14 @@ export default function CourseCard({
   const navigate = useNavigate();
 
   function goToMoreDetails() {
-    navigate("/courses/psls");
+    navigate("/courses/psls", {
+      state: {
+        instructorName,
+        tag,
+        description,
+        courseName,
+      },
+    });
   }
 
   return (
