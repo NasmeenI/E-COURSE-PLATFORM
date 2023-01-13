@@ -1,7 +1,6 @@
 import { db } from '../firebase.js';
 import bp from 'body-parser';
 import express from 'express';
-import { getDocumentWithCondition } from '../method.js';
 
 const app = express();
 
@@ -10,7 +9,8 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readAllCoursesInstructor = async (req ,res) => { 
     const { tag ,page } = req.body;
-    const courses = await getDocumentWithCondition('courses' ,'tag' ,tag);
+    let courses = await db.collection('courses').where('tag', '==', tag).orderBy('scoreCourse').get();
+    courses = courses.docs.reverse();
     const output = []
     for(let i=5*(Number(page)-1);i<=Math.min((Number(page)*5)-1 ,courses.length-1);i++){
         if(courses[i].data().tag != tag) continue;
