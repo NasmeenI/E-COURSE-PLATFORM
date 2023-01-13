@@ -36,12 +36,19 @@ export const viewMember = async (req ,res) => {
             "firstName" : student.firstName,
             "lastName" : student.lastName,
             "image" : student.image,
-            "scoreSum" : String(scoreSum)
+            "scoreSum" : scoreSum
         }
         output.push(dataOfStudent);
     }
+
+    const sortedOutput = output.sort(cmpAge);
+    function cmpAge(a, b)
+    {
+      return b.scoreSum - a.scoreSum;
+    }
+
     res.send({ 
-        "dataOfStudentInCourse" : output,
+        "dataOfStudentInCourse" : sortedOutput,
         "scoreMax" : String(scoreMax)
     });
 }
