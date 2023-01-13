@@ -112,7 +112,11 @@ export default function Courses() {
             </div>
 
             {/* Course */}
-            <div className="flex flex-col justify-evenly items-center">
+            <div
+              className={`flex flex-col items-center min-h-[400px] ${
+                loadingPage ? "justify-center" : "justify-start"
+              }`}
+            >
               {loadingPage ? (
                 <TailSpin
                   height="80"
@@ -140,17 +144,21 @@ export default function Courses() {
             </div>
 
             {/* Page Selector */}
-            <ReactPaginate
-              pageCount={pagesCount}
-              onPageChange={handlePageChange}
-              nextLabel=">"
-              previousLabel="<"
-              className="mt-[30px] mb-[60px] flex flex-row items-center"
-              activeClassName="bg-[#2B788B] text-white"
-              pageClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
-              nextClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
-              previousClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
-            />
+            {loadingPage ? (
+              <></>
+            ) : (
+              <ReactPaginate
+                pageCount={pagesCount}
+                onPageChange={handlePageChange}
+                nextLabel=">"
+                previousLabel="<"
+                className="mt-[30px] mb-[60px] flex flex-row items-center"
+                activeClassName="bg-[#2B788B] text-white"
+                pageClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
+                nextClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
+                previousClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
+              />
+            )}
           </>
         )}
       </div>

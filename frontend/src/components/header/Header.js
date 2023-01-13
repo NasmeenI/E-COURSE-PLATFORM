@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import SignUpOrLogin from "./SignUpOrLogin";
@@ -23,7 +23,6 @@ export default function Header() {
   function navigateToMyCourses() {
     navigate("/mycourses");
   }
-
 
   return (
     <header className="fixed top-0 flex flex-row justify-evenly items-center w-full h-[60px] border-b-[1px] border-[#E0E0E0] bg-white z-50">
