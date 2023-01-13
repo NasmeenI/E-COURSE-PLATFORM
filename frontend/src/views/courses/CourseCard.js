@@ -27,7 +27,7 @@ export default function CourseCard({
 
   return (
     <div className="my-[20px] bg-white flex flex-row rounded-lg w-[80%]">
-      <img src={pic5} alt="pic5" className="w-[37%] rounded-l-lg"></img>
+      <img src={pic5} alt="pic5" className="w-[37%] rounded-l-lg object-cover"></img>
 
       <div className="flex flex-col w-[63%] p-[30px] justify-between">
         <div className="flex flex-col">
