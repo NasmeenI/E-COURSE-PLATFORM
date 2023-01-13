@@ -21,8 +21,8 @@ export const enrollCourse = async (req ,res) => {
         
         addValueInFieldArray(newuserID.uid ,'courses' ,courseID);
         addValueInFieldArray(courseID ,'students' ,newuserID.uid);
-        const newNumberOfStudent = await getField(courseID ,'numberOfStudent') + 1;
-        updateField(courseID ,'numberOfStudent' ,newNumberOfStudent);
+        const newNumberOfStudent = Number(await getField(courseID ,'numberOfStudent')) + 1;
+        updateField(courseID ,'numberOfStudent' ,String(newNumberOfStudent));
         
         res.status(200).send({ error: null });
     }
