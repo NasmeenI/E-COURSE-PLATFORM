@@ -11,12 +11,16 @@ import FileAPI from "./FileAPI";
  * When a user is logged in, loads user's profile data, and passing it to callback function
  */
 async function loadUserData() {
-  const token = await auth.currentUser.getIdToken();
-  const result = await NasmeenAPI.getProfile(token);
-  if (result.error) {
-    return { error: result.error };
-  } else {
-    return result.profile;
+  try {
+    const token = await auth.currentUser.getIdToken();
+    const result = await NasmeenAPI.getProfile(token);
+    if (result.error) {
+      return { error: result.error };
+    } else {
+      return result.profile;
+    }
+  } catch (error) {
+    return { error };
   }
 }
 
@@ -38,7 +42,7 @@ async function getMyCourse(page) {
   let result = await NasmeenAPI.readMyCourses(token, page);
   result = result.myCourses;
   for (let i = 0; i < result.length; i++) {
-    result[i].image = FileAPI.getURL(result[i].image);
+    result[i].instructorImage = await FileAPI.getURL(result[i].instructorImage);
   }
   return result;
 }
