@@ -54,7 +54,6 @@ export default function Login() {
       toast("Login Completed");
       navigate("/");
     }
-    console.log(loadResult);
 
     setLoggingIn(false);
   };
