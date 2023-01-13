@@ -7,6 +7,7 @@ import LectureCard from "./LectureCard";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate, useParams } from "react-router-dom";
+import CreateButton from "../../components/button/CreateButton";
 
 export default function CourseStudentMenu() {
   const {
@@ -14,8 +15,8 @@ export default function CourseStudentMenu() {
   } = useContext(UserContext);
   const navigate = useNavigate();
   const param = useParams();
-  function toViewStudent(){
-    navigate("/mycourses/" + param.courseID + "/viewstudent")
+  function toViewStudent() {
+    navigate("/mycourses/" + param.courseID + "/viewstudent");
   }
   return (
     <div>
@@ -46,9 +47,11 @@ export default function CourseStudentMenu() {
             </span>
           </div>
           <div className="flex flex-col mb-[30px] w-full">
-              {/* Create Material Button */}
-            
-
+            {/* Create Material Button */}
+            <CreateButton
+              text="Create Course Material"
+              path={"/mycourses/" + param.courseID + "/creatematerial"}
+            />
 
             <Anouncement text="Text that want to announce but long longlonglongl onglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglonglong" />
             <LectureCard
