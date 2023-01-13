@@ -38,7 +38,7 @@ export default function AssignmentCard({
           {/* score */}
           {user.type == "student" ? (
             <span className="font-secondary font-semibold mt-[5px] border-[1px] border-black py-[5px] px-[10px] rounded-full w-[100px] ml-[10px]">
-              {(score ? (score === "" ? "-" : score) : "U") + " / " + maxscore}
+              {(score ? (score + "/" + maxscore) : ("Pending"))}
             </span>
           ) : (
             <div />

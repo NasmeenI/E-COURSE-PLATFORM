@@ -37,7 +37,7 @@ export default function Header() {
         {/* divider */}
         <div className="w-[3px] h-[30%] bg-[#E0E0E0] ml-[30px]"></div>
 
-        <button onClick={navigateToCourses}>
+        <button onClick={navigateToCourses} className="items-center flex">
           <span
             className={`text-[18px] font-secondary ml-[30px] text-center ${
               location.pathname.startsWith("/courses") ? "font-bold" : ""
@@ -47,7 +47,7 @@ export default function Header() {
           </span>
         </button>
 
-        <button onClick={navigateToMyCourses}>
+        <button onClick={navigateToMyCourses} className="items-center flex">
           <span
             className={`text-[18px] font-secondary ml-[30px] text-center ${
               location.pathname.startsWith("/mycourses") ? "font-bold" : ""

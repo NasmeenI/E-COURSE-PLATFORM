@@ -8,7 +8,8 @@ export default function CreateAnnouncement({onChange,announcementText}) {
         placeholder="Details"
         id = "announcementText"
         name="announcementText"
-        value={announcementText}
+        value={announcementText || ""}
+        key={"announcementText"}
         onChange={onChange}
       ></textarea>
     </div>
