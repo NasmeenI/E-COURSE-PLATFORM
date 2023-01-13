@@ -17,11 +17,13 @@ export const readAllCoursesStudent = async (req ,res) => {
         return ;
     }
 
-    const courses = await getDocumentWithCondition('courses' ,'tag' ,tag);
+    let courses = await db.collection('courses').where('tag', '==', tag).orderBy('scoreCourse').get();
+    courses = courses.docs.reverse();
     const output = []
+
     for(let i=5*(Number(page)-1);i<=Math.min((Number(page)*5)-1 ,courses.length-1);i++){
         if(courses[i].data().tag != tag) continue;
-
+        
         // find enroll status
         const students = await getField(courses[i].data().courseID ,'students');
         const index = students.indexOf(newuserID.uid);
@@ -36,7 +38,7 @@ export const readAllCoursesStudent = async (req ,res) => {
             "description" : courses[i].data().description,
             "image" : courses[i].data().image,
             "enroll" : enroll,
-            "score" : courses[i].data().scoreCourse
+            "score" : courses[i].data().scoreCourse,
         }
         output.push(detailOfCourse);
     }
