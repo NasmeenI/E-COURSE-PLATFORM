@@ -55,7 +55,8 @@ export const readDetailMycourses = async (req ,res) => {
         "announcments" : course.announcments,
         "assignments" : dataAssighnments,
         "lectures" : detailOfLecture,
-        "scoreCourseByStudent" : scoreCourseByStudent
+        "scoreCourseByStudent" : scoreCourseByStudent,
+        "scoreCourse" : course.scoreCourse
     }
     res.send({ Courses : detailOfCourse });
 }
