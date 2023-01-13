@@ -21,7 +21,7 @@ export const readAllCoursesInstructor = async (req ,res) => {
             "tag" : courses[i].data().tag,
             "description" : courses[i].data().description,
             "image" : courses[i].data().image,
-            "score" : 0
+            "score" : courses[i].data().scoreCourse,
         }
         output.push(detailOfCourse);
     }

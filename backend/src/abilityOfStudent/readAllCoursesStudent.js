@@ -36,7 +36,7 @@ export const readAllCoursesStudent = async (req ,res) => {
             "description" : courses[i].data().description,
             "image" : courses[i].data().image,
             "enroll" : enroll,
-            "score" : 0
+            "score" : courses[i].data().scoreCourse
         }
         output.push(detailOfCourse);
     }

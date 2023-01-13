@@ -17,7 +17,7 @@ export const readDetailCourses = async (req ,res) => {
         "tag" : course.tag,
         "description" : course.description,
         "image" : course.image,
-        "score" : 0
+        "score" : course.scoreCourse
     }
     res.send({ Courses : detailOfCourse });
 }

@@ -29,6 +29,7 @@ export const readMyCourses = async (req ,res) => {
             "instructorImage" : await getField(course.instructorID ,'image'),
             "description" : course.description,
             "image" : course.image, 
+            "scoreCourse" : course.scoreCourse
         }
         output.push(detailOfCourse)
     }

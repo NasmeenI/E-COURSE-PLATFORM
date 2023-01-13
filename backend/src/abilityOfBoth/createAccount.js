@@ -10,7 +10,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const createAccount = async (req ,res) => { 
     try{
-        const { userID ,firstName ,lastName ,type ,image} = req.body;
+        const { userID ,firstName ,lastName ,type ,image } = req.body;
         const newuserID = await getuid(userID);
         if(newuserID.error){  
             res.send({ error : newuserID.error.message });
