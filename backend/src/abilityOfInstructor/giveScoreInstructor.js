@@ -18,7 +18,10 @@ export const giveScoreInstructor = async (req ,res) => {
     }
     
     const scoreMax = await getField(assignmentID ,'scoreMax');
-    if(Number(score) > Number(scoreMax)) res.send({ error : "your score is too high" });
+    if(Number(score) > Number(scoreMax)){
+        res.send({ error : "your score is too high" });
+        return ;
+    } 
 
     const studentFiles = await getField(assignmentID ,'studentFile');
     for(let i=0;i<studentFiles.length;i++){
