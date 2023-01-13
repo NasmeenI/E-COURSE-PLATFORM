@@ -11,7 +11,6 @@ import { auth } from "../../api/firebase";
 import { TailSpin } from "react-loader-spinner";
 import UserAPI from "../../api/UserAPI";
 import ReactPaginate from "react-paginate";
-import Blankpage from "./Blankpage";
 
 export default function MyCourses() {
   const [loadingPagesCount, setLoadingPagesCount] = useState(false);

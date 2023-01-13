@@ -19,6 +19,7 @@ import Loader from "./Loader";
 import CreateCoursePage from "./views/createCoursePage/CreateCoursePage";
 import CreateMaterialPage from "./views/createMaterialPage/CreateMaterialPage";
 import Profile from "./views/profile/Profile";
+import Rating from "./views/rating/Rating";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/mycourses/:courseID",
     element: <CourseMenu />,
+  },
+  {
+    path: "/mycourses/:courseID/rating",
+    element: <Rating />,
   },
   {
     path: "/mycourses/:courseID/creatematerial",
