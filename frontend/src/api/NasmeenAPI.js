@@ -55,7 +55,7 @@ async function viewMember(courseID) {
   return result.data;
 }
 
-async function readAllCoursesInstructor(tag, page) {
+async function readAllCoursesNonStudent(tag, page) {
   const result = await axios.post(endpoint("/readAllCoursesInstructor"), {
     tag: tag,
     page: page,
@@ -67,8 +67,8 @@ async function readAllCoursesInstructor(tag, page) {
 
 async function enrollCourse(userID, courseID) {
   const result = await axios.patch(endpoint("/enrollCourse"), {
-    student: userID,
-    course: courseID,
+    userID: userID,
+    courseID: courseID,
   });
   return result.data;
 }
@@ -146,8 +146,6 @@ async function numberOfMyPage(userID) {
   return result.data;
 }
 
-
-
 async function readDetailCourses(courseID) {
   const result = await axios.post(endpoint("/readDetailCourses"), {
     courseID: courseID,
@@ -191,7 +189,7 @@ const NasmeenAPI = {
   createAssignment,
   createAnnouncement,
   viewMember,
-  readAllCoursesInstructor,
+  readAllCoursesNonStudent,
   // -- ability of student -- //
   enrollCourse,
   sendWork,

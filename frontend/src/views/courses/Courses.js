@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import CourseCard from "./CourseCard";
@@ -6,6 +6,8 @@ import { TailSpin } from "react-loader-spinner";
 import NasmeenAPI from "../../api/NasmeenAPI";
 import ReactPaginate from "react-paginate";
 import pic5 from "../courses/assets/pic5.png";
+import { UserContext } from "../../contexts/UserContext";
+import { auth } from "../../api/firebase";
 
 export default function Courses() {
   const [loadingTags, setLoadingTags] = useState(false);
@@ -18,6 +20,12 @@ export default function Courses() {
   const [loadingPage, setLoadingPage] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [pageData, setPageData] = useState(null);
+
+  const [tryingToEnroll, setTryingToEnroll] = useState(false);
+
+  const {
+    data: { user },
+  } = useContext(UserContext);
 
   useEffect(() => {
     async function getTags() {
@@ -49,21 +57,33 @@ export default function Courses() {
     getPagesCount();
   }, [tags, currentTag]);
 
-  useEffect(() => {
-    async function getPageData() {
-      if (!pagesCount) {
-        return;
-      }
+  async function getPageData() {
+    if (!pagesCount) {
+      return;
+    }
 
-      setLoadingPage(true);
-      const result = await NasmeenAPI.readAllCourses(
+    setLoadingPage(true);
+    let result;
+    if (user?.type === "student") {
+      const token = await auth.currentUser.getIdToken();
+      result = await NasmeenAPI.readAllCoursesStudent(
+        token,
         tags[currentTag],
         currentPage + 1
       );
-      setPageData(result.AllCourses);
-      setLoadingPage(false);
+      console.log(result);
+    } else {
+      result = await NasmeenAPI.readAllCoursesNonStudent(
+        tags[currentTag],
+        currentPage + 1
+      );
+      console.log(result);
     }
+    setPageData(result.AllCourses);
+    setLoadingPage(false);
+  }
 
+  useEffect(() => {
     getPageData();
   }, [currentPage, pagesCount, currentTag]);
 
@@ -118,7 +138,7 @@ export default function Courses() {
                 loadingPage ? "justify-center" : "justify-start"
               }`}
             >
-              {loadingPage ? (
+              {loadingPage || tryingToEnroll ? (
                 <TailSpin
                   height="80"
                   width="80"
@@ -133,12 +153,16 @@ export default function Courses() {
                 <>
                   {pageData.map((course, i) => (
                     <CourseCard
-                      key={i}
+                      key={course.courseID}
                       courseName={course.title}
                       instructorName={course.instructorName}
                       tag={course.tag}
                       description={course.description}
                       image={pic5}
+                      enrolled={course.enroll}
+                      id={course.courseID}
+                      setTryingToEnroll={setTryingToEnroll}
+                      loadPageData={getPageData}
                     />
                   ))}
                 </>

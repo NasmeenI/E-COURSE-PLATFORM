@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import ConfirmModal from "../../components/confirmModal/ConfirmModal";
+import NasmeenAPI from "../../api/NasmeenAPI";
+import { auth } from "../../api/firebase";
+import { toast } from "react-hot-toast";
 
 export default function CourseCard({
   instructorName,
@@ -9,6 +12,10 @@ export default function CourseCard({
   description,
   courseName,
   image,
+  enrolled,
+  id,
+  setTryingToEnroll,
+  loadPageData,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -21,7 +28,9 @@ export default function CourseCard({
         tag,
         description,
         courseName,
-        image
+        image,
+        enrolled,
+        id,
       },
     });
   }
@@ -33,7 +42,19 @@ export default function CourseCard({
     setIsOpen(true);
   }
 
-  function enrollCourse() {}
+  async function enrollCourse() {
+    setTryingToEnroll(true);
+    const token = await auth.currentUser.getIdToken();
+    // console.log(token);
+    const result = await NasmeenAPI.enrollCourse(token, id);
+    if (result.error) {
+      toast(result.error);
+    } else {
+      toast("Enroll Completed");
+      loadPageData();
+    }
+    setTryingToEnroll(false);
+  }
 
   return (
     <div className="my-[20px] bg-white flex flex-row rounded-lg w-[80%]">
@@ -79,10 +100,11 @@ export default function CourseCard({
           {user?.type === "student" ? (
             <button
               onClick={openModal}
+              disabled={enrolled}
               className="mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px]"
             >
               <span className="font-secondary font-bold text-[14px] text-white text-center ">
-                Enroll now
+                {enrolled ? "Enrolled" : "Enroll now"}
               </span>
             </button>
           ) : (
