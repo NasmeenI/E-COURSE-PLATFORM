@@ -9,5 +9,5 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const getAllTag = async (req ,res) => { 
     const tag = await getField('tag' ,'tag');
-    res.send(tag);
+    res.send({ tag : tag });
 }
