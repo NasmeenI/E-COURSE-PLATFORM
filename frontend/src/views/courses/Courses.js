@@ -144,21 +144,18 @@ export default function Courses() {
             </div>
 
             {/* Page Selector */}
-            {loadingPage ? (
-              <></>
-            ) : (
-              <ReactPaginate
-                pageCount={pagesCount}
-                onPageChange={handlePageChange}
-                nextLabel=">"
-                previousLabel="<"
-                className="mt-[30px] mb-[60px] flex flex-row items-center"
-                activeLinkClassName="!bg-[#2B788B] !text-[white]"
-                pageLinkClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
-                nextLinkClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
-                previousLinkClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
-              />
-            )}
+            <ReactPaginate
+              forcePage={currentPage}
+              pageCount={pagesCount}
+              onPageChange={handlePageChange}
+              nextLabel=">"
+              previousLabel="<"
+              className="mt-[30px] mb-[60px] flex flex-row items-center"
+              activeLinkClassName="!bg-[#2B788B] !text-[white]"
+              pageLinkClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
+              nextLinkClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
+              previousLinkClassName="w-12 h-12 border-[#2B788B] border-2 font-secondary font-bold text-[16px] rounded-full flex items-center justify-center mx-[10px] bg-white text-[#2B788B]"
+            />
           </>
         )}
       </div>
