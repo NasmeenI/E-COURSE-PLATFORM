@@ -79,7 +79,6 @@ function App() {
   return (
     <UserProvider>
       <Toaster />
-      <Loader />
       <RouterProvider router={router} />
     </UserProvider>
   );
