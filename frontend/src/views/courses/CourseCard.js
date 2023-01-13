@@ -75,8 +75,11 @@ export default function CourseCard({
         {/* button */}
         <div className="flex flex-row mt-[10px]">
           {/* Enroll now */}
-          {user?.type == "student" ? (
-            <button className="mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px]">
+          {user?.type === "student" ? (
+            <button
+              onClick={openModal}
+              className="mr-[20px] bg-[#639B6D] border-2 border-[#639B6D] text-white rounded-full py-[5px] px-[20px]"
+            >
               <span className="font-secondary font-bold text-[14px] text-white text-center ">
                 Enroll now
               </span>
