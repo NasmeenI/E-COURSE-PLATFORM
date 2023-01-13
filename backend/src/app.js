@@ -15,6 +15,7 @@ import { enrollCourse } from "./abilityOfStudent/enrollCourse.js";
 import { sendWork } from "./abilityOfStudent/sendWork.js";
 import { readAllCoursesStudent } from "./abilityOfStudent/readAllCoursesStudent.js";
 import { readAssignmentStudent } from "./abilityOfStudent/readAssignmentStudent.js";
+import { giveScoreStudent } from "./abilityOfStudent/giveScoreStudent.js";
 
 import { changeProfile } from "./abilityOfBoth/changeProfile.js";
 import { createAccount } from "./abilityOfBoth/createAccount.js";
@@ -46,6 +47,7 @@ app.patch("/enrollCourse", enrollCourse);
 app.post("/sendWork", sendWork);
 app.post("/readAllCoursesStudent", readAllCoursesStudent);
 app.post("/readAssignmentStudent", readAssignmentStudent);
+app.post("/giveScoreStudent", giveScoreStudent);
 
 app.post("/createAccount", createAccount);
 app.post("/changeProfile", changeProfile);
