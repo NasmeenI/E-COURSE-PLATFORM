@@ -9,6 +9,7 @@ import defaultProfilePicture from "./assets/default_profile_picture.jpg";
 import googleLogo from "./assets/google_logo.svg";
 import { useNavigate } from "react-router";
 import FileAPI from "../../api/FileAPI";
+import { toast } from "react-hot-toast";
 
 export default function Register() {
   const [profilePicture, setProfilePicture] = useState(defaultProfilePicture);
@@ -116,6 +117,7 @@ export default function Register() {
       error(loadResult.error);
     } else {
       setUser(loadResult);
+      toast("Registration Completed")
       navigate("/");
     }
 

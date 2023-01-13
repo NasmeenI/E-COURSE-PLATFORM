@@ -6,6 +6,7 @@ import UserAPI from "../../api/UserAPI";
 import NasmeenAPI from "../../api/NasmeenAPI";
 import { UserContext } from "../../contexts/UserContext";
 import { TailSpin } from "react-loader-spinner";
+import { toast } from "react-hot-toast";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -51,6 +52,7 @@ export default function Login() {
       error(loadResult.error);
     } else {
       setUser(loadResult);
+      toast("Login Completed");
       navigate("/");
     }
 

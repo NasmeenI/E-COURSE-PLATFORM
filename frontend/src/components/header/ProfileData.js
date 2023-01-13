@@ -4,6 +4,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import ConfirmModal from "../confirmModal/ConfirmModal";
+import { toast } from "react-hot-toast";
 
 export default function ProfileData() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +23,7 @@ export default function ProfileData() {
   function signOut() {
     auth.signOut();
     setUser(null);
+    toast("Sign Out Completed")
     navigate("/");
   }
 
