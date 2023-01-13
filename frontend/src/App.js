@@ -59,7 +59,7 @@ const router = createBrowserRouter([
     element: <CreateMaterialPage />,
   },
   {
-    path: "/mycourses/:courseID/viewStudent",
+    path: "/mycourses/:courseID/viewstudent",
     element: <ViewStudent />,
   },
   {

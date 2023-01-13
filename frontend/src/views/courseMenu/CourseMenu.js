@@ -45,6 +45,9 @@ export default function CourseStudentMenu() {
   function toViewStudent() {
     navigate("/mycourses/" + param.courseID + "/viewstudent");
   }
+  function toRating() {
+    navigate("/mycourses/" + param.courseID + "/rating");
+  }
 
   return (
     <div>
@@ -61,8 +64,10 @@ export default function CourseStudentMenu() {
               </button>
             ) : (
               <button
-                onClick={toViewStudent}
-                className="mb-[20px] flex flex-row px-[15px] py-[7px] w-[150px] border-[#2B788B] border-2 rounded-full items-center justify-center"
+                onClick={toRating}
+                className={`mb-[20px] flex flex-row px-[15px] py-[7px] w-[150px] border-[#2B788B] border-2 rounded-full items-center justify-center ${
+                  isRated ? "bg-[#2B788B]" : "bg-white"
+                }`}
               >
                 {isRated ? (
                   <svg
@@ -70,7 +75,7 @@ export default function CourseStudentMenu() {
                     viewBox="0 0 260 245"
                     className="w-[20px] h-[20px] mr-[5px]"
                   >
-                    <path d="m56,237 74-228 74,228L10,96h240" fill="#2B788B" />
+                    <path d="m56,237 74-228 74,228L10,96h240" fill="#ffffff" />
                   </svg>
                 ) : (
                   <svg
@@ -85,7 +90,7 @@ export default function CourseStudentMenu() {
                     />
                   </svg>
                 )}
-                <span className="truncate  font-secondary font-extrabold text-[#2B788B]">
+                <span className={`truncate  font-secondary font-extrabold ${isRated ? "text-white" : "text-[#2B788B]"}`}>
                   {isRated ? "Rated" : "Rating"}
                 </span>
               </button>
