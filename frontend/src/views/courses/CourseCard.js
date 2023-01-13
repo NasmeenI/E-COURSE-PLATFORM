@@ -5,6 +5,7 @@ import ConfirmModal from "../../components/confirmModal/ConfirmModal";
 import NasmeenAPI from "../../api/NasmeenAPI";
 import { auth } from "../../api/firebase";
 import { toast } from "react-hot-toast";
+import UserAPI from "../../api/UserAPI";
 
 export default function CourseCard({
   instructorName,
@@ -44,9 +45,7 @@ export default function CourseCard({
 
   async function enrollCourse() {
     setTryingToEnroll(true);
-    const token = await auth.currentUser.getIdToken();
-    // console.log(token);
-    const result = await NasmeenAPI.enrollCourse(token, id);
+    const result = await UserAPI.enrollCourse(id);
     if (result.error) {
       toast(result.error);
     } else {
