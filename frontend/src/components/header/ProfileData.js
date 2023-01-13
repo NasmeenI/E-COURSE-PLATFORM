@@ -33,9 +33,12 @@ export default function ProfileData() {
 
   return (
     <div className="flex flex-row items-center h-full">
-      <button className="flex flex-row items-center" onClick={navigateToProfile}>
+      <button
+        className="flex flex-row items-center"
+        onClick={navigateToProfile}
+      >
         <div className="rounded-full w-[44px] h-[44px] mr-[10px] overflow-hidden bg-black">
-          <img src={user.imageURL} alt="profile" />
+          <img src={user.imageURL} alt="profile" className="w-full h-full" />
         </div>
         <span className="text-lg font-secondary mx-[10px]">
           {user.firstName}
