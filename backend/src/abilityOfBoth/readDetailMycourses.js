@@ -43,9 +43,9 @@ export const readDetailMycourses = async (req ,res) => {
     }
 
     // get scoreCourseByStudent
-    let map = await getField(courseID ,'scoreCourseByStudent');
+    let data = await getField(courseID ,'scoreCourseByStudent');
     let scoreCourseByStudent = null
-    if(map.has(newuserID.uid)) scoreCourseByStudent = map.get(newuserID.uid);
+    if(data.hasOwnProperty(newuserID.uid)) scoreCourseByStudent = data[newuserID.uid];
     
     const detailOfCourse = {
         "courseID" : course.courseID,
