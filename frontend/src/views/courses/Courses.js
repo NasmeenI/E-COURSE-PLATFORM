@@ -35,7 +35,7 @@ export default function Courses() {
 
       setLoadingTags(true);
       const result = await NasmeenAPI.getAllTag();
-      setTags(result);
+      setTags(result.tag);
       setLoadingTags(false);
     }
 
