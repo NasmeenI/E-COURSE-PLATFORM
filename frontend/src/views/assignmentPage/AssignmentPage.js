@@ -112,6 +112,7 @@ export default function AssignmentPage() {
             score={data.score}
             maxscore={parseInt(data.scoreMax)}
             file={data.file}
+            assignmentID={param.assignmentID}
           />
         ) : (
           <InstructorScore />

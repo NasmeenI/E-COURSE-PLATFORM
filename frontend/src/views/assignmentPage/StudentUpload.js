@@ -5,8 +5,12 @@ import NasmeenAPI from "../../api/NasmeenAPI";
 import { auth } from "../../api/firebase";
 import FileAPI from "../../api/FileAPI";
 import { TailSpin } from "react-loader-spinner";
+import { useLocation, useNavigate } from "react-router";
 
 export default function StudentUpload({ score, maxscore, file, assignmentID }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const pickerRef = useRef();
   // for now
   const issubmit = !(score === null || score === "");
@@ -43,6 +47,9 @@ export default function StudentUpload({ score, maxscore, file, assignmentID }) {
       return;
     } else {
       toast("Submission Completed");
+      const temp = location.pathname;
+      navigate("");
+      navigate(temp);
     }
     setSubmitting(false);
   }
@@ -85,8 +92,8 @@ export default function StudentUpload({ score, maxscore, file, assignmentID }) {
           </div>
 
           <ol>
-            {issubmit ? (
-              <File fileName="My Submission" filePath={file} />
+            {issubmit || currentFile ? (
+              <File fileName="My Submission" filePath={file || currentFile} />
             ) : (
               <></>
             )}
@@ -119,7 +126,10 @@ export default function StudentUpload({ score, maxscore, file, assignmentID }) {
                 </span>
               </button>
               {/* Submit button */}
-              <button className="w-full justify-center items-center text-center py-[10px] px-[20px] bg-[#2B788B] mt-[20px] flex flex-row rounded-lg">
+              <button
+                onClick={submit}
+                className="w-full justify-center items-center text-center py-[10px] px-[20px] bg-[#2B788B] mt-[20px] flex flex-row rounded-lg"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlSpace="preserve"
