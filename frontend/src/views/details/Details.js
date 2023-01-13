@@ -63,9 +63,9 @@ export default function Details() {
             visible={true}
           />
         ) : (
-          <div className="w-[70%] bg-white my-[100px] flex flex-col p-[50px] rounded-md items-center">
-            <div className="flex flex-row">
-              <img src={image} alt="pic5.1" className="w-[30%]"></img>
+          <div className="w-[70%] bg-white my-[70px] flex flex-col p-[50px] rounded-md items-center">
+            <div className="flex flex-row w-full">
+              <img src={image} className="w-[30%]"></img>
               <div className="flex flex-col justify-between">
                 <div className="flex flex-col">
                   <span className="break-words mx-[30px] font-primary text-[26px]">
