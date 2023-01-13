@@ -1,10 +1,23 @@
 import { useNavigate, useParams } from "react-router-dom";
-export default function AssignmentCard({ title, assignmentID }) {
+import { useContext, useState } from "react";
+import { UserContext } from "../../contexts/UserContext";
+export default function AssignmentCard({
+  title,
+  assignmentID,
+  score,
+  maxscore,
+}) {
   const navigate = useNavigate();
   const param = useParams();
+
+  // temp const
+  maxscore = 10;
   function toAssignment() {
     navigate("/mycourses/" + param.courseID + "/assignment/" + assignmentID);
   }
+  const {
+    data: { user },
+  } = useContext(UserContext);
 
   return (
     <button onClick={toAssignment}>
@@ -23,9 +36,13 @@ export default function AssignmentCard({ title, assignmentID }) {
             {title}
           </span>
           {/* score */}
-          <span className="font-secondary font-semibold mt-[5px] border-[1px] border-black py-[5px] px-[10px] rounded-full w-[100px] ml-[10px]">
-            -/0
-          </span>
+          {user.type == "student" ? (
+            <span className="font-secondary font-semibold mt-[5px] border-[1px] border-black py-[5px] px-[10px] rounded-full w-[100px] ml-[10px]">
+              {(score ? (score === "" ? "-" : score) : "U") + " / " + maxscore}
+            </span>
+          ) : (
+            <div />
+          )}
         </div>
       </div>
     </button>
