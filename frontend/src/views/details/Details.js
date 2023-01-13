@@ -22,13 +22,16 @@ export default function Details() {
           <div className="flex flex-row">
             <img src={pic5} alt="pic5.1" className="w-[30%]"></img>
             <div className="flex flex-col justify-between">
-              <span className="break-words mx-[30px] font-primary text-[26px]">
-                {courseName}
-              </span>
               <div className="flex flex-col">
+                <span className="break-words mx-[30px] font-primary text-[26px]">
+                  {courseName}
+                </span>
                 <span className="mx-[30px] font-secondary text-[20px] font-semibold mt-[20px]">
                   {instructorName}
                 </span>
+              </div>
+
+              <div className="flex flex-col">
                 <span className="mx-[30px] font-secondary text-[20px] mt-[20px]">
                   {tag}
                 </span>

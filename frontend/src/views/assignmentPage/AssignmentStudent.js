@@ -12,7 +12,7 @@ export default function AssignmentStudent() {
       {/* Scoring */}
       <div className="flex flex-row items-center">
         <span
-          className={`py-[5px] px-[15px] font-secondary font-extrabold rounded-full mb-[10px] ${
+          className={`py-[5px] px-[15px] font-secondary font-extrabold rounded-full mb-[10px] text-white ${
             isscored ? "bg-green-500" : "bg-red-600"
           }`}
         >
