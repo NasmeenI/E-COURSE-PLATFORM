@@ -111,7 +111,7 @@ export default function Register() {
       return;
     }
 
-    const loadResult = await UserAPI.loadUserData(setUser);
+    const loadResult = await UserAPI.loadUserData();
     if (loadResult.error) {
       error(loadResult.error);
     } else {
