@@ -6,20 +6,46 @@ import AssignmentCard from "./AssignmentCard";
 import LectureCard from "./LectureCard";
 import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import CreateButton from "../../components/button/CreateButton";
+import NasmeenAPI from "../../api/NasmeenAPI";
+import { TailSpin } from "react-loader-spinner";
+import { auth } from "../../api/firebase";
 
 export default function CourseStudentMenu() {
   const [isRated, setIsRated] = useState(0);
+  const [courseData, setCourseData] = useState(null);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const param = useParams();
+
+  useState(() => {
+    if (courseData !== null) {
+      return;
+    }
+
+    async function getCourseData() {
+      const token = await auth.currentUser.getIdToken();
+      const result = await NasmeenAPI.readDetailMycourses(
+        token,
+        param.courseID
+      );
+      console.log(result);
+    }
+
+    getCourseData();
+  }, []);
 
   const {
     data: { user },
   } = useContext(UserContext);
-  const navigate = useNavigate();
-  const param = useParams();
+
   function toViewStudent() {
     navigate("/mycourses/" + param.courseID + "/viewstudent");
   }
+
   return (
     <div>
       <Header />
