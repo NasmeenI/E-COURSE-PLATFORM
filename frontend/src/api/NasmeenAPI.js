@@ -163,6 +163,14 @@ async function getAllTag() {
   return result.data;
 }
 
+async function getScoreCourse(userID ,courseID) {
+  const result = await axios.post(endpoint("/getScoreCourse"), {
+    userID: userID,
+    courseID: courseID,
+  });
+  return result.data;
+}
+
 async function removeCourse(userID, courseID) {
   const result = await axios.patch(endpoint("/removeCourse"), {
     userID: userID,
@@ -236,6 +244,7 @@ const NasmeenAPI = {
   changeProfile,
   getProfile,
   getAllTag,
+  getScoreCourse,
   removeCourse,
   numberOfPage,
   numberOfMyPage,
