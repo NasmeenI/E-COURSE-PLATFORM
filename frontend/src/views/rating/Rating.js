@@ -4,6 +4,7 @@ import ReturnButton from "../../components/button/ReturnButton";
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Star from "./Star";
+import NasmeenAPI from "../../api/NasmeenAPI";
 
 export default function Rating() {
   const [rateScore, setRateScore] = useState(3);

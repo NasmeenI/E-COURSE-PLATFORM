@@ -13,7 +13,7 @@ import { TailSpin } from "react-loader-spinner";
 import { auth } from "../../api/firebase";
 
 export default function CourseStudentMenu() {
-  const [isRated, setIsRated] = useState(false);
+  const [isRated, setIsRated] = useState(null);
   const [courseData, setCourseData] = useState(null);
 
   const location = useLocation();
@@ -25,11 +25,13 @@ export default function CourseStudentMenu() {
     if (courseData === null) {
       async function getCourseData() {
         const token = await auth.currentUser.getIdToken();
-        const result = await NasmeenAPI.readDetailMycourses(
+        let result = await NasmeenAPI.readDetailMycourses(
           token,
           param.courseID
         );
+        result = result.Courses;
         setCourseData(result.Courses);
+        setIsRated(result.scoreCourseByStudent !== null);
       }
   
       getCourseData();
