@@ -31,8 +31,10 @@ export const readAssignmentStudent = async (req ,res) => {
         "title" : assignment.title,
         "text" : assignment.text,
         "Instructorfile" : assignment.file,
-        "myWork" : myWork,
-        "scoreMax" : assignment.scoreMax
+        "file" : myWork.file,
+        "score" : myWork.score,
+        "scoreMax" : assignment.scoreMax,
+        "time" : myWork.time
     }
     res.send({ assignment : detailOfassignment });
 }
