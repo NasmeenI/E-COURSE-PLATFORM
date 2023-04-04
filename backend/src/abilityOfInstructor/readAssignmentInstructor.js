@@ -10,13 +10,13 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readAssignmentInstructor = async (req ,res) => { 
     const { userID ,assignmentID } = req.body;
-    const newuserID = await getuid(userID);
-    if(newuserID.error){  
-        res.send({ error : newuserID.error.message });
-        return ;
-    }
-    const collection = await checkCollection(newuserID.uid);
-    if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
+    // const newuserID = await getuid(userID);
+    // if(newuserID.error){  
+    //     res.send({ error : newuserID.error.message });
+    //     return ;
+    // }
+    // const collection = await checkCollection(newuserID.uid);
+    // if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
 
     let data = []
     const studentFiles = await getField(assignmentID ,'studentFile');
@@ -25,6 +25,11 @@ export const readAssignmentInstructor = async (req ,res) => {
         profile.userID = null;
 
         let studentWork = await getDocument(studentFiles[j].studentWork);
+        studentWork.firstName = profile.firstName;
+        studentWork.lastName = profile.lastName;
+        delete studentWork.userID;
+        delete studentWork.assignmentID;
+        delete studentWork.workID;
         data.push(studentWork);
     }
     data.sort((a, b) => {
