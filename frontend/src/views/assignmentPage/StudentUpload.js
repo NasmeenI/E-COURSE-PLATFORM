@@ -47,7 +47,7 @@ export default function StudentUpload({
 
     const token = await auth.currentUser.getIdToken();
     const filePath = await FileAPI.upload(currentFile);
-    const result = await NasmeenAPI.sendWork(token, assignmentID, filePath);
+    const result = await NasmeenAPI.sendWork(token, assignmentID, filePath, Date.now());
     if (result.error) {
       error(result.error);
       return;
@@ -91,7 +91,7 @@ export default function StudentUpload({
               </span>
             </div>
             <span className="font-primary">
-              {(score ? (score === "" ? "-" : score) : "-") + " / " + maxscore}
+              {(!!score ? score : "-") + " / " + maxscore}
             </span>
           </div>
 

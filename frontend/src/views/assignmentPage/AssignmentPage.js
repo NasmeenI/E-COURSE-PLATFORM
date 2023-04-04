@@ -39,8 +39,8 @@ export default function AssignmentPage() {
         );
 
         result = result.assignment;
-        if (result.studentFile) {
-          result.file = await FileAPI.getURL(result.studentFile);
+        if (result.myWork.file) {
+          result.file = await FileAPI.getURL(result.myWork.file);
         }
         if (result.Instructorfile) {
           result.includedFile = await FileAPI.getURL(result.Instructorfile);
