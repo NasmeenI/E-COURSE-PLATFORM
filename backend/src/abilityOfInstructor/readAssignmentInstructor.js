@@ -22,9 +22,12 @@ export const readAssignmentInstructor = async (req ,res) => {
     const studentFiles = await getField(assignmentID ,'studentFile');
     for(let j=0;j<studentFiles.length;j++){
         let profile = await getDocument(studentFiles[j].userID);
-        profile.userID = null;
 
         let studentWork = await getDocument(studentFiles[j].studentWork);
+        studentWork.firstName = profile.firstName;
+        studentWork.lastName = profile.lastName;
+        delete studentWork.userID;
+        delete studentWork.workID;
         data.push(studentWork);
     }
     data.sort((a, b) => {
