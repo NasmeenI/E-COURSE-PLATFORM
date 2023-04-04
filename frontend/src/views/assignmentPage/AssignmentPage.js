@@ -20,6 +20,10 @@ export default function AssignmentPage() {
 
   const [data, setData] = useState(null);
 
+  const setFile = (file) => {
+    setData({...data, file});
+  }
+  
   useEffect(() => {
     if (data !== null) {
       return;
@@ -48,17 +52,12 @@ export default function AssignmentPage() {
         );
         result = result.assignment;
       }
-      console.log(result);
       setData(result);
     }
 
     getData();
   }, []);
-
-  const AssignmentHeader =
-    "Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1Assignment1";
-  const AssignmentDesc =
-    "AssignmentDescAssignmentDescAssignmentDescAssignmentDescAssignmentDescAssignmentDescAssignmentDescAssignmentDescAssignmentDesc";
+  
   return (
     <div>
       <Header />
@@ -112,6 +111,7 @@ export default function AssignmentPage() {
             score={data.score}
             maxscore={parseInt(data.scoreMax)}
             file={data.file}
+            setFile={setFile}
             assignmentID={param.assignmentID}
           />
         ) : (
