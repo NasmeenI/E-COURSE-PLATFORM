@@ -1,7 +1,7 @@
 import { db } from '../firebase.js';
 import bp from 'body-parser';
 import express from 'express';
-import { addValueInFieldArray, checkCollection} from '../method.js';
+import { addValueInFieldArray, checkCollection } from '../method.js';
 import { getuid } from '../uid.js';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,7 +12,7 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const sendWork = async (req ,res) => { 
     try{
-        const { userID ,assignmentID ,file } = req.body;
+        const { userID ,assignmentID ,file ,time } = req.body;
         const newuserID = await getuid(userID);
         if(newuserID.error){  
             res.send({ error : newuserID.error.message });
@@ -26,6 +26,7 @@ export const sendWork = async (req ,res) => {
             "assignmentID" : assignmentID,
             "userID" : newuserID.uid,
             "file" : file,
+            "time" : time,
             "score" : null
         })
         

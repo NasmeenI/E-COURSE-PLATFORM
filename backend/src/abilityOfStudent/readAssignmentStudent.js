@@ -18,12 +18,11 @@ export const readAssignmentStudent = async (req ,res) => {
     const collection = await checkCollection(newuserID.uid);
     if(collection != 'student') res.send({ error : 'you are not an student' });
 
-    let score = null ,file = null;
+    let myWork;
     const studentFiles = await getField(assignmentID ,'studentFile');
     for(let j=0;j<studentFiles.length;j++){
         if(newuserID.uid == studentFiles[j].userID){
-            file = studentFiles[j].studentWork;
-            score = studentFiles[j].score;
+            myWork = await getDocument(studentFiles[j].studentWork);
         }
     }
   
@@ -32,9 +31,8 @@ export const readAssignmentStudent = async (req ,res) => {
         "title" : assignment.title,
         "text" : assignment.text,
         "Instructorfile" : assignment.file,
-        "studentFile" : file,
-        "score" : score,
-        "scoreMax" : await getField(assignmentID ,'scoreMax')
+        "myWork" : myWork,
+        "scoreMax" : assignment.scoreMax
     }
     res.send({ assignment : detailOfassignment });
 }

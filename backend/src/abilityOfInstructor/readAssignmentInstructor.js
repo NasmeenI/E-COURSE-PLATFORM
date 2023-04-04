@@ -18,27 +18,25 @@ export const readAssignmentInstructor = async (req ,res) => {
     const collection = await checkCollection(newuserID.uid);
     if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
 
-    let score = null ,file = null;
     let data = []
     const studentFiles = await getField(assignmentID ,'studentFile');
     for(let j=0;j<studentFiles.length;j++){
         let profile = await getDocument(studentFiles[j].userID);
         profile.userID = null;
-        file = studentFiles[j].studentWork;
-        score = studentFiles[j].score;
-            
-        data.push({
-            profile : profile,
-            file : file,
-            score : score
-        })
+
+        let studentWork = await getDocument(studentFiles[j].studentWork);
+        data.push(studentWork);
     }
+    data.sort((a, b) => {
+        return a.time - b.time;
+    });
   
     const assignment = await getDocument(assignmentID);
     const detailOfassignment = {
         "title" : assignment.title,
         "text" : assignment.text,
         "Instructorfile" : assignment.file,
+        "scoreMax" : assignment.scoreMax,
         "studentData" : data
     }
     res.send({ assignment : detailOfassignment });
