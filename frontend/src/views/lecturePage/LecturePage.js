@@ -29,11 +29,7 @@ export default function LecturePage({ lectureHeader, lectureDesc }) {
     };
     loadLecture();
   }, []);
-
-  lectureHeader =
-    "Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1Lecture 1";
-  lectureDesc =
-    "Lecture descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription";
+  
   return (
     <div>
       <Header />

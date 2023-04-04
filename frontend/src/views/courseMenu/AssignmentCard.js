@@ -10,8 +10,6 @@ export default function AssignmentCard({
   const navigate = useNavigate();
   const param = useParams();
 
-  // temp const
-  maxscore = 10;
   function toAssignment() {
     navigate("/mycourses/" + param.courseID + "/assignment/" + assignmentID);
   }
@@ -36,7 +34,7 @@ export default function AssignmentCard({
             {title}
           </span>
           {/* score */}
-          {user.type == "student" ? (
+          {user.type === "student" ? (
             <span className="font-secondary font-semibold mt-[5px] border-[1px] border-black py-[5px] px-[10px] rounded-full w-[100px] ml-[10px]">
               {(score ? (score + "/" + maxscore) : ("Pending"))}
             </span>
