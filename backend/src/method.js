@@ -28,13 +28,16 @@ async function checkCollection(document){
     const globalValueWorkRef = db.collection('globalValue');
     const snapshotglobalValue= await globalValueWorkRef.where('globalValueID' ,'==' ,document).get()
     if(!snapshotglobalValue.empty) return 'globalValue';
+
+    return 
 }
 
 async function getDocument(document){
     const cityRef = db.collection(await checkCollection(document)).doc(document);
     const doc = await cityRef.get();
     if (!doc.exists) {
-        return { error : 'No such document!' }
+        console.log
+        // return { error : 'No such document!' }
     } else {
         return doc.data();
     }
