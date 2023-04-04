@@ -34,7 +34,7 @@ async function getDocument(document){
     const cityRef = db.collection(await checkCollection(document)).doc(document);
     const doc = await cityRef.get();
     if (!doc.exists) {
-        console.log('No such document!');
+        return { error : 'No such document!' }
     } else {
         return doc.data();
     }
