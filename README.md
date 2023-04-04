@@ -1,3 +1,11 @@
+# Notes
+This project is a more polished version of The team 9 (หากเธอชอบกินไก่)'s hack to school project.
+The contributors of this project are:
+Kawin Rattanapun
+Nasmeen Islam
+Thanphum Hirunyatorn
+
+
 # hack to school
 
 Welcome everyone to hack to school hackathon! Today, we will be putting the skills that we've learned in the past event, the 10 Days Project, to work by collaborating with your team and tackling some challenges together.
