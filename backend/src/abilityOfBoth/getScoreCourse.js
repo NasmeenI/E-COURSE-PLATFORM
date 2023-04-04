@@ -11,11 +11,11 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const getScoreCourse = async (req ,res) => {
     const { userID ,courseID } = req.body;
-    // const newuserID = await getuid(userID);
-    // if(newuserID.error){  
-    //     res.send({ error : newuserID.error.message });
-    //     return ;
-    // }
+    const newuserID = await getuid(userID);
+    if(newuserID.error){  
+        res.send({ error : newuserID.error.message });
+        return ;
+    }
 
     const scoreCourse = await getField(courseID ,"scoreCourse");
     res.send({ scoreCourse : scoreCourse });
