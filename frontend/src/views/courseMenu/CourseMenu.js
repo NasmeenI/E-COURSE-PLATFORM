@@ -30,7 +30,7 @@ export default function CourseStudentMenu() {
           param.courseID
         );
         result = result.Courses;
-        setCourseData(result.Courses);
+        setCourseData(result);
         setIsRated(result.scoreCourseByStudent !== null);
       }
   
