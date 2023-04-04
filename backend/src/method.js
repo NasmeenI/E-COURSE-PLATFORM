@@ -22,22 +22,19 @@ async function checkCollection(document){
     if(!snapshotlecture.empty) return 'lecture';
 
     const studentWorkRef = db.collection('studentWork');
-    const snapshotstudentWork= await studentWorkRef.where('studentWorkID' ,'==' ,document).get()
-    if(!snapshotstudentWork.empty) return 'lectstudentWorkure';
+    const snapshotstudentWork= await studentWorkRef.where('workID' ,'==' ,document).get()
+    if(!snapshotstudentWork.empty) return 'studentWork';
 
     const globalValueWorkRef = db.collection('globalValue');
     const snapshotglobalValue= await globalValueWorkRef.where('globalValueID' ,'==' ,document).get()
     if(!snapshotglobalValue.empty) return 'globalValue';
-
-    return 
 }
 
-async function getDocument(document){
+async function getDocument(document){   
     const cityRef = db.collection(await checkCollection(document)).doc(document);
     const doc = await cityRef.get();
     if (!doc.exists) {
-        console.log
-        // return { error : 'No such document!' }
+        return { error : 'No such document!' }
     } else {
         return doc.data();
     }
