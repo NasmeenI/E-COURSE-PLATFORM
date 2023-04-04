@@ -10,19 +10,18 @@ app.use(bp.urlencoded({ extended: true }))
 
 export const readAssignmentInstructor = async (req ,res) => { 
     const { userID ,assignmentID } = req.body;
-    // const newuserID = await getuid(userID);
-    // if(newuserID.error){  
-    //     res.send({ error : newuserID.error.message });
-    //     return ;
-    // }
-    // const collection = await checkCollection(newuserID.uid);
-    // if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
+    const newuserID = await getuid(userID);
+    if(newuserID.error){  
+        res.send({ error : newuserID.error.message });
+        return ;
+    }
+    const collection = await checkCollection(newuserID.uid);
+    if(collection != 'instructor') res.send({ error : 'you are not an instructor' });
 
     let data = []
     const studentFiles = await getField(assignmentID ,'studentFile');
     for(let j=0;j<studentFiles.length;j++){
         let profile = await getDocument(studentFiles[j].userID);
-        profile.userID = null;
 
         let studentWork = await getDocument(studentFiles[j].studentWork);
         studentWork.firstName = profile.firstName;
