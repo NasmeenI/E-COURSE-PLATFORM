@@ -13,6 +13,7 @@ export default function CourseCard({
   description,
   courseName,
   image,
+  score,
   enrolled,
   id,
   setTryingToEnroll,
@@ -29,6 +30,7 @@ export default function CourseCard({
         tag,
         description,
         courseName,
+        score,
         image,
         enrolled,
         id,
@@ -80,7 +82,7 @@ export default function CourseCard({
             </span>
             {/* popular score */}
             <div className="font-secondary font-bold text-[14px] bg-red-600 rounded-md ml-[20px] text-white py-[3px] px-[10px] flex flex-row items-center justify-center">
-              <span>4.56</span>
+              <span>{score}</span>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 245" className="w-[15px] h-[15px] ml-[5px]">
                 <path d="m56,237 74-228 74,228L10,96h240" 
                 fill="#ffffff"/>

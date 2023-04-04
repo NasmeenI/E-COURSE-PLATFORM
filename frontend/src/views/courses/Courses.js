@@ -83,6 +83,7 @@ export default function Courses() {
     for (let i = 0; i < data.length; i++) {
       data[i].image = await FileAPI.getURL(data[i].image);
     }
+    console.log(data)
     setPageData(data);
     setLoadingPage(false);
   }
@@ -163,6 +164,7 @@ export default function Courses() {
                       tag={course.tag}
                       description={course.description}
                       image={course.image}
+                      score={course.score}
                       enrolled={course.enroll}
                       id={course.courseID}
                       setTryingToEnroll={setTryingToEnroll}
