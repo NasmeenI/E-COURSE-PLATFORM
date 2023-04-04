@@ -27,7 +27,6 @@ export const readAssignmentInstructor = async (req ,res) => {
         studentWork.firstName = profile.firstName;
         studentWork.lastName = profile.lastName;
         delete studentWork.userID;
-        delete studentWork.assignmentID;
         delete studentWork.workID;
         data.push(studentWork);
     }
