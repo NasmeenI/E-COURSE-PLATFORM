@@ -92,11 +92,12 @@ async function enrollCourse(userID, courseID) {
   return result.data;
 }
 
-async function sendWork(userID, assignmentID, file) {
+async function sendWork(userID, assignmentID, file ,time) {
   const result = await axios.post(endpoint("/sendWork"), {
     userID: userID,
     assignmentID: assignmentID,
     file: file,
+    time: time
   });
   return result.data;
 }
