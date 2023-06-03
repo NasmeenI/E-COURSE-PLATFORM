@@ -1,7 +1,6 @@
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://i.imgur.com/okdL4l1_d.webp?maxwidth=300&fidelity=grand">
-  <img alt="Text changing depending on mode. Light: 'So light!' Dark: 'So dark!'" src="https://ibb.co/Bt9hYk0">
+  <img src="https://ibb.co/Bt9hYk0">
 </picture>
 <p>
 
