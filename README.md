@@ -1,6 +1,6 @@
 <p align="center">
 <picture>
-  <img src="https://ibb.co/Bt9hYk0">
+  <img src="https://ibb.co/Bt9hYk0" alt="image">
 </picture>
 <p>
 
